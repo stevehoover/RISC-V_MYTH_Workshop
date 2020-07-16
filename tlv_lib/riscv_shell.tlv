@@ -23,3 +23,7 @@ m4+definitions(['
       
       // String representations of the instructions for debug.
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
+   |cpu
+      @1
+         /imem[31:0]
+            $instr[31:0] = #imem >= M4_NUM_INSTRS ? 32'b0 : *instrs\[#imem\];
