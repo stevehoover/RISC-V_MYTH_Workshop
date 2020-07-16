@@ -11,7 +11,7 @@ m4+definitions(['
    
    m4_echo(m4tlv_riscv_gen__body())
 '])
-/TLV myth_shell()
+\TLV myth_shell()
    \SV_plus
       // The program in an instruction memory.
       logic [M4_INSTR_RANGE] instrs [0:M4_NUM_INSTRS-1];
