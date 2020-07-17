@@ -1,9 +1,7 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/3cd6ba9eb71dc7c302b508a892584cab4001d2e2/risc-v_defs.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/7e3109c23ea22e36bca8ae93faaa463037b40483/risc-v_defs.tlv'])
 m4+definitions(['
-   m4_define(['m4_no_op5_localparams'], 1)
-   m4_define(['m4_no_opcode_localparams'], 1)
    m4_define_vector(['M4_WORD'], 32)
    m4_define(['M4_EXT_I'], 1)
 
