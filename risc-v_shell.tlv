@@ -45,5 +45,7 @@
    
    
    m4+myth_shell()
+   
+   m4+cpu_viz(@4)
 \SV
    endmodule

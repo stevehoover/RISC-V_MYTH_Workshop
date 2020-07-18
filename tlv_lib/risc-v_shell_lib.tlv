@@ -69,9 +69,11 @@ m4+definitions(['
             $imm[31:0] = '0;
             /xreg[31:0]
                $value[31:0] = '0;
+               `BOGUS_USE($value)
                $dummy[0:0] = 1'b0;
             /dmem[15:0]
                $value[31:0] = '0;
+               `BOGUS_USE($value)
                $dummy[0:0] = 1'b0;
             `BOGUS_USE($is_lui $is_auipc $is_jal $is_jalr $is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_lb $is_lh $is_lw $is_lbu $is_lhu $is_sb $is_sh $is_sw)
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
@@ -82,10 +84,10 @@ m4+definitions(['
          `BOGUS_USE($dummy)
          /xreg[31:0]
             $ANY = |cpu/defaults/xreg$ANY;
-            `BOGUS_USE($value $dummy)
+            `BOGUS_USE($dummy)
          /dmem[15:0]
             $ANY = |cpu/defaults/dmem$ANY;
-            `BOGUS_USE($value $dummy)
+            `BOGUS_USE($dummy)
          
          // m4_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
          m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
