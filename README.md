@@ -8,7 +8,7 @@ For students of "Microprocessor for Me in Thirty Hours" Workshop, offered by for
 
 ## Important links
 
-<a href="http://www.makerchip.com/sandbox?code_url=http:%2F%2Fgithub.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fblob%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">Open starting-point code for RISC-V labs</a> (right-click and "Open in new tab")
+<a href="http://www.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">Open starting-point code for RISC-V labs</a> (right-click and "Open in new tab")
 
 
 ## Common Errors
