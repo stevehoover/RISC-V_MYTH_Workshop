@@ -84,7 +84,7 @@ m4+definitions(['
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
             `BOGUS_USE($is_srl $is_sra $is_or $is_and $is_csrrw $is_csrrs $is_csrrc $is_csrrwi $is_csrrsi $is_csrrci)
             `BOGUS_USE($valid $rd $rs1 $rs2 $rs1_value $rs2_value $result $pc $imm)
-            `BOGUS_USE($is_s_instr, $rd_valid, $rs1_valid, $rs2_valid)
+            `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
             $dummy[0:0] = 1'b0;
          $ANY = /defaults$ANY;
          `BOGUS_USE($dummy)
