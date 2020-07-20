@@ -22,3 +22,10 @@ For students of "Microprocessor for Me in Thirty Hours" Workshop, offered by for
 Combinational logic loops back on itself. Perhaps you missed a `>>1`.
 
 ## By Slide
+
+...
+
+
+## Live Help
+
+There is a TL-Verilog help room available during the workshop: <a href="https://www.google.com/url?q=https://us02web.zoom.us/j/4218739141&sa=D&source=calendar&ust=1595603520903000&usg=AOvVaw1ndmQzaikr7nHGZKKa5-PI" target="_blank" atom_fix="_">TL-Verilog Zoom Room</a>

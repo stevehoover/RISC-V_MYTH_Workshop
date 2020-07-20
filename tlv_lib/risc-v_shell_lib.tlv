@@ -67,6 +67,11 @@ m4+definitions(['
             $result[31:0] = '0;
             $pc[31:0] = '0;
             $imm[31:0] = '0;
+            $is_s_type = 1'b0;
+            $rd_valid = 1'b0;
+            $rs1_valid = 1'b0;
+            $rs2_valid = 1'b0;
+            
             /xreg[31:0]
                $value[31:0] = '0;
                `BOGUS_USE($value)

@@ -1,6 +1,6 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/c6d52505c2ddd55438ecb0404196154f5c823c8d/tlv_lib/risc-v_shell_lib.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/ad5a30fc79f5362e78f961aeba63c6d5ea27a752/tlv_lib/risc-v_shell_lib.tlv'])
 
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
