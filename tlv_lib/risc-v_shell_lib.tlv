@@ -24,7 +24,7 @@ m4+definitions(['
       ?$rf_rd_en2
          $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>1$value;
 
-  `BOGUS_USE($rf_rd_data)
+  `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
 
 \TLV myth_shell()
    // ==========
