@@ -32,7 +32,8 @@ m4+definitions(['
    \SV_plus
       logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
-   |cpu
+   |vizcpu
+      $ANY = /top|cpu$ANY;
       @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
             $instr_str[40*8-1:0] = *instr_strs[imem];
