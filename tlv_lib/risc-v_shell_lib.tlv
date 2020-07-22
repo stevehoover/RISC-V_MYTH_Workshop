@@ -10,6 +10,22 @@ m4+definitions(['
    
    m4_echo(m4tlv_riscv_gen__body())
 '])
+\TLV rf(@_rd, @_wr)
+   // Reg File
+   @_wr
+      /xreg[31:0]
+         $wr = |cpu$rf_wr_valid && (|cpu$rf_wr_index != 5'b0) && (#xreg == |cpu$rf_wr_index);
+         $value[31:0] = |cpu$reset ? #xreg :
+                        $wr        ? |cpu$rf_wr_data :
+                                     >>1$value;
+   @_rd
+      ?$rf_rd_en1
+         $rf_rd_data1[31:0] = /xreg[$rf_rd_index1]>>1$value;
+      ?$rf_rd_en2
+         $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>1$value;
+
+  `BOGUS_USE($rf_rd_data)
+
 \TLV myth_shell()
    // ==========
    // MYTH Shell (Provided)
@@ -27,6 +43,8 @@ m4+definitions(['
       @1
          /M4_IMEM_HIER
             $instr[31:0] = *instrs\[#imem\];
+   
+
 
 \TLV cpu_viz(@_stage)
    \SV_plus
@@ -210,3 +228,4 @@ m4+definitions(['
                      '$value'.step(1).asInt(NaN).toString() + oldValStr);
                   this.getInitObject("mem").setFill(mod ? "blue" : "black");
                }
+
