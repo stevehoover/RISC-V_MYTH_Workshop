@@ -16,7 +16,7 @@ m4+definitions(['
    // Reg File
    @_wr
       /xreg[31:0]
-         $wr = |cpu$rf_wr_valid && (|cpu$rf_wr_index != 5'b0) && (|cpu$rf_wr_index == #xreg);
+         $wr = |cpu$rf_wr_en && (|cpu$rf_wr_index != 5'b0) && (|cpu$rf_wr_index == #xreg);
          $value[31:0] = |cpu$reset ? #xreg :
                         $wr        ? |cpu$rf_wr_data :
                                      $RETAIN;
@@ -26,20 +26,20 @@ m4+definitions(['
       ?$rf_rd_en2
          $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>m4_stage_eval(@_wr - @_rd + 1)$value;
 
-  `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
+      `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
 
 // A data memory in |cpu at the given stage. Reads and writes in the same stage, where reads are of the data written by the previous transaction.
 \TLV dmem(@_stage)
    // Data Memory
    @_stage
-      /dmem[31:0]
-         $wr = |cpu$mem_wr_valid && (|cpu$mem_wr_index == #dmem);
+      /dmem[15:0]
+         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_index == #dmem);
          $value[31:0] = |cpu$reset ? #dmem :
-                        $wr        ? |cpu@mem_wr_data :
+                        $wr        ? |cpu$mem_wr_data :
                                      $RETAIN;
       ?$dmem_rd_en
          $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>1$value;
-   `BOGUS_USE($dmem_rd_data)
+      `BOGUS_USE($dmem_rd_data)
 
 \TLV myth_shell()
    // ==========
