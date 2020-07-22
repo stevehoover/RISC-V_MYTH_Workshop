@@ -36,6 +36,7 @@ m4+definitions(['
       @1
          $ANY = /top|cpu$ANY;
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
+            $ANY = /top|cpu/imem$ANY;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
@@ -56,6 +57,7 @@ m4+definitions(['
                }
       @_stage
          /defaults
+            $ANY = /top|cpu/defaults$ANY;
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
             {$is_addi, $is_slti, $is_sltiu, $is_xori, $is_ori, $is_andi, $is_slli, $is_srli, $is_srai, $is_add, $is_sub, $is_sll, $is_slt, $is_sltu, $is_xor} = '0;
             {$is_srl, $is_sra, $is_or, $is_and, $is_csrrw, $is_csrrs, $is_csrrc, $is_csrrwi, $is_csrrsi, $is_csrrci} = '0;
