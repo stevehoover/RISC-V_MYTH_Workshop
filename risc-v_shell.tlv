@@ -1,5 +1,7 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
+   // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
+   
    m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/a170e6eb1259ade19fcbf023bd7734f5b3999a40/tlv_lib/risc-v_shell_lib.tlv'])
 
 \SV
@@ -71,9 +73,10 @@
    *passed = *cyc_cnt > 40;
    *failed = 1'b0;
    
+   // Macro instantiations for register file, instruction memory, data memory, and CPU visualization.
    |cpu
-      //m4+rf(@1, @1)
-      //m4+dmem(@4)
+      //m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
+      //m4+dmem(@4)    // Args: (read/write stage)
    
    m4+myth_shell()
    
