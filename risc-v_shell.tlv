@@ -1,6 +1,8 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/ad5a30fc79f5362e78f961aeba63c6d5ea27a752/tlv_lib/risc-v_shell_lib.tlv'])
+   // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
+   
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/a170e6eb1259ade19fcbf023bd7734f5b3999a40/tlv_lib/risc-v_shell_lib.tlv'])
 
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
@@ -37,15 +39,47 @@
          $reset = *reset;
 
 
+
+   // YOUR CODE HERE
    // ...
 
+
+
+         // *** Register File ***
+         // Read
+         /*
+         $rf_rd_en1 = `0;
+         $rf_rd_en2 = `0;
+         $rf_rd_index1[4:0] = `0;
+         $rf_rd_index2[31:0] = `0;
+         // Write
+         $rf_wr_en = `0;
+         $rf_wr_index[4:0] = `0;
+         $rf_wr_data[31:0] = `0;
+         */
+         
+         // *** Memory ***
+         /*
+         // Read (Load)
+         $mem_rd_en = `0;
+         $mem_rd_index[3:0] = `0;
+         // Write (Store)
+         $mem_wr_en = `0;
+         $mem_wr_index[3:0] = `0;
+         $mem_wr_data[31:0] = `0;
+         */
+   
    // Assert these to end simulation (before Makerchip cycle limit).
    *passed = *cyc_cnt > 40;
    *failed = 1'b0;
    
+   // Macro instantiations for register file, instruction memory, data memory, and CPU visualization.
+   |cpu
+      //m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
+      //m4+dmem(@4)    // Args: (read/write stage)
    
    m4+myth_shell()
    
-   m4+cpu_viz(@4)
+   //m4+cpu_viz(@4)
 \SV
    endmodule

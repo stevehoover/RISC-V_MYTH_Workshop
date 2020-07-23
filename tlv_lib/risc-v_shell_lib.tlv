@@ -10,6 +10,37 @@ m4+definitions(['
    
    m4_echo(m4tlv_riscv_gen__body())
 '])
+// A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
+// Reads earlier than writes will require bypass.
+\TLV rf(@_rd, @_wr)
+   // Reg File
+   @_wr
+      /xreg[31:0]
+         $wr = |cpu$rf_wr_en && (|cpu$rf_wr_index != 5'b0) && (|cpu$rf_wr_index == #xreg);
+         $value[31:0] = |cpu$reset ? #xreg :
+                        $wr        ? |cpu$rf_wr_data :
+                                     $RETAIN;
+   @_rd
+      ?$rf_rd_en1
+         $rf_rd_data1[31:0] = /xreg[$rf_rd_index1]>>m4_stage_eval(@_wr - @_rd + 1)$value;
+      ?$rf_rd_en2
+         $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>m4_stage_eval(@_wr - @_rd + 1)$value;
+
+      `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
+
+// A data memory in |cpu at the given stage. Reads and writes in the same stage, where reads are of the data written by the previous transaction.
+\TLV dmem(@_stage)
+   // Data Memory
+   @_stage
+      /dmem[15:0]
+         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_index == #dmem);
+         $value[31:0] = |cpu$reset ? #dmem :
+                        $wr        ? |cpu$mem_wr_data :
+                                     $RETAIN;
+      ?$dmem_rd_en
+         $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>1$value;
+      `BOGUS_USE($dmem_rd_data)
+
 \TLV myth_shell()
    // ==========
    // MYTH Shell (Provided)
@@ -27,6 +58,8 @@ m4+definitions(['
       @1
          /M4_IMEM_HIER
             $instr[31:0] = *instrs\[#imem\];
+   
+
 
 \TLV cpu_viz(@_stage)
    \SV_plus
@@ -213,3 +246,4 @@ m4+definitions(['
                      '$value'.step(1).asInt(NaN).toString() + oldValStr);
                   this.getInitObject("mem").setFill(mod ? "blue" : "black");
                }
+
