@@ -59,17 +59,19 @@ m4+definitions(['
       @1
          /M4_IMEM_HIER
             $instr[31:0] = *instrs\[#imem\];
-      @4
+
+
+\TLV cpu_viz(@_stage)
+   |cpu
+      // for pulling default viz signals into CPU
+      // and then back into viz
+      @_stage
          $ANY = /top|cpuviz/defaults<>0$ANY;
          `BOGUS_USE($dummy)
          /xreg[31:0]
             $ANY = /top|cpuviz/defaults/xreg<>0$ANY;
          /dmem[15:0]
             $ANY = /top|cpuviz/defaults/dmem<>0$ANY;
-
-
-
-\TLV cpu_viz(@_stage)
    \SV_plus
       logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
