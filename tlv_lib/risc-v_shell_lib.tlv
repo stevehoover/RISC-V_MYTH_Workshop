@@ -10,6 +10,7 @@ m4+definitions(['
    
    m4_echo(m4tlv_riscv_gen__body())
 '])
+
 // A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
 // Reads earlier than writes will require bypass.
 \TLV rf(@_rd, @_wr)
@@ -58,16 +59,26 @@ m4+definitions(['
       @1
          /M4_IMEM_HIER
             $instr[31:0] = *instrs\[#imem\];
-   
 
 
 \TLV cpu_viz(@_stage)
+   |cpu
+      // for pulling default viz signals into CPU
+      // and then back into viz
+      @_stage
+         $ANY = /top|cpuviz/defaults<>0$ANY;
+         `BOGUS_USE($dummy)
+         /xreg[31:0]
+            $ANY = /top|cpuviz/defaults/xreg<>0$ANY;
+         /dmem[15:0]
+            $ANY = /top|cpuviz/defaults/dmem<>0$ANY;
    \SV_plus
       logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
-   |cpu
+   |cpuviz
       @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
+            $ANY = /top|cpu/imem<>0$ANY;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
@@ -119,15 +130,14 @@ m4+definitions(['
             `BOGUS_USE($valid $rd $rs1 $rs2 $rs1_value $rs2_value $result $pc $imm)
             `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
             $dummy[0:0] = 1'b0;
-         $ANY = /defaults$ANY;
-         `BOGUS_USE($dummy)
+         $ANY = /top|cpu<>0$ANY;
          /xreg[31:0]
-            $ANY = |cpu/defaults/xreg$ANY;
+            $ANY = /top|cpu/xreg<>0$ANY;
             `BOGUS_USE($dummy)
          /dmem[15:0]
-            $ANY = |cpu/defaults/dmem$ANY;
+            $ANY = /top|cpu/dmem<>0$ANY;
             `BOGUS_USE($dummy)
-         
+
          // m4_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
          m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
          $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr "ILLEGAL   ";
@@ -186,7 +196,7 @@ m4+definitions(['
          //
          // Register file
          //
-         /xreg[31:0]
+         /xreg[31:0]           
             \viz_alpha
                initEach: function() {
                   let regname = new fabric.Text("Reg File", {
@@ -204,7 +214,7 @@ m4+definitions(['
                   return {objects: {regname: regname, reg: reg}};
                },
                renderEach: function() {
-                  let mod = '|cpu$rd_valid'.asBool(false) && ('|cpu$rd'.asInt(-1) == this.getScope("xreg").index);
+                  let mod = '|cpuviz$rd_valid'.asBool(false) && ('|cpuviz$rd'.asInt(-1) == this.getScope("xreg").index);
                   let reg = parseInt(this.getIndex());
                   let regIdent = reg.toString();
                   let oldValStr = mod ? `(${'$value'.asInt(NaN).toString()})` : "";
@@ -234,7 +244,7 @@ m4+definitions(['
                   return {objects: {memname: memname, mem: mem}};
                },
                renderEach: function() {
-                  let mod = '|cpu$is_s_instr'.asBool(false) && ('|cpu$result'.asInt(-1) == this.getScope("dmem").index);
+                  let mod = '|cpuviz$is_s_instr'.asBool(false) && ('|cpuviz$result'.asInt(-1) == this.getScope("dmem").index);
                   let mem = parseInt(this.getIndex());
                   let memIdent = mem.toString();
                   let oldValStr = mod ? `(${'$value'.asInt(NaN).toString()})` : "";
@@ -243,4 +253,3 @@ m4+definitions(['
                      '$value'.step(1).asInt(NaN).toString() + oldValStr);
                   this.getInitObject("mem").setFill(mod ? "blue" : "black");
                }
-
