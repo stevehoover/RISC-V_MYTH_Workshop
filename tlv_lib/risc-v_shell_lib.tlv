@@ -77,7 +77,7 @@ m4+definitions(['
    |cpuviz
       @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
-            $ANY = /top|cpu<>0$ANY;
+            $instr[31:0]         = /top|cpu<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
