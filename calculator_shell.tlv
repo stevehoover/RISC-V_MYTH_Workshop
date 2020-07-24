@@ -28,13 +28,15 @@
          $reset = *reset;
          // YOUR CODE HERE
          // ...
-
+         
+         
+      // Macro instantiations for calculator visualization.  
+   //m4+cal_viz(@2)
    
    // Assert these to end simulation (before Makerchip cycle limit).
    *passed = *cyc_cnt > 40;
    *failed = 1'b0;
    
-      // Macro instantiations for calculator visualization.   
-   //m4+cal_viz(@2)
+
 \SV
    endmodule
