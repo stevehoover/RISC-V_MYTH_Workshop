@@ -11,6 +11,26 @@ m4+definitions(['
    m4_echo(m4tlv_riscv_gen__body())
 '])
 
+
+// Instruction memory in |cpu at the given stage.
+\TLV imem(@_stage)
+   // Instruction Memory containing program defined by m4_asm(...) instantiations.
+   |cpu
+      @_stage
+         \SV_plus
+            // The program in an instruction memory.
+            logic [31:0] instrs [0:M4_NUM_INSTRS-1];
+            
+            assign instrs = '{
+               m4_instr0['']m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [', m4_echo(['m4_instr']m4_instr_ind)'])
+            };
+      //@_stage
+      //   /M4_IMEM_HIER
+      //      $instr[31:0] = *instrs\[#imem\];
+      ?$imem_rd_en
+         $imem_rd_data[31:0] = *instrs\[$imem_rd_addr\]
+
+
 // A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
 // Reads earlier than writes will require bypass.
 \TLV rf(@_rd, @_wr)
@@ -28,37 +48,20 @@ m4+definitions(['
          $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>m4_stage_eval(@_wr - @_rd + 1)$value;
 
       `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
+      
 
 // A data memory in |cpu at the given stage. Reads and writes in the same stage, where reads are of the data written by the previous transaction.
 \TLV dmem(@_stage)
    // Data Memory
    @_stage
       /dmem[15:0]
-         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_index == #dmem);
+         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_addr == #dmem);
          $value[31:0] = |cpu$reset ? #dmem :
                         $wr        ? |cpu$mem_wr_data :
                                      $RETAIN;
       ?$dmem_rd_en
-         $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>1$value;
+         $dmem_rd_data[31:0] = /dmem[$dmem_rd_addr]>>1$value;
       `BOGUS_USE($dmem_rd_data)
-
-\TLV myth_shell()
-   // ==========
-   // MYTH Shell (Provided)
-   // ==========
-   \SV_plus
-      // The program in an instruction memory.
-      logic [31:0] instrs [0:M4_NUM_INSTRS-1];
-      
-      assign instrs = '{
-         m4_instr0['']m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [', m4_echo(['m4_instr']m4_instr_ind)'])
-      };
-      
-      // String representations of the instructions for debug.
-   |cpu
-      @1
-         /M4_IMEM_HIER
-            $instr[31:0] = *instrs\[#imem\];
 
 
 \TLV cpu_viz(@_stage)
@@ -72,6 +75,7 @@ m4+definitions(['
             $ANY = /top|cpuviz/defaults/xreg<>0$ANY;
          /dmem[15:0]
             $ANY = /top|cpuviz/defaults/dmem<>0$ANY;
+   // String representations of the instructions for debug.
    \SV_plus
       logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
