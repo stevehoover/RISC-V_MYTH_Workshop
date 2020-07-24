@@ -18,7 +18,7 @@ m4+definitions(['
    @_wr
       /xreg[31:0]
          $wr = |cpu$rf_wr_en && (|cpu$rf_wr_index != 5'b0) && (|cpu$rf_wr_index == #xreg);
-         $value[31:0] = |cpu$reset ? #xreg :
+         $value[31:0] = |cpu$reset ? '0 :
                         $wr        ? |cpu$rf_wr_data :
                                      $RETAIN;
    @_rd
@@ -34,10 +34,11 @@ m4+definitions(['
    // Data Memory
    @_stage
       /dmem[15:0]
-         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_index == #dmem);
-         $value[31:0] = |cpu$reset ? #dmem :
-                        $wr        ? |cpu$mem_wr_data :
+         $wr = |cpu$dmem_wr_en && (|cpu$dmem_wr_index == #dmem);
+         $value[31:0] = |cpu$reset ? '0 :
+                        $wr        ? |cpu$dmem_wr_data :
                                      $RETAIN;
+                                  
       ?$dmem_rd_en
          $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>1$value;
       `BOGUS_USE($dmem_rd_data)
@@ -106,8 +107,8 @@ m4+definitions(['
             $rd[4:0] = '0;
             $rs1[4:0] = '0;
             $rs2[4:0] = '0;
-            $rs1_value[31:0] = '0;
-            $rs2_value[31:0] = '0;
+            $src1_value[31:0] = '0;
+            $src2_value[31:0] = '0;
             $result[31:0] = '0;
             $pc[31:0] = '0;
             $imm[31:0] = '0;
@@ -115,10 +116,19 @@ m4+definitions(['
             $rd_valid = 1'b0;
             $rs1_valid = 1'b0;
             $rs2_valid = 1'b0;
+            $ld_data[31:0] = '0;
             
             /xreg[31:0]
+               $rf_wr_en            = '0;
+               $rf_wr_index[4:0]    = '0;
+               $rf_wr_data[31:0]    = '0;
+               $rf_rd_en1           = '0;
+               $rf_rd_en2           = '0;
+               $rf_rd_index1[4:0]   = '0;
+               $rf_rd_index2[4:0]   = '0;
                $value[31:0] = '0;
                `BOGUS_USE($value)
+               `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2)
                $dummy[0:0] = 1'b0;
             /dmem[15:0]
                $value[31:0] = '0;
@@ -127,8 +137,8 @@ m4+definitions(['
             `BOGUS_USE($is_lui $is_auipc $is_jal $is_jalr $is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_lb $is_lh $is_lw $is_lbu $is_lhu $is_sb $is_sh $is_sw)
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
             `BOGUS_USE($is_srl $is_sra $is_or $is_and $is_csrrw $is_csrrs $is_csrrc $is_csrrwi $is_csrrsi $is_csrrci)
-            `BOGUS_USE($valid $rd $rs1 $rs2 $rs1_value $rs2_value $result $pc $imm)
-            `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
+            `BOGUS_USE($valid $rd $rs1 $rs2 $src1_value $src2_value $result $pc $imm)
+            `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid $ld_data)
             $dummy[0:0] = 1'b0;
          $ANY = /top|cpu<>0$ANY;
          /xreg[31:0]
@@ -182,7 +192,7 @@ m4+definitions(['
                              : "";
                };
                let str = `${regStr('$rd_valid'.asBool(false), '$rd'.asInt(NaN), '$result'.asInt(NaN))}\n` +
-                         `  = ${'$mnemonic'.asString()}${srcStr(1, '$rs1_valid', '$rs1', '$rs1_value')}${srcStr(2, '$rs2_valid', '$rs2', '$rs2_value')}\n` +
+                         `  = ${'$mnemonic'.asString()}${srcStr(1, '$rs1_valid', '$rs1', '$src1_value')}${srcStr(2, '$rs2_valid', '$rs2', '$src2_value')}\n` +
                          `      i[${'$imm'.asInt(NaN)}]`;
                let instrWithValues = new fabric.Text(str, {
                   top: 70,
