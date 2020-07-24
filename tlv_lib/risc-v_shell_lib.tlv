@@ -55,9 +55,9 @@ m4+definitions(['
    // Data Memory
    @_stage
       /dmem[15:0]
-         $wr = |cpu$mem_wr_en && (|cpu$mem_addr == #dmem);
+         $wr = |cpu$dmem_wr_en && (|cpu$dmem_addr == #dmem);
          $value[31:0] = |cpu$reset ? #dmem :
-                        $wr        ? |cpu$mem_wr_data :
+                        $wr        ? |cpu$dmem_wr_data :
                                      $RETAIN;
                                   
       ?$dmem_rd_en
