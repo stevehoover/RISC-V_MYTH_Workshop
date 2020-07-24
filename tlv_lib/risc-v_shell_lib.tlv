@@ -55,13 +55,13 @@ m4+definitions(['
    // Data Memory
    @_stage
       /dmem[15:0]
-         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_addr == #dmem);
+         $wr = |cpu$mem_wr_en && (|cpu$mem_addr == #dmem);
          $value[31:0] = |cpu$reset ? #dmem :
                         $wr        ? |cpu$mem_wr_data :
                                      $RETAIN;
                                   
       ?$dmem_rd_en
-         $dmem_rd_data[31:0] = /dmem[$dmem_rd_addr]>>1$value;
+         $dmem_rd_data[31:0] = /dmem[$dmem_addr]>>1$value;
       `BOGUS_USE($dmem_rd_data)
 
 
