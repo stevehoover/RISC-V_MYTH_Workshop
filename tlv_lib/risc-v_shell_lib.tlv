@@ -30,17 +30,17 @@ m4+definitions(['
       `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
 
 // A data memory in |cpu at the given stage. Reads and writes in the same stage, where reads are of the data written by the previous transaction.
-\TLV dmem(@_rd, @_wr)
+\TLV dmem(@_stage)
    // Data Memory
-   @_wr
+   @_stage
       /dmem[15:0]
          $wr = |cpu$dmem_wr_en && (|cpu$dmem_wr_index == #dmem);
          $value[31:0] = |cpu$reset ? '0 :
                         $wr        ? |cpu$dmem_wr_data :
                                      $RETAIN;
-   @_rd                                     
+                                  
       ?$dmem_rd_en
-         $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>m4_stage_eval(@_rd - @_wr)$value;
+         $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>1$value;
       `BOGUS_USE($dmem_rd_data)
 
 \TLV myth_shell()
