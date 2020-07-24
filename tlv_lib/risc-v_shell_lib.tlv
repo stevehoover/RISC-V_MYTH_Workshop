@@ -79,7 +79,7 @@ m4+definitions(['
    |cpuviz
       @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
-            $instr[31:0]         = /top|cpu<>0$instr;
+            $instr[31:0]         = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
@@ -98,6 +98,7 @@ m4+definitions(['
                      }));
                   }
                }
+               
       @_stage
          /defaults
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
@@ -105,45 +106,49 @@ m4+definitions(['
             {$is_srl, $is_sra, $is_or, $is_and, $is_csrrw, $is_csrrs, $is_csrrc, $is_csrrwi, $is_csrrsi, $is_csrrci} = '0;
 
             $valid               = 1'b1;
-            $rd[4:0]             = '0;
-            $rs1[4:0]            = '0;
-            $rs2[4:0]            = '0;
-            $src1_value[31:0]    = '0;
-            $src2_value[31:0]    = '0;
+            $rd[4:0]             = 5'b0;
+            $rs1[4:0]            = 5'b0;
+            $rs2[4:0]            = 5'b0;
+            $src1_value[31:0]    = 32'b0;
+            $src2_value[31:0]    = 32'b0;
 
-            $result[31:0]        = '0;
-            $pc[31:0]            = '0;
-            $imm[31:0]           = '0;
+            $result[31:0]        = 32'b0;
+            $pc[31:0]            = 32'b0;
+            $imm[31:0]           = 32'b0;
 
             $is_s_instr          = 1'b0;
 
             $rd_valid            = 1'b0;
             $rs1_valid           = 1'b0;
             $rs2_valid           = 1'b0;
-            $rf_wr_en            = '0;
-            $rf_wr_index[4:0]    = '0;
-            $rf_wr_data[31:0]    = '0;
-            $rf_rd_en1           = '0;
-            $rf_rd_en2           = '0;
-            $rf_rd_index1[4:0]   = '0;
-            $rf_rd_index2[4:0]   = '0;
+            $rf_wr_en            = 1'b0;
+            $rf_wr_index[4:0]    = 5'b0;
+            $rf_wr_data[31:0]    = 32'b0;
+            $rf_rd_en1           = 1'b0;
+            $rf_rd_en2           = 1'b0;
+            $rf_rd_index1[4:0]   = 5'b0;
+            $rf_rd_index2[4:0]   = 5'b0;
 
-            $ld_data[31:0]       = '0;
+            $ld_data[31:0]       = 32'b0;
+            $instr[31:0]         = 32'b0;
             
             /xreg[31:0]
-               $value[31:0]      = '0;
-               `BOGUS_USE($value)
+               $value[31:0]      = 32'b0;
+               $wr               = 1'b0;
+               `BOGUS_USE($value $wr)
                $dummy[0:0]       = 1'b0;
             /dmem[15:0]
-               $value[31:0]      = '0;
-               `BOGUS_USE($value)
+               $value[31:0]      = 32'0;
+               $wr               = 1'b0;
+               `BOGUS_USE($value $wr) 
                $dummy[0:0]       = 1'b0;
             `BOGUS_USE($is_lui $is_auipc $is_jal $is_jalr $is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_lb $is_lh $is_lw $is_lbu $is_lhu $is_sb $is_sh $is_sw)
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
             `BOGUS_USE($is_srl $is_sra $is_or $is_and $is_csrrw $is_csrrs $is_csrrc $is_csrrwi $is_csrrsi $is_csrrci)
             `BOGUS_USE($valid $rd $rs1 $rs2 $src1_value $src2_value $result $pc $imm)
-            `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid $ld_data)
+            `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
             `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2)
+            `BOGUS_USE($ld_data $instr)
             
             $dummy[0:0]          = 1'b0;
          
