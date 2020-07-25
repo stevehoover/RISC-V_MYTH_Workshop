@@ -40,34 +40,10 @@
 
 
 
-   // YOUR CODE HERE
-   // ...
+      // YOUR CODE HERE
+      // ...
 
 
-
-         // *** Register File ***
-         // Read
-         /*
-         $rf_rd_en1 = `0;
-         $rf_rd_en2 = `0;
-         $rf_rd_index1[4:0] = `0;
-         $rf_rd_index2[31:0] = `0;
-         // Write
-         $rf_wr_en = `0;
-         $rf_wr_index[4:0] = `0;
-         $rf_wr_data[31:0] = `0;
-         */
-         
-         // *** Memory ***
-         /*
-         // Read (Load)
-         $mem_rd_en = `0;
-         $mem_rd_index[3:0] = `0;
-         // Write (Store)
-         $mem_wr_en = `0;
-         $mem_wr_index[3:0] = `0;
-         $mem_wr_data[31:0] = `0;
-         */
    
    // Assert these to end simulation (before Makerchip cycle limit).
    *passed = *cyc_cnt > 40;
