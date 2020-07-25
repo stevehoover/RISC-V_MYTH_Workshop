@@ -60,7 +60,6 @@ m4+definitions(['
          $dmem_rd_data[31:0] = /dmem[$dmem_addr]>>1$value;
       `BOGUS_USE($dmem_rd_data)
 
-
 \TLV cpu_viz(@_stage)
    |cpu
       // for pulling default viz signals into CPU
@@ -238,13 +237,13 @@ m4+definitions(['
                   return {objects: {regname: regname, reg: reg}};
                },
                renderEach: function() {
-                  let mod = '|cpuviz$rd_valid'.asBool(false) && ('|cpuviz$rd'.asInt(-1) == this.getScope("xreg").index);
+                  let mod = '$wr'.asBool(false);
                   let reg = parseInt(this.getIndex());
                   let regIdent = reg.toString();
-                  let oldValStr = mod ? `(${'$value'.asInt(NaN).toString()})` : "";
+                  let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
                   this.getInitObject("reg").setText(
                      regIdent + ": " +
-                     '$value'.step(1).asInt(NaN).toString() + oldValStr);
+                     '$value'.asInt(NaN).toString() + oldValStr);
                   this.getInitObject("reg").setFill(mod ? "blue" : "black");
                }
          //
@@ -268,12 +267,12 @@ m4+definitions(['
                   return {objects: {memname: memname, mem: mem}};
                },
                renderEach: function() {
-                  let mod = '|cpuviz$is_s_instr'.asBool(false) && ('|cpuviz$result'.asInt(-1) == this.getScope("dmem").index);
+                  let mod = '$wr'.asBool(false);
                   let mem = parseInt(this.getIndex());
                   let memIdent = mem.toString();
-                  let oldValStr = mod ? `(${'$value'.asInt(NaN).toString()})` : "";
+                  let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
                   this.getInitObject("mem").setText(
                      memIdent + ": " +
-                     '$value'.step(1).asInt(NaN).toString() + oldValStr);
+                     '$value'.asInt(NaN).toString() + oldValStr);
                   this.getInitObject("mem").setFill(mod ? "blue" : "black");
                }
