@@ -16,8 +16,8 @@
          
          
       // Macro instantiations for calculator visualization(disabled by default).
-      //First Argument is the initial stage (where we assign the input operands) 
-      //Second Argument is the last stage (where we assign the output results)
+      //First Argument is the initial stage (where we assign the input operands).
+      //Second Argument is the last stage (where we assign the output results) or later.
    //m4+cal_viz(@1, @2)
    
    // Assert these to end simulation (before Makerchip cycle limit).
