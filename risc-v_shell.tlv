@@ -73,13 +73,16 @@
    *passed = *cyc_cnt > 40;
    *failed = 1'b0;
    
-   // Macro instantiations for register file, instruction memory, data memory, and CPU visualization.
+   // Macro instantiations for:
+   //  o instruction memory
+   //  o register file
+   //  o data memory
+   //  o CPU visualization
    |cpu
+      //m4+imem(@1)    // Args: (read stage)
       //m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
       //m4+dmem(@4)    // Args: (read/write stage)
    
-   m4+myth_shell()
-   
-   //m4+cpu_viz(@4)
+   m4+cpu_viz(@4)
 \SV
    endmodule

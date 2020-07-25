@@ -11,6 +11,23 @@ m4+definitions(['
    m4_echo(m4tlv_riscv_gen__body())
 '])
 
+
+// Instruction memory in |cpu at the given stage.
+\TLV imem(@_stage)
+   // Instruction Memory containing program defined by m4_asm(...) instantiations.
+   @_stage
+      \SV_plus
+         // The program in an instruction memory.
+         logic [31:0] instrs [0:M4_NUM_INSTRS-1];
+         assign instrs = '{
+            m4_instr0['']m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [', m4_echo(['m4_instr']m4_instr_ind)'])
+         };
+      /M4_IMEM_HIER
+         $instr[31:0] = *instrs\[#imem\];
+      ?$imem_rd_en
+         $imem_rd_data[31:0] = *instrs\[$imem_rd_addr\];
+    
+
 // A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
 // Reads earlier than writes will require bypass.
 \TLV rf(@_rd, @_wr)
@@ -18,47 +35,30 @@ m4+definitions(['
    @_wr
       /xreg[31:0]
          $wr = |cpu$rf_wr_en && (|cpu$rf_wr_index != 5'b0) && (|cpu$rf_wr_index == #xreg);
-         $value[31:0] = |cpu$reset ? #xreg :
-                        $wr        ? |cpu$rf_wr_data :
-                                     $RETAIN;
+         $value[31:0] = |cpu$reset ?   #xreg           :
+                        $wr        ?   |cpu$rf_wr_data :
+                                       $RETAIN;
    @_rd
       ?$rf_rd_en1
          $rf_rd_data1[31:0] = /xreg[$rf_rd_index1]>>m4_stage_eval(@_wr - @_rd + 1)$value;
       ?$rf_rd_en2
          $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>m4_stage_eval(@_wr - @_rd + 1)$value;
+      `BOGUS_USE($rf_rd_data1 $rf_rd_data2) 
 
-      `BOGUS_USE($rf_rd_data1 $rf_rd_data2)
 
 // A data memory in |cpu at the given stage. Reads and writes in the same stage, where reads are of the data written by the previous transaction.
 \TLV dmem(@_stage)
    // Data Memory
    @_stage
       /dmem[15:0]
-         $wr = |cpu$mem_wr_en && (|cpu$mem_wr_index == #dmem);
-         $value[31:0] = |cpu$reset ? #dmem :
-                        $wr        ? |cpu$mem_wr_data :
-                                     $RETAIN;
+         $wr = |cpu$dmem_wr_en && (|cpu$dmem_addr == #dmem);
+         $value[31:0] = |cpu$reset ?   #dmem :
+                        $wr        ?   |cpu$dmem_wr_data :
+                                       $RETAIN;
+                                  
       ?$dmem_rd_en
-         $dmem_rd_data[31:0] = /dmem[$dmem_rd_index]>>1$value;
+         $dmem_rd_data[31:0] = /dmem[$dmem_addr]>>1$value;
       `BOGUS_USE($dmem_rd_data)
-
-\TLV myth_shell()
-   // ==========
-   // MYTH Shell (Provided)
-   // ==========
-   \SV_plus
-      // The program in an instruction memory.
-      logic [31:0] instrs [0:M4_NUM_INSTRS-1];
-      
-      assign instrs = '{
-         m4_instr0['']m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [', m4_echo(['m4_instr']m4_instr_ind)'])
-      };
-      
-      // String representations of the instructions for debug.
-   |cpu
-      @1
-         /M4_IMEM_HIER
-            $instr[31:0] = *instrs\[#imem\];
 
 
 \TLV cpu_viz(@_stage)
@@ -72,13 +72,14 @@ m4+definitions(['
             $ANY = /top|cpuviz/defaults/xreg<>0$ANY;
          /dmem[15:0]
             $ANY = /top|cpuviz/defaults/dmem<>0$ANY;
+   // String representations of the instructions for debug.
    \SV_plus
       logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
    |cpuviz
       @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
-            $ANY = /top|cpu/imem<>0$ANY;
+            $instr[31:0]         = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
@@ -97,43 +98,66 @@ m4+definitions(['
                      }));
                   }
                }
+               
       @_stage
          /defaults
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
             {$is_addi, $is_slti, $is_sltiu, $is_xori, $is_ori, $is_andi, $is_slli, $is_srli, $is_srai, $is_add, $is_sub, $is_sll, $is_slt, $is_sltu, $is_xor} = '0;
             {$is_srl, $is_sra, $is_or, $is_and, $is_csrrw, $is_csrrs, $is_csrrc, $is_csrrwi, $is_csrrsi, $is_csrrci} = '0;
-            $valid = 1'b1;
-            $rd[4:0] = '0;
-            $rs1[4:0] = '0;
-            $rs2[4:0] = '0;
-            $rs1_value[31:0] = '0;
-            $rs2_value[31:0] = '0;
-            $result[31:0] = '0;
-            $pc[31:0] = '0;
-            $imm[31:0] = '0;
-            $is_s_instr = 1'b0;
-            $rd_valid = 1'b0;
-            $rs1_valid = 1'b0;
-            $rs2_valid = 1'b0;
+
+            $valid               = 1'b1;
+            $rd[4:0]             = 5'b0;
+            $rs1[4:0]            = 5'b0;
+            $rs2[4:0]            = 5'b0;
+            $src1_value[31:0]    = 32'b0;
+            $src2_value[31:0]    = 32'b0;
+
+            $result[31:0]        = 32'b0;
+            $pc[31:0]            = 32'b0;
+            $imm[31:0]           = 32'b0;
+
+            $is_s_instr          = 1'b0;
+
+            $rd_valid            = 1'b0;
+            $rs1_valid           = 1'b0;
+            $rs2_valid           = 1'b0;
+            $rf_wr_en            = 1'b0;
+            $rf_wr_index[4:0]    = 5'b0;
+            $rf_wr_data[31:0]    = 32'b0;
+            $rf_rd_en1           = 1'b0;
+            $rf_rd_en2           = 1'b0;
+            $rf_rd_index1[4:0]   = 5'b0;
+            $rf_rd_index2[4:0]   = 5'b0;
+
+            $ld_data[31:0]       = 32'b0;
+            $instr[31:0]         = 32'b0;
             
             /xreg[31:0]
-               $value[31:0] = '0;
-               `BOGUS_USE($value)
-               $dummy[0:0] = 1'b0;
+               $value[31:0]      = 32'b0;
+               $wr               = 1'b0;
+               `BOGUS_USE($value $wr)
+               $dummy[0:0]       = 1'b0;
             /dmem[15:0]
-               $value[31:0] = '0;
-               `BOGUS_USE($value)
-               $dummy[0:0] = 1'b0;
+               $value[31:0]      = 32'0;
+               $wr               = 1'b0;
+               `BOGUS_USE($value $wr) 
+               $dummy[0:0]       = 1'b0;
             `BOGUS_USE($is_lui $is_auipc $is_jal $is_jalr $is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_lb $is_lh $is_lw $is_lbu $is_lhu $is_sb $is_sh $is_sw)
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
             `BOGUS_USE($is_srl $is_sra $is_or $is_and $is_csrrw $is_csrrs $is_csrrc $is_csrrwi $is_csrrsi $is_csrrci)
-            `BOGUS_USE($valid $rd $rs1 $rs2 $rs1_value $rs2_value $result $pc $imm)
+            `BOGUS_USE($valid $rd $rs1 $rs2 $src1_value $src2_value $result $pc $imm)
             `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
-            $dummy[0:0] = 1'b0;
+            `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2)
+            `BOGUS_USE($ld_data $instr)
+            
+            $dummy[0:0]          = 1'b0;
+         
          $ANY = /top|cpu<>0$ANY;
+         
          /xreg[31:0]
             $ANY = /top|cpu/xreg<>0$ANY;
             `BOGUS_USE($dummy)
+         
          /dmem[15:0]
             $ANY = /top|cpu/dmem<>0$ANY;
             `BOGUS_USE($dummy)
@@ -182,7 +206,7 @@ m4+definitions(['
                              : "";
                };
                let str = `${regStr('$rd_valid'.asBool(false), '$rd'.asInt(NaN), '$result'.asInt(NaN))}\n` +
-                         `  = ${'$mnemonic'.asString()}${srcStr(1, '$rs1_valid', '$rs1', '$rs1_value')}${srcStr(2, '$rs2_valid', '$rs2', '$rs2_value')}\n` +
+                         `  = ${'$mnemonic'.asString()}${srcStr(1, '$rs1_valid', '$rs1', '$src1_value')}${srcStr(2, '$rs2_valid', '$rs2', '$src2_value')}\n` +
                          `      i[${'$imm'.asInt(NaN)}]`;
                let instrWithValues = new fabric.Text(str, {
                   top: 70,
