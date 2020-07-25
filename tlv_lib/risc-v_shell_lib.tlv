@@ -132,11 +132,13 @@ m4+definitions(['
             
             /xreg[31:0]
                $value[31:0]      = '0;
-               `BOGUS_USE($value)
+               $wr               = '0;
+               `BOGUS_USE($value $wr)
                $dummy[0:0]       = 1'b0;
             /dmem[15:0]
+               $wr               = '0;
                $value[31:0]      = '0;
-               `BOGUS_USE($value)
+               `BOGUS_USE($value $wr)
                $dummy[0:0]       = 1'b0;
             `BOGUS_USE($is_lui $is_auipc $is_jal $is_jalr $is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_lb $is_lh $is_lw $is_lbu $is_lhu $is_sb $is_sh $is_sw)
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
@@ -233,7 +235,7 @@ m4+definitions(['
                   return {objects: {regname: regname, reg: reg}};
                },
                renderEach: function() {
-                  let mod = '|cpuviz$rd_valid'.asBool(false) && ('|cpuviz$rd'.asInt(-1) == this.getScope("xreg").index);
+                  let mod = '$wr'.asBool(false);
                   let reg = parseInt(this.getIndex());
                   let regIdent = reg.toString();
                   let oldValStr = mod ? `(${'$value'.asInt(NaN).toString()})` : "";
@@ -263,7 +265,7 @@ m4+definitions(['
                   return {objects: {memname: memname, mem: mem}};
                },
                renderEach: function() {
-                  let mod = '|cpuviz$is_s_instr'.asBool(false) && ('|cpuviz$result'.asInt(-1) == this.getScope("dmem").index);
+                  let mod = '$wr'.asBool(false);
                   let mem = parseInt(this.getIndex());
                   let memIdent = mem.toString();
                   let oldValStr = mod ? `(${'$value'.asInt(NaN).toString()})` : "";
