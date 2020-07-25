@@ -8,7 +8,7 @@
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 
 \TLV
-   |cpu
+   |calc
       @0
          $reset = *reset;
          // YOUR CODE HERE

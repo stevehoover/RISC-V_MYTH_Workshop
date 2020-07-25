@@ -2,7 +2,8 @@
 \SV
 
 // Visualization for calculator
-// The @_stage should be the last cycle of execution.
+// The @_initial_stage should be the FIRST cycle of execution(place where Inputs are defined).
+// The @_last_stage should be the LAST cycle of execution(place where Outputs are defined).
 \TLV cal_viz(@_initial_stage, @_last_stage)
    |calc
       @_initial_stage
@@ -15,26 +16,31 @@
             $op1[2:0] = '0;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
+            $out[31:0] = '0;
+            $mem[31:0] = '0;
             $rand_op[2:0] = $rand_op_temp[2:0];
             $rand2[3:0] = $rand2_temp[3:0];
             $dummy = 0;
-            `BOGUS_USE($valid $op1 $val1 $val2 $dummy)
+            `BOGUS_USE($out $mem $valid $op1 $val1 $val2 $dummy)
       @_last_stage   
          $ANY = /top|calc<>0$ANY;
 
          $op_viz[2:0] = $op1;
-         $issum = $valid && ($op_viz[2:0] == 3'b000);
-         $ismin = $valid && ($op_viz[2:0] == 3'b001);
-         $isprod = $valid && ($op_viz[2:0] == 3'b010);
-         $isquot = $valid && ($op_viz[2:0] == 3'b011);
-         $is_invalid_op = $valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111);
-         $ismem = $valid && ($op_viz[2:0] == 3'b101);
-         $isrecall = ($valid && ($op_viz[2:0] == 3'b100));
-         $val1t = $valid && !$isrecall && !$is_invalid_op;
-         $val2t = $valid && !$isrecall && !$ismem && !$is_invalid_op;
-         $outt  = $valid && ($out_modified || !(|$out_modified)) && !$is_invalid_op && !$ismem;
+         $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
+         $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
+         $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
+         $is_op_quot    = ($valid && ($op_viz[2:0] == 3'b011)); // quot
+         $is_op_recall  = ($valid && ($op_viz[2:0] == 3'b100)); // recall(retrieving from memory)
+         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101)); // mem(storing to memory)
+         $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111); // invalid operation?
+
+         //These signal represents the change in value's and is used to generate colours in \viz according.
+         $val1_changed = $valid && !$is_op_recall && !$is_invalid_op;
+         $val2_changed = $valid && !$is_op_recall && !$is_op_mem && !$is_invalid_op;
+         $out_changed  = $valid && ($out_modified || !(|$out_modified)) && !$is_invalid_op && !$is_op_mem;
          $out_modified[31:0] = ($out > ((1 << 31) - 1)) ? (~$out + 1) : $out;
-         $isnegnum = ($out > ((1 << 31) - 1));
+         $is_neg_num = ($out > ((1 << 31) - 1));
+
          \viz_alpha
             initEach: function() {
             let calbox = new fabric.Rect({
@@ -232,23 +238,23 @@
             return {objects: {calbox: calbox, val1box: val1box, val1num: val1num, val2box: val2box, val2num: val2num, outbox: outbox, outnum: outnum, equalname: equalname, sumbox: sumbox, minbox: minbox, prodbox: prodbox, quotbox: quotbox, sumicon: sumicon, prodicon: prodicon, minicon: minicon, quoticon: quoticon, outnegsign: outnegsign,  membox: membox, memname: memname, memnum: memnum, membuttonbox: membuttonbox, recallbuttonbox: recallbuttonbox, membuttonname: membuttonname, recallbuttonname: recallbuttonname, memarrow: memarrow, recallarrow: recallarrow}};
             },
             renderEach: function() {
-               let colorsum =  '$issum'.asBool(false);
-               let colorprod = '$isprod'.asBool(false);
-               let colormin = '$ismin'.asBool(false);
-               let colorquot = '$isquot'.asBool(false);
-               let colormembutton = '$ismem'.asBool(false);
-               let colorrecallbutton = '$isrecall'.asBool(false);
-               let colormemarrow = '$ismem'.asBool(false);
-               let colorrecallarrow = '$isrecall'.asBool(false);
-               let recallmod = '$isrecall'.asBool(false);
-               let val1mod = '$val1t'.asBool(false);
-               let val2mod = '$val2t'.asBool(false);
-               let outmod = '$outt'.asBool(false);
-               let colornegnum = '$isnegnum'.asBool(false);
-               let oldvalval1 = "";
-               let oldvalval2 = "";
-               let oldvalout = "";
-               let oldvalrecall = "";
+               let colorsum =  '$is_op_sum'.asBool(false);
+               let colorprod = '$is_op_prod'.asBool(false);
+               let colormin = '$is_op_diff'.asBool(false);
+               let colorquot = '$is_op_quot'.asBool(false);
+               let colormembutton = '$is_op_mem'.asBool(false);
+               let colorrecallbutton = '$is_op_recall'.asBool(false);
+               let colormemarrow = '$is_op_mem'.asBool(false);
+               let colorrecallarrow = '$is_op_recall'.asBool(false);
+               let recallmod = '$is_op_recall'.asBool(false);
+               let val1mod = '$val1_changed'.asBool(false);
+               let val2mod = '$val2_changed'.asBool(false);
+               let outmod = '$out_changed'.asBool(false);
+               let colornegnum = '$is_neg_num'.asBool(false);
+               let oldvalval1 = ""; // for debugging
+               let oldvalval2 = ""; // for debugging
+               let oldvalout = ""; // for debugging
+               let oldvalrecall = ""; // for debugging
                this.getInitObject("val1num").setText(
                   '$val1'.asInt(NaN).toString() + oldvalval1);
                this.getInitObject("val1num").setFill(val1mod ? "blue" : "grey");
@@ -259,7 +265,7 @@
                   '$out_modified'.asInt(NaN).toString() + oldvalout);
                this.getInitObject("outnum").setFill(outmod ? "blue" : "grey");
                this.getInitObject("memnum").setText(
-                  '$recall'.asInt(NaN).toString() + oldvalrecall);
+                  '$mem'.asInt(NaN).toString() + oldvalrecall);
                this.getInitObject("memnum").setFill((recallmod || colormembutton) ? "blue" : "grey");
                this.getInitObject("outnegsign").setFill(colornegnum ?  "blue" : "#eeeeeeff");
                this.getInitObject("sumbox").setFill(colorsum ?  "#9fc5e8ff" : "#eeeeeeff");
