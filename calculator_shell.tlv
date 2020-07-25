@@ -15,8 +15,8 @@
          // ...
          
 
-         
-      // Use these random signals width proper widths as needed.
+
+      // Use these random signals with proper widths as needed.
       //  o $rand_op --- for random $op1
       //  o $rand2   --- for random $val2
 
