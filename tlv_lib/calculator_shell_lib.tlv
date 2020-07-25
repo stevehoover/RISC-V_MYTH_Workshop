@@ -18,7 +18,7 @@
             $rand_op[2:0] = $rand_op_temp[2:0];
             $rand2[3:0] = $rand2_temp[3:0];
             $dummy = 0;
-            `BOGUS_USE($recall $valid $op1 $val1 $val2 $out $dummy)
+            `BOGUS_USE($valid $op1 $val1 $val2 $dummy)
       @_last_stage   
          $ANY = /top|calc<>0$ANY;
 
