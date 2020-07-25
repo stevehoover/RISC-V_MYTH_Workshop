@@ -21,7 +21,7 @@
       //  o $rand2   --- for random $val2
 
       // Macro instantiations for calculator visualization(disabled by default).
-   //m4+cal_viz(@1, @2) // Args: (read(first), write(last) stage).
+   //m4+cal_viz(@1, @3) // Args: (read(first), write(last) stage).
                         // For visualisation, write(last) stage should be at least equal to the last stage of CALC logic
 
    
