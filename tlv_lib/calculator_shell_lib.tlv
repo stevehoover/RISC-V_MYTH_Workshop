@@ -12,7 +12,7 @@
    |tb
       @_initial_stage
          /default
-            $valid = '0;
+            $valid = 1;
             $op1[2:0] = '0;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
