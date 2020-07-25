@@ -8,7 +8,7 @@
    |calc
       @_initial_stage
          $ANY = /top|tb/default<>0$ANY;
-         `BOGUS_USE($dummy)
+         `BOGUS_USE($dummy $rand_op $rand2)
    |tb
       @_initial_stage
          /default
@@ -32,7 +32,7 @@
          $is_op_quot    = ($valid && ($op_viz[2:0] == 3'b011)); // quot
          $is_op_recall  = ($valid && ($op_viz[2:0] == 3'b100)); // recall(retrieving from memory)
          $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101)); // mem(storing to memory)
-         $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111); // invalid operation?
+         $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111)); // invalid operation?
 
          //These signal represents the change in value's and is used to generate colours in \viz according.
          $val1_changed = $valid && !$is_op_recall && !$is_invalid_op;
