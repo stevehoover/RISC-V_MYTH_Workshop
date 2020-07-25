@@ -14,11 +14,16 @@
          // YOUR CODE HERE
          // ...
          
+
          
+      // Use these random signals width proper widths as needed.
+      //  o $rand_op --- for random $op1
+      //  o $rand2   --- for random $val2
+
       // Macro instantiations for calculator visualization(disabled by default).
-      //First Argument is the initial stage (where we assign the input operands).
-      //Second Argument is the last stage (where we assign the output results) or later.
-   //m4+cal_viz(@1, @2)
+   //m4+cal_viz(@1, @2) // Args: (read(first), write(last) stage).
+                        // For visualisation, write(last) stage should be at least equal to the last stage of CALC logic
+
    
    // Assert these to end simulation (before Makerchip cycle limit).
    *passed = *cyc_cnt > 40;
