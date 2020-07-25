@@ -1,26 +1,27 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
 
-\TLV cal_viz(@_stage)
+// Visualization for calculator
+// The @_stage should be the last cycle of execution.
+\TLV cal_viz(@_initial_stage, @_last_stage)
    |calc
-      @_stage
+      @_initial_stage
          $ANY = /top|tb/default<>0$ANY;
          `BOGUS_USE($dummy)
    |tb
-      @_stage
+      @_initial_stage
          /default
             $valid = '0;
             $op1[2:0] = '0;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
-            $out[31:0] = '0;
-            $recall[31:0] = '0;
-            //$is_invalid_op = '0;
+            $rand_op[2:0] = $rand_op_temp[2:0];
+            $rand2[3:0] = $rand2_temp[3:0];
             $dummy = 0;
             `BOGUS_USE($recall $valid $op1 $val1 $val2 $out $dummy)
+      @_last_stage   
          $ANY = /top|calc<>0$ANY;
-         
-         // Needed for viz
+
          $op_viz[2:0] = $op1;
          $issum = $valid && ($op_viz[2:0] == 3'b000);
          $ismin = $valid && ($op_viz[2:0] == 3'b001);
@@ -107,7 +108,6 @@
               left: 150 + 28,
               top: 150 + 148,
               fill: "#eeeeeeff",
-              //fill: colorsum,
               width: 64,
               height: 64,
               stroke: "black",
@@ -117,7 +117,6 @@
               left: 150 + 28,
               top: 150 + 222,
               fill: "#eeeeeeff",
-              //fill: colorprod,
               width: 64,
               height: 64,
               stroke: "black",
@@ -127,7 +126,6 @@
               left: 150 + 105,
               top: 150 + 148,
               fill: "#eeeeeeff",
-              //fill: colormin,
               width: 64,
               height: 64,
               stroke: "black",
@@ -137,7 +135,6 @@
               left: 150 + 105,
               top: 150 + 222,
               fill: "#eeeeeeff",
-              //fill: colorquot,
               width: 64,
               height: 64,
               stroke: "black",
@@ -204,7 +201,7 @@
             });
             let membuttonbox = new fabric.Rect({
               left: 150 + 187,
-              top: 150 + 151, //fixed
+              top: 150 + 151,
               fill: "#eeeeeeff",
               width: 45,
               height: 40,
@@ -213,10 +210,10 @@
             });
             let recallbuttonbox = new fabric.Rect({
               left: 150 + 245,
-              top: 150 + 151, //fixed
+              top: 150 + 151,
               fill: "#eeeeeeff",
               width: 51,
-              height: 40, //fixed
+              height: 40,
               stroke: "black",
               strokeWidth: 1
             });

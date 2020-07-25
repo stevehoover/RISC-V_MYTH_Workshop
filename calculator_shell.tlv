@@ -7,21 +7,6 @@
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 
-\SV
-   integer seed;
-   reg [2:0] rand_op;
-   reg [3:0] rand2;
-   reg cnt;
-   initial begin
-      cnt = 0;
-   end
-   always@(posedge clk) begin
-     cnt <= cnt + 1;
-      if(!cnt) begin
-        rand_op <= $random + 1'b1;
-        rand2 <= $random; end         
-      end
-
 \TLV
    |cpu
       @0
@@ -30,8 +15,10 @@
          // ...
          
          
-      // Macro instantiations for calculator visualization.  
-   //m4+cal_viz(@2)
+      // Macro instantiations for calculator visualization(disabled by default).
+      //First Argument is the initial stage (where we assign the input operands) 
+      //Second Argument is the last stage (where we assign the output results)
+   //m4+cal_viz(@1, @2)
    
    // Assert these to end simulation (before Makerchip cycle limit).
    *passed = *cyc_cnt > 40;
