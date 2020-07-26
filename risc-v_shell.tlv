@@ -2,7 +2,7 @@
 \SV
    // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
    
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/a170e6eb1259ade19fcbf023bd7734f5b3999a40/tlv_lib/risc-v_shell_lib.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/fec7c7da761d597f34bd0078f33723d1a896ca40/tlv_lib/risc-v_shell_lib.tlv'])
 
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
@@ -40,34 +40,10 @@
 
 
 
-   // YOUR CODE HERE
-   // ...
+      // YOUR CODE HERE
+      // ...
 
 
-
-         // *** Register File ***
-         // Read
-         /*
-         $rf_rd_en1 = `0;
-         $rf_rd_en2 = `0;
-         $rf_rd_index1[4:0] = `0;
-         $rf_rd_index2[31:0] = `0;
-         // Write
-         $rf_wr_en = `0;
-         $rf_wr_index[4:0] = `0;
-         $rf_wr_data[31:0] = `0;
-         */
-         
-         // *** Memory ***
-         /*
-         // Read (Load)
-         $mem_rd_en = `0;
-         $mem_rd_index[3:0] = `0;
-         // Write (Store)
-         $mem_wr_en = `0;
-         $mem_wr_index[3:0] = `0;
-         $mem_wr_data[31:0] = `0;
-         */
    
    // Assert these to end simulation (before Makerchip cycle limit).
    *passed = *cyc_cnt > 40;

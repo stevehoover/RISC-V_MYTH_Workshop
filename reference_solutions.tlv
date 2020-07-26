@@ -28,9 +28,6 @@
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
    m4+solution(1000)
-
-   // Assert these to end simulation (before Makerchip cycle limit).
-   *passed = *cyc_cnt > 40;
-   *failed = 1'b0;
+   m4+cpu_viz(@4)
 \SV
    endmodule
