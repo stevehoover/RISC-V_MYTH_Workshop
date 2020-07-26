@@ -28,6 +28,5 @@
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
    m4+solution(1000)
-   m4+cpu_viz(@4)
 \SV
    endmodule
