@@ -39,8 +39,9 @@ Begin with the following starter code.
   - Odd birthday: <a href="http://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (right-click and "Open in new tab")
   - Even birthday: <a href="http://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (right-click and "Open in new tab")
 
-Visualisation can be disabled by commenting `m4+cpu_viz(@4)`. This can be used if the diagram fails to generate.
-Note that in the diagrams, you can ignore the $ANY statements in |cpu@4 and |cpuviz scope as they are meant for the visualisation logic to work correctly and don't affect correctness your logic.
+Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
+
+**Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams, this does *NOT* indicate a problem in your code. 
 
 ### Lab Submissions
 
