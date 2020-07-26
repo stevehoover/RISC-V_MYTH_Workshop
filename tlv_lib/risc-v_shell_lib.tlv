@@ -61,7 +61,7 @@ m4+definitions(['
       `BOGUS_USE($dmem_rd_data)
 
 \TLV cpu_viz(@_stage)
-   m4_ifelse_block(m4_sp_graph_dangerous, 1, ['
+   m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |cpu
       // for pulling default viz signals into CPU
       // and then back into viz
