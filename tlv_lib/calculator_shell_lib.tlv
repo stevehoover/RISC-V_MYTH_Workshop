@@ -5,6 +5,7 @@
 // The @_initial_stage should be the FIRST cycle of execution(place where Inputs are defined).
 // The @_last_stage should be the LAST cycle of execution(place where Outputs are defined).
 \TLV cal_viz(@_initial_stage, @_last_stage)
+   m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |calc
       @_initial_stage
          $ANY = /top|tb/default<>0$ANY;
@@ -279,3 +280,4 @@
                this.getInitObject("memarrow").setFill(colormemarrow ? "blue" : "#eeeeeeff");
                this.getInitObject("recallarrow").setFill(colorrecallarrow ?  "blue" : "#eeeeeeff");
              }
+   '])
