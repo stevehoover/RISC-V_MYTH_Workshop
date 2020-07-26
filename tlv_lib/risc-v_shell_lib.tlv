@@ -24,6 +24,7 @@ m4+definitions(['
          };
       /M4_IMEM_HIER
          $instr[31:0] = *instrs\[#imem\];
+         `BOGUS_USE($instr)
       ?$imem_rd_en
          $imem_rd_data[31:0] = *instrs\[$imem_rd_addr\];
     
