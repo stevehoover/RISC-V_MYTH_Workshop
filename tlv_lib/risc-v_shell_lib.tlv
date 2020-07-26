@@ -61,6 +61,7 @@ m4+definitions(['
       `BOGUS_USE($dmem_rd_data)
 
 \TLV cpu_viz(@_stage)
+   m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |cpu
       // for pulling default viz signals into CPU
       // and then back into viz
@@ -97,7 +98,8 @@ m4+definitions(['
                      }));
                   }
                }
-               
+
+
       @_stage
          /defaults
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
@@ -129,7 +131,8 @@ m4+definitions(['
             $rf_rd_index2[4:0]   = 5'b0;
 
             $ld_data[31:0]       = 32'b0;
-            $instr[31:0]         = 32'b0;
+            $imem_rd_en          = 1'b0;
+            $imem_rd_addr[M4_IMEM_INDEX_CNT-1:0] = {M4_IMEM_INDEX_CNT{1'b0}};
             
             /xreg[31:0]
                $value[31:0]      = 32'b0;
@@ -146,8 +149,8 @@ m4+definitions(['
             `BOGUS_USE($is_srl $is_sra $is_or $is_and $is_csrrw $is_csrrs $is_csrrc $is_csrrwi $is_csrrsi $is_csrrci)
             `BOGUS_USE($valid $rd $rs1 $rs2 $src1_value $src2_value $result $pc $imm)
             `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
-            `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2)
-            `BOGUS_USE($ld_data $instr)
+            `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2 $ld_data)
+            `BOGUS_USE($imem_rd_en $imem_rd_addr)
             
             $dummy[0:0]          = 1'b0;
          
@@ -276,3 +279,4 @@ m4+definitions(['
                      '$value'.asInt(NaN).toString() + oldValStr);
                   this.getInitObject("mem").setFill(mod ? "blue" : "black");
                }
+   '])
