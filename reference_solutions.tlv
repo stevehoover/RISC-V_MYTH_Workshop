@@ -9,10 +9,9 @@
    
    // ----------------------------------
    // Instructions:
-   //    - When stuck on a particular lab, provide the slide number of the lab as the
-   //      parameter to the m4+solutions macro instantiation below, and compile/simulate.
-   //    - A reference solution will build, but the source code will not be
-   //      visible.
+   //    - When stuck on a particular lab, configure code below (under "Configuration"),
+   //      and compile/simulate.
+   //    - A reference solution will build, but the source code will not be visible.
    //    - You may use waveforms, diagrams, and visualization to understand the proper circuit, but you
    //      will have to come up with the code. Logic expression syntax can be found by hovering over the
    //      signal assignment in the diagram.
@@ -27,6 +26,11 @@
    // stimulus support, and Verilator config.
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
+
+   // =============
+   // Configuration
+   // =============
+   
    // For RISC-V solutions, comment the line below.
    m4_define(['M4_CALCULATOR'], 1)
    // Provide a slide number for the lab.
