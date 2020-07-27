@@ -284,5 +284,5 @@
 
 // Enable m4+cpu_viz to provide m4+calc_viz -- a hack to avoid the need to modify Makerchip hidden files. 
 \TLV cpu_viz(@_st)
-   m4+calc_viz(@_st, @_st)
+   m4+cal_viz(@_st, @_st)
    
