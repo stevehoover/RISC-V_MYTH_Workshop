@@ -30,7 +30,7 @@ Begin with the following starter code.
   - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (right-click and "Open in new tab")
 
 Visualization are by default disabled at `m4+cal_viz(@1,@3)` and can be enabled by simply uncommenting them. If the diagram fails to generate, try leaving `m4+cal_viz(@1,@3)` stay commented.
-Note that in the diagrams, you can ignore the $ANY statements in |calc@3 and |tb scope as they are meant for the visualization only and it doesn't affect the correctness of your logic. Also, use the signals `$rand_op` and `$rand2` for random stimulus with proper widths in your logic as needed.
+Note that in the diagrams, you can ignore the `$ANY` statements in `|calc@3` and `|tb` scope as they are meant for the visualization only and it doesn't affect the correctness of your logic. Also, use the signals `$rand_op` and `$rand2` for random stimulus with proper widths in your logic as needed.
 
 ### For RISC-V Labs
 
@@ -41,10 +41,10 @@ Begin with the following starter code.
 
 Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 
-**Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams, this does *NOT* indicate a problem in your code. 
+**Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams, this does **NOT** indicate a problem in your code. 
 
-Your generated CPU would look like this after implementing all labs :
-(right click and open image in new tab to zoom in)
+Your generated CPU would look like this after implementing all labs :  
+*(right click and open image in new tab to zoom in)*
 
 ![Complete CPU](tlv_lib/fullcore.svg)
 
