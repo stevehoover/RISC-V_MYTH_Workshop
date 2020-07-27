@@ -20,9 +20,10 @@
       //  o $rand_op --- for random $op1
       //  o $rand2   --- for random $val2
 
-      // Macro instantiations for calculator visualization(disabled by default).
-   //m4+cal_viz(@1, @3) // Args: (read(first), write(last) stage).
-                        // For visualisation, write(last) stage should be at least equal to the last stage of CALC logic
+   // Macro instantiations for calculator visualization.
+   // Comment out to disable visualization.
+   m4+cal_viz(@1, @3) // Args: (read(first), write(last) stage).
+                      // For visualisation, write(last) stage should be at least equal to the last stage of CALC logic
 
    
    // Assert these to end simulation (before Makerchip cycle limit).
