@@ -27,7 +27,11 @@
    // stimulus support, and Verilator config.
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
+   // For RISC-V solutions, comment the line below.
+   m4_define(['M4_CALCULATOR'], 1)
+   // Provide a slide number for the lab.
    m4+solution(100)
+   // The stage that is represented by visualization.
    m4+cpu_viz(@4)
 \SV
    endmodule
