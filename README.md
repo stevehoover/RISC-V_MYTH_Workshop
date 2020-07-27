@@ -43,6 +43,11 @@ Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 
 **Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams, this does *NOT* indicate a problem in your code. 
 
+Your generated CPU would look like this after implementing all labs :
+(right click and open in new tab to zoom in)
+
+![Complete CPU](tlv_lib/fullcore.svg)
+
 ### Lab Submissions
 
 For each lab that is listed in **THIS FORM (TBD)**, submit the URL for your answers in the form. Note that:
