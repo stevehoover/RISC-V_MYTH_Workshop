@@ -12,7 +12,7 @@
       @_stage
          /default
             $valid = 1;
-            $op[2:0] = '0;
+            m4_rand($op, 2, 0)
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
