@@ -5,11 +5,11 @@
 \TLV cal_viz(@_stage)
    m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |calc
-      @_stage
+      @0
          $ANY = /top|tb/default<>0$ANY;
          `BOGUS_USE($dummy $rand2 $rand1)
    |tb
-      @_stage
+      @0
          /default
             $valid = 1;
             m4_rand($op, 2, 0)
