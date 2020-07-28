@@ -12,7 +12,7 @@
       @_stage
          /default
             $valid = 1;
-            $op1[2:0] = '0;
+            $op[2:0] = '0;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
@@ -20,11 +20,11 @@
             m4_rand($rand1, 3, 0)
             m4_rand($rand2, 3, 0)
             $dummy = 0;
-            `BOGUS_USE($out $mem $valid $op1 $val1 $val2 $dummy, $rand1, $rand2)
+            `BOGUS_USE($out $mem $valid $op $val1 $val2 $dummy, $rand1, $rand2)
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
-         $op_viz[2:0] = $op1;
+         $op_viz[2:0] = $op;
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
