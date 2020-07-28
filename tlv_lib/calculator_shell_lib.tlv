@@ -2,16 +2,14 @@
 \SV
 
 // Visualization for calculator
-// The @_initial_stage should be the FIRST cycle of execution(place where Inputs are defined).
-// The @_last_stage should be the LAST cycle of execution(place where Outputs are defined).
-\TLV cal_viz(@_initial_stage, @_last_stage)
+\TLV cal_viz(@_stage)
    m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |calc
-      @_initial_stage
+      @_stage
          $ANY = /top|tb/default<>0$ANY;
          `BOGUS_USE($dummy $rand2 $rand_op)
    |tb
-      @_initial_stage
+      @_stage
          /default
             $valid = 1;
             $op1[2:0] = '0;
@@ -25,7 +23,7 @@
             $rand2[3:0] = $rand2_temp;
             $dummy = 0;
             `BOGUS_USE($out $mem $valid $op1 $val1 $val2 $dummy)
-      @_last_stage   
+      @_stage   
          $ANY = /top|calc<>0$ANY;
 
          $op_viz[2:0] = $op1;
@@ -284,5 +282,5 @@
 
 // Enable m4+cpu_viz to provide m4+calc_viz -- a hack to avoid the need to modify Makerchip hidden files. 
 \TLV cpu_viz(@_st)
-   m4+cal_viz(@_st, @_st)
+   m4+cal_viz(@_st)
    
