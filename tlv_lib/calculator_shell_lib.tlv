@@ -12,7 +12,8 @@
       @0
          /default
             $valid = 1;
-            m4_rand($op, 2, 0)
+            m4_rand($rand_op, 2, 0)
+            $op[2:0] = {$rand_op[2], $rand_op[1] && ! $rand_op[2], $rand_op[0]};  // Map 6 -> 4, 7 -> 5.
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
