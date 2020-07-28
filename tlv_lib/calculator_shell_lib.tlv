@@ -278,7 +278,7 @@
              }
    '])
 
-// Enable m4+cpu_viz to provide m4+calc_viz -- a hack to avoid the need to modify Makerchip hidden files. 
+// Currently calc solutions calls m4_cpu_viz (a hack to avoid the need to modify Makerchip hidden files). Calc solutions provide their own viz, so make sure cpu_viz is disabled. 
 \TLV cpu_viz(@_st)
-   m4+cal_viz(@_st)
+   // Nothing.
    
