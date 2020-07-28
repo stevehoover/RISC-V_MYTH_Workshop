@@ -7,7 +7,7 @@
    |calc
       @_stage
          $ANY = /top|tb/default<>0$ANY;
-         `BOGUS_USE($dummy $rand2 $rand_op)
+         `BOGUS_USE($dummy $rand2 $rand1)
    |tb
       @_stage
          /default
@@ -19,7 +19,7 @@
             $mem[31:0] = '0;
             m4_rand($rand_op_temp, 2, 0)
             m4_rand($rand2_temp, 3, 0)
-            $rand_op[2:0] = $rand_op_temp;
+            $rand2[2:0] = $rand_op_temp;
             $rand2[3:0] = $rand2_temp;
             $dummy = 0;
             `BOGUS_USE($out $mem $valid $op1 $val1 $val2 $dummy)
