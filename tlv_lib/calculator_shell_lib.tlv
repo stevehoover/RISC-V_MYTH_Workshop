@@ -17,10 +17,8 @@
             $val2[31:0] = '0;
             $out[31:0] = '0;
             $mem[31:0] = '0;
-            m4_rand($rand_op_temp, 2, 0)
-            m4_rand($rand2_temp, 3, 0)
-            $rand1[3:0] = $rand_op_temp;
-            $rand2[3:0] = $rand2_temp;
+            m4_rand($rand1, 3, 0)
+            m4_rand($rand2, 3, 0)
             $dummy = 0;
             `BOGUS_USE($out $mem $valid $op1 $val1 $val2 $dummy)
       @_stage   
