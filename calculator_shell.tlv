@@ -11,6 +11,7 @@
    |calc
       @0
          $reset = *reset;
+         
          // YOUR CODE HERE
          // ...
          
@@ -22,8 +23,7 @@
 
    // Macro instantiations for calculator visualization.
    // Comment out to disable visualization.
-   m4+cal_viz(@1, @3) // Args: (read(first), write(last) stage).
-                      // For visualisation, write(last) stage should be at least equal to the last stage of CALC logic
+   m4+cal_viz(@3) // Args: Pipeline stage represented by viz.
 
    
    // Assert these to end simulation (before Makerchip cycle limit).
