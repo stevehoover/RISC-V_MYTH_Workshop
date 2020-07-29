@@ -258,17 +258,17 @@
                let oldvalrecall = ""; // for debugging
                this.getInitObject("val1num").setText(
                   '$val1'.asInt(NaN).toString() + oldvalval1);
-               this.getInitObject("val1num").setFill(valid ? "blue" : "grey");
+               this.getInitObject("val1num").setFill(val1mod ? "blue" : "grey");
                this.getInitObject("val2num").setText(
                   '$val2'.asInt(NaN).toString() + oldvalval2);
-               this.getInitObject("val2num").setFill(valid && !(recallmod || colormembutton) ? "blue" : "grey");
+               this.getInitObject("val2num").setFill(val2mod ? "blue" : "grey");
                this.getInitObject("outnum").setText(
                   '$out_modified'.asInt(NaN).toString() + oldvalout);
-               this.getInitObject("outnum").setFill(valid ? "blue" : "grey");
+               this.getInitObject("outnum").setFill(outmod ? "blue" : "grey");
                this.getInitObject("memnum").setText(
                   '$mem'.asInt(NaN).toString() + oldvalrecall);
                this.getInitObject("memnum").setFill((recallmod || colormembutton) ? "blue" : "grey");
-               this.getInitObject("outnegsign").setFill(colornegnum ? (valid ? "blue" : "grey") : "#eeeeeeff");
+               this.getInitObject("outnegsign").setFill(colornegnum ?  "blue" : "#eeeeeeff");
                this.getInitObject("sumbox").setFill(colorsum ?  "#9fc5e8ff" : "#eeeeeeff");
                this.getInitObject("minbox").setFill(colormin ?  "#9fc5e8ff" : "#eeeeeeff");
                this.getInitObject("prodbox").setFill(colorprod ? "#9fc5e8ff" : "#eeeeeeff");
