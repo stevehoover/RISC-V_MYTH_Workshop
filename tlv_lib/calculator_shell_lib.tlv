@@ -12,7 +12,8 @@
       @0
          /default
             $valid = 1;
-            m4_rand($op, 2, 0)
+            m4_rand($rand_op_temp, 2, 0)
+            $rand_op[2:0] = (*cyc_cnt % 2) ? $rand_op_temp[2:0] : >>1$rand_op;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
@@ -20,7 +21,7 @@
             m4_rand($rand1, 3, 0)
             m4_rand($rand2, 3, 0)
             $dummy = 0;
-            `BOGUS_USE($out $mem $valid $op $val1 $val2 $dummy $rand1 $rand2)
+            `BOGUS_USE($out $mem $valid $rand_op $val1 $val2 $dummy $rand1 $rand2)
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
