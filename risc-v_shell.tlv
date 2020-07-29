@@ -43,6 +43,9 @@
       // YOUR CODE HERE
       // ...
 
+      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
+      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
+      //       other than those specifically expected in the labs. You'll get strange errors for these.
 
    
    // Assert these to end simulation (before Makerchip cycle limit).
