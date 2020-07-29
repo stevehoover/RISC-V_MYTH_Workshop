@@ -11,18 +11,21 @@
    |calc
       @0
          $reset = *reset;
+         
          // YOUR CODE HERE
          // ...
          
 
 
-      // Use these random signals with proper widths as needed.
-      //  o $rand_op --- for random $op1
-      //  o $rand2   --- for random $val2
+      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
+      //       you'll get strange error messages for any unassigned signals (which you might be using for random inputs).
+      //       You can, however, safely use these specific random signals as described in the videos:
+      //  o $rand1[3:0]
+      //  o $rand2[3:0]
 
-      // Macro instantiations for calculator visualization(disabled by default).
-   //m4+cal_viz(@1, @3) // Args: (read(first), write(last) stage).
-                        // For visualisation, write(last) stage should be at least equal to the last stage of CALC logic
+   // Macro instantiations for calculator visualization.
+   // Uncomment to enable visualisation.
+   //m4+cal_viz(@3) // Arg: Pipeline stage represented by viz.
 
    
    // Assert these to end simulation (before Makerchip cycle limit).
