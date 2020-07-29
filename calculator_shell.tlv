@@ -22,6 +22,7 @@
       //       You can, however, safely use these specific random signals as described in the videos:
       //  o $rand1[3:0]
       //  o $rand2[3:0]
+      //  o $op[x:0]
 
    // Macro instantiations for calculator visualization.
    // Uncomment to enable visualisation.
