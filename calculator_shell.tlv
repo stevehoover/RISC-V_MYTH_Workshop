@@ -2,7 +2,7 @@
 \SV
    // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
    
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/vineet/tlv_lib/calculator_shell_lib.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/f2429d05be546226c21d11cfec32dce9550996fc/tlv_lib/calculator_shell_lib.tlv'])
 
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
@@ -22,7 +22,6 @@
       //       You can, however, safely use these specific random signals as described in the videos:
       //  o $rand1[3:0]
       //  o $rand2[3:0]
-      //  o $rand_op[1:0] or $rand_op[2:0]
 
    // Macro instantiations for calculator visualization.
    // Uncomment to enable visualisation.
