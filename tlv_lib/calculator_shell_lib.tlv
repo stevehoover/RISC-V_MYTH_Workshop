@@ -32,7 +32,7 @@
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
          $is_op_quot    = ($valid && ($op_viz[2:0] == 3'b011)); // quot
          $is_op_recall  = ($valid && ($op_viz[2:0] == 3'b100)); // recall(retrieving from memory)
-         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101) && ($mem[31:0] != 32'habcd1234)); // mem(storing to memory)
+         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101) ; // mem(storing to memory)
          $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111)); // invalid operation?
 
          //These signal represents the change in value's and is used to generate colours in \viz according.
