@@ -11,7 +11,7 @@
    |tb
       @0
          /default
-            $valid = 1;
+            $valid = ! /top|calc<>0$reset;
             //m4_rand($rand_op, 2, 0)
             //$op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
             $val1[31:0] = '0;
