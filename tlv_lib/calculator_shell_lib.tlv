@@ -26,6 +26,7 @@
          $ANY = /top|calc<>0$ANY;
 
          $op_viz[2:0] = {{($mem == 31'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
+         $mem_mod = ($mem[31:0] == 31'habcd1234) ? 32'b0 : $mem[31:0];
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
@@ -266,7 +267,7 @@
                   '$out_modified'.asInt(NaN).toString() + oldvalout);
                this.getInitObject("outnum").setFill(outmod ? "blue" : "grey");
                this.getInitObject("memnum").setText(
-                  '$mem'.asInt(NaN).toString() + oldvalrecall);
+                  '$mem_mod'.asInt(NaN).toString() + oldvalrecall);
                this.getInitObject("memnum").setFill((recallmod || colormembutton) ? "blue" : "grey");
                this.getInitObject("outnegsign").setFill(colornegnum ?  "blue" : "#eeeeeeff");
                this.getInitObject("sumbox").setFill(colorsum ?  "#9fc5e8ff" : "#eeeeeeff");
