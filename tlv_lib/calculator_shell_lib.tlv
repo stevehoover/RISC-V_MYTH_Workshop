@@ -7,7 +7,7 @@
    |calc
       @0
          $ANY = /top|tb/default<>0$ANY;
-         `BOGUS_USE($dummy $rand2 $rand1 $op)
+         `BOGUS_USE($dummy $rand2 $rand1)
    |tb
       @0
          /default
