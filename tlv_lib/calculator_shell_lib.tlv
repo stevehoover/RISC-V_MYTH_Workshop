@@ -21,7 +21,7 @@
             m4_rand($rand1, 3, 0)
             m4_rand($rand2, 3, 0)
             $dummy = 0;
-            `BOGUS_USE($out $mem $valid $op $val1 $val2 $dummy $rand1 $rand2)
+            `BOGUS_USE($out $mem $valid $val1 $val2 $dummy $rand1 $rand2)
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
