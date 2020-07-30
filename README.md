@@ -43,7 +43,7 @@ Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 
 ### Lab Submissions
 
-For each lab that is listed in **THIS FORM (TBD)**, submit the URL for your answers in the form. Note that:
+Keep open this [this Submission Form](https://docs.google.com/forms/d/1-FEtrSJvP9g5vqzRfnbYlG2DUmCV7agOHM6bzdWtah8). For each lab that is listed in it, submit the URL for your solution. Note that:
 
  - After submission BE SURE TO CLONE your sandbox to avoid modifying your submission.
  - You can re-open your submissions to make corrections at any time.
