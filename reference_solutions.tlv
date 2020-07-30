@@ -43,3 +43,15 @@
    m4+cpu_viz(@4)
 \SV
    endmodule
+
+/****** Calculator Labs ******
+by slide #, for reference
+
+Slide  Lab
+-----  ---
+35     Counter and Calculator in Pipeline
+36     2-Cycle Calculator
+41     2-Cycle Calculator with Validity
+43     Calculator with Single-Value Memory
+
+ *********************************/
