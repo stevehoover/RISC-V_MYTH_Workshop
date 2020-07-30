@@ -21,7 +21,7 @@
    // Uncomment to enable visualisation, and also,
    // NOTE: If visualization is enabled, $op must be defined to the proper width using the expression below.
    //       (Any signals other than $rand1, $rand2 that are not explicitly assigned will result in strange errors.)
-   //m4_rand(1, 0)  // or 2, 0 for [2:0]
+   //m4_rand($op, 1, 0)  // or 2, 0 for [2:0]
    //m4+cal_viz(@3) // Arg: Pipeline stage represented by viz.
 
    
