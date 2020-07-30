@@ -25,7 +25,7 @@
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
-         $op_viz[2:0] = {{($mem != 32'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
+         $op_viz[2:0] = {{($mem == 32'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
          $mem_mod = ($mem[31:0] == 32'habcd1234) ? 32'b0 : $mem[31:0];
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
