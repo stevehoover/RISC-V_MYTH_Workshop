@@ -17,7 +17,7 @@
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
-            $mem[31:0] = '0;
+            $mem[31:0] = 32'h1234abcd;
             m4_rand($rand1, 3, 0)
             m4_rand($rand2, 3, 0)
             $dummy = 0;
@@ -25,7 +25,7 @@
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
-         $op_viz[2:0] = $op;
+         $op_viz[2:0] = {{($mem == 31'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
