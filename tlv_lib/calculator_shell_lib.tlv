@@ -17,7 +17,7 @@
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
-            $mem[31:0] = 32'h1234abcd;
+            $mem[31:0] = 32'habcd1234;
             m4_rand($rand1, 3, 0)
             m4_rand($rand2, 3, 0)
             $dummy = 0;
