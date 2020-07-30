@@ -12,8 +12,8 @@
       @0
          /default
             $valid = 1;
-            m4_rand($rand_op, 2, 0)
-            $op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
+            //m4_rand($rand_op, 2, 0)
+            //$op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
