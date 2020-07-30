@@ -12,12 +12,12 @@
       @0
          /default
             $valid = 1;
-            //m4_rand($rand_op, 2, 0)
-            //$op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
+            m4_rand($rand_op, 2, 0)
+            $op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
-            $mem[31:0] = '0;
+            $mem[31:0] = 32'h1234abcd;
             m4_rand($rand1, 3, 0)
             m4_rand($rand2, 3, 0)
             $dummy = 0;
@@ -25,13 +25,13 @@
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
-         $op_viz[2:0] = {{($mem == 0) ? 1'b0 : $op[2]}, $op[1:0]};
+         $op_viz[2:0] = {{($mem == 31'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
          $is_op_quot    = ($valid && ($op_viz[2:0] == 3'b011)); // quot
          $is_op_recall  = ($valid && ($op_viz[2:0] == 3'b100)); // recall(retrieving from memory)
-         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101)); // mem(storing to memory)
+         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101) && ($mem[31:0] != 31'habcd1234)); // mem(storing to memory)
          $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111)); // invalid operation?
 
          //These signal represents the change in value's and is used to generate colours in \viz according.
