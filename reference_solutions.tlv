@@ -54,4 +54,46 @@ Slide  Lab
 41     2-Cycle Calculator with Validity
 43     Calculator with Single-Value Memory
 
+    RISC-V Labs
+
+Slide    Lab 
+______   ______                     
+
+D4SK2
+-----
+6      Next PC                                
+7      Fetch (part 1)
+8      Fetch (part 2)
+10     Instruction Types Decode and Immediate Decode
+11     Instruction Decode
+12     RISC-V Instruction Field Decode
+13     Instruction Decode
+
+D4SK3
+-----
+16     Register File Read
+17     Register File Read (part 2)
+18     ALU
+20     Register File Write
+21     Branches 1
+22     Branches 2
+25     Testbench
+
+
+D5
+-----  
+33     3-Cycle valid
+36     3-Cycle RISC-V 1
+37     3-Cycle RISC-V 2
+39     Register File Bypass
+42     Branches
+44     Complete Instruction Decode
+45     Complete ALU
+48     Redirect Loads
+49     Load Data 1
+51     Load Data 2
+52     Load/Store in Program
+53     Jumps
+
  *********************************/
+
