@@ -82,15 +82,21 @@ D4SK3
 22     Branches 2
 25     Testbench
 
-D5
+D5SK1
 -----  
 33     3-Cycle valid
 36     3-Cycle RISC-V 1
 37     3-Cycle RISC-V 2
+
+D5SK2
+-----  
 39     Register File Bypass
 42     Branches
 44     Complete Instruction Decode
 45     Complete ALU
+
+D5SK3
+-----  
 48     Redirect Loads
 49     Load Data 1
 51     Load Data 2
