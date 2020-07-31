@@ -13,7 +13,7 @@
          /default
             $valid = ! /top|calc<>0$reset;
             m4_rand($rand_op, 2, 0)
-            $op[2:0] = !(*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
+            $op[2:0] = (*cyc_cnt % 2) ? >>1$op : $rand_op[2:0];
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
@@ -32,7 +32,7 @@
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
          $is_op_quot    = ($valid && ($op_viz[2:0] == 3'b011)); // quot
          $is_op_recall  = ($valid && ($op_viz[2:0] == 3'b100)); // recall(retrieving from memory)
-         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101)); // mem(storing to memory)
+         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101) && !($mem == 32'habcd1234)); // mem(storing to memory)
          $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111)); // invalid operation?
 
          //These signal represents the change in value's and is used to generate colours in \viz according.
