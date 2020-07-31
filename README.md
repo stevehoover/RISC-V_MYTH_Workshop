@@ -86,7 +86,9 @@ Combinational logic loops back on itself so the combinational logic does not sta
 
 (Filled in as issues are identified/reported.)
 
-...
+Day 3, Slide 16 "Lab: Combinational Calculator":
+
+  - Syntax is required that has not been presented. For boolean selects of `$out` mux, need to compare `$op` with 2-bit constants. Eg: `($op[1:0] == 2'b00)`. `2'b00` (2-bit binary 00) is explained in D3SK2_L2.
 
 
 ## Pre-generated Diagram
