@@ -7,13 +7,13 @@
    |calc
       @0
          $ANY = /top|tb/default<>0$ANY;
-         `BOGUS_USE($dummy $rand2 $rand1 $op)
+         `BOGUS_USE($dummy $rand2 $rand1)
    |tb
       @0
          /default
-            $valid = 1;
-            m4_rand($rand_op, 2, 0)
-            $op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
+            $valid = ! /top|calc<>0$reset;
+            //m4_rand($rand_op, 2, 0)
+            //$op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;

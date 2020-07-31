@@ -55,9 +55,10 @@ It's important to take your time with each concept and with each lab. Rushing ah
 
 When you get stuck:
 
+  1. Always check the LOG.
   1. Check the information below for course corrections, updated during the workshop. (Reload this page if it's been up for a while.)
-  2. Review previous lectures.
-  3. Explore these reference solutions:
+  1. Review previous lectures.
+  1. Explore these reference solutions:
 
  - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
  - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
@@ -65,7 +66,7 @@ When you get stuck:
   No, we're not giving away the answers. This link will open code in Makerchip that you can use to see solutions -- not the source code, but the Makerchip diagrams, waveforms, and visualizations. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression. Also, we've pre-generated a Diagram of the final RISC-V reference solution at the bottom of this README.
 
   1. There is a WhatsApp Group for everyone in the workshop, both students and mentors: https://chat.whatsapp.com/GTeXhnNrEtJ4m9kcto2GGG
-  2. There is a TL-Verilog help room available during the workshop for individual assistance: <a href="https://us02web.zoom.us/j/4218739141" target="_blank" atom_fix="_">TL-Verilog Zoom Room</a>
+  1. There is a TL-Verilog help room available during the workshop for individual assistance: <a href="https://us02web.zoom.us/j/4218739141" target="_blank" atom_fix="_">TL-Verilog Zoom Room</a>
 
 ## Common Issues and Solutions
 
