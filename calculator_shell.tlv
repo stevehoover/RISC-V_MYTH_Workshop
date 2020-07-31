@@ -2,7 +2,11 @@
 \SV
    // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
    
+<<<<<<< HEAD
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/vineet/tlv_lib/calculator_shell_lib.tlv'])
+=======
    m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/52a6b52c5961e511615dc7bc9835cb30ffaf35ea/tlv_lib/calculator_shell_lib.tlv'])
+>>>>>>> master
 
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
@@ -17,14 +21,16 @@
          // ...
          
 
-   // Macro instantiations for calculator visualization.
-   // Uncomment to enable visualisation, and also,
-   // NOTE: If visualization is enabled, $op must be defined to the proper width using the expression below.
-   //       (Any signals other than $rand1, $rand2 that are not explicitly assigned will result in strange errors.)
-   |calc
-      @0
-         //m4_rand($op, 1, 0)  // or 2, 0 for [2:0]
-   //m4+cal_viz(@3) // Arg: Pipeline stage represented by viz.
+      // Macro instantiations for calculator visualization(disabled by default).
+      // Uncomment to enable visualisation, and also,
+      // NOTE: If visualization is enabled, $op must be defined to the proper width using the expression below.
+      //       (Any signals other than $rand1, $rand2 that are not explicitly assigned will result in strange errors.)
+      //       You can, however, safely use these specific random signals as described in the videos:
+      //  o $rand1[3:0]
+      //  o $rand2[3:0]
+      //  o $op[x:0]
+      
+   //m4+cal_viz(@3) // Arg: Pipeline stage represented by viz, should be atleast equal to last stage of CALCULATOR logic.
 
    
    // Assert these to end simulation (before Makerchip cycle limit).
