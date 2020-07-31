@@ -44,8 +44,11 @@
 \SV
    endmodule
 
-/****** Calculator Labs ******
-by slide #, for reference
+/*
+
+Labs slide #, for reference
+
+----- Calculator Labs ------
 
 Slide  Lab
 -----  ---
@@ -54,10 +57,10 @@ Slide  Lab
 41     2-Cycle Calculator with Validity
 43     Calculator with Single-Value Memory
 
-    RISC-V Labs
+----- RISC-V Labs ----------
 
 Slide    Lab 
-______   ______                     
+-----    ---                     
 
 D4SK2
 -----
@@ -78,7 +81,6 @@ D4SK3
 21     Branches 1
 22     Branches 2
 25     Testbench
-
 
 D5
 -----  
