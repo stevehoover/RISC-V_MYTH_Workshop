@@ -66,7 +66,7 @@ m4+definitions(['
    |cpu
       // for pulling default viz signals into CPU
       // and then back into viz
-      @_stage
+      @1
          $ANY = /top|cpuviz/defaults<>0$ANY;
          `BOGUS_USE($dummy)
          /xreg[31:0]
@@ -101,7 +101,7 @@ m4+definitions(['
                }
 
 
-      @_stage
+      @1
          /defaults
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
             {$is_addi, $is_slti, $is_sltiu, $is_xori, $is_ori, $is_andi, $is_slli, $is_srli, $is_srai, $is_add, $is_sub, $is_sll, $is_slt, $is_sltu, $is_xor} = '0;
@@ -154,7 +154,7 @@ m4+definitions(['
             `BOGUS_USE($imem_rd_en $imem_rd_addr)
             
             $dummy[0:0]          = 1'b0;
-         
+      @_stage
          $ANY = /top|cpu<>0$ANY;
          
          /xreg[31:0]
