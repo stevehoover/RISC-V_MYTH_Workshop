@@ -44,8 +44,8 @@ Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 ### Lab Submissions
 
 There are submission forms for lab solutions:
- - [Days 2 & 3 Submission Form](https://docs.google.com/forms/d/1-FEtrSJvP9g5vqzRfnbYlG2DUmCV7agOHM6bzdWtah8)
- - [Day 4 Submission Form](https://docs.google.com/forms/d/e/1FAIpQLSeLOzOZpPY1QXV-BlCAp0mEOKZFeqxTrDNVW5ROWIxyg_4xLg/viewform?usp=sf_link)
+ - [Days 2 & 3 Submission Form](https://docs.google.com/forms/d/1-FEtrSJvP9g5vqzRfnbYlG2DUmCV7agOHM6bzdWtah8) (Right-click and "Open in new tab".)
+ - [Day 4 Submission Form](https://docs.google.com/forms/d/e/1FAIpQLSeLOzOZpPY1QXV-BlCAp0mEOKZFeqxTrDNVW5ROWIxyg_4xLg/viewform?usp=sf_link) (Right-click and "Open in new tab".)
 
 Follow these steps for each lab in the form:
  - Keep the form open while doing the labs.
