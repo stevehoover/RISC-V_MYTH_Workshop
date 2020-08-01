@@ -100,7 +100,7 @@ Day 4, Slide 15 "Lab: Register File Read (part 1) :
   - This seems to be the first time that there are enough signals in the model that the waveform viewer does not display them all by default. There is a little red "+" on the left of the waveform viewer for scopes that can be expanded to see waveforms.
 
 Day 4, Slide 16 "Lab: Register File Read (part 2)":
-  - The interface for register file is similar to that of instruction memory. Focus on this slide to understand the input / output signals.
+  - There was an issue with the visualisation that was resulting in strange errors. It has been fixed, but requires use of a new CPU shell, updated at 3:41 AM Sunday, August 2, 2020 Indian Standard Time (IST)
 
 ## Pre-generated Diagram
 
