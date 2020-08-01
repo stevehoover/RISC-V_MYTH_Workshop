@@ -95,7 +95,10 @@ Combinational logic loops back on itself so the combinational logic does not sta
 Day 3, Slide 16 "Lab: Combinational Calculator":
 
   - Syntax is required that has not been presented. For boolean selects of `$out` mux, need to compare `$op` with 2-bit constants. Eg: `($op[1:0] == 2'b00)`. `2'b00` (2-bit binary 00) is explained in D3SK2_L2.
-  
+
+Day 4, Slide 15 "Lab: Register File Read (part 1) :
+  - This seems to be the first time that there are enough signals in the model that the waveform viewer does not display them all by default. There is a little red "+" on the left of the waveform viewer for scopes that can be expanded to see waveforms.
+
 Day 4, Slide 16 "Lab: Register File Read (part 2)":
   - The interface for register file is similar to that of instruction memory. Focus on this slide to understand the input / output signals.
 
