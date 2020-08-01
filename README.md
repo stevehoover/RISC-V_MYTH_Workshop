@@ -43,10 +43,16 @@ Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 
 ### Lab Submissions
 
-Keep open this [this Submission Form](https://docs.google.com/forms/d/1-FEtrSJvP9g5vqzRfnbYlG2DUmCV7agOHM6bzdWtah8). For each lab that is listed in it, submit the URL for your solution. Note that:
+There are submission forms for lab solutions:
+ - [Days 2 & 3 Submission Form](https://docs.google.com/forms/d/1-FEtrSJvP9g5vqzRfnbYlG2DUmCV7agOHM6bzdWtah8)
+ - [Day 4 Submission Form](https://docs.google.com/forms/d/e/1FAIpQLSeLOzOZpPY1QXV-BlCAp0mEOKZFeqxTrDNVW5ROWIxyg_4xLg/viewform?usp=sf_link)
 
- - After submission BE SURE TO CLONE your sandbox to avoid modifying your submission.
- - You can re-open your submissions to make corrections at any time.
+Follow these steps for each lab in the form:
+ - Keep the form open while doing the labs.
+ - For each lab that is listed in it, submit the URL for your solution.
+ - Save answers elsewhere as well, just in case.
+ - After filling in a URL, BE SURE TO CLONE your sandbox to avoid modifying your submission.
+ - You can make corrections at any time by re-opening a submission URL.
  - After this workshop, these servers will be taken off-line. Your work will not be saved and will not be recoverable, so be sure to save off any work you want to keep.
 
 ## HELP!!!
