@@ -101,6 +101,9 @@ Day 4, Slide 15 "Lab: Register File Read (part 1) :
   - **There was an issue with the visualisation that was resulting in strange errors. It has been fixed, but requires use of a new CPU shell** (updated at 3:41 AM Sunday, August 2, 2020 Indian Standard Time)
   - This seems to be the first time that there are enough signals in the model that the waveform viewer does not display them all by default. There is a little red "+" on the left of the waveform viewer for scopes that can be expanded to see waveforms.
 
+Day 5, Slide 51ish "Load Data" :
+  - The final input of the memory ($dmem_rd_index[5:0]) should not exist.
+
 ## Pre-generated Diagram
 
 Your generated CPU would look like this after implementing all labs:  
