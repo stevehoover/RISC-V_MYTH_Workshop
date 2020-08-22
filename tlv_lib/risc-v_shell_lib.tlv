@@ -24,9 +24,8 @@ m4+definitions(['
          };
       /M4_IMEM_HIER
          $instr[31:0] = *instrs\[#imem\];
-         `BOGUS_USE($instr)
       ?$imem_rd_en
-         $imem_rd_data[31:0] = *instrs\[$imem_rd_addr\];
+         $imem_rd_data[31:0] = /imem[$imem_rd_addr]$instr;
     
 
 // A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
