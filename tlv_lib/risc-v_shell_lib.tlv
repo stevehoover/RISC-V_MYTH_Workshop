@@ -169,7 +169,7 @@ m4+definitions(['
 
          // m4_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
          m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
-         $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr : $is_load ? "LOAD      " : $is_store ? "STORE     " : "ILLEGAL   ";
+         $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr $is_load ? "LOAD      " : $is_store ? "STORE     " : "ILLEGAL   ";
          \viz_alpha
             //
             renderEach: function() {
