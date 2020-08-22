@@ -88,7 +88,7 @@ m4+definitions(['
                   }
                   if (!global.instr_mem_drawn[this.getIndex()]) {
                      global.instr_mem_drawn[this.getIndex()] = true;
-                     let instr_str = '$instr_str'.asString() + ": " + '/top|cpu/imem<>0$instr'.asBinaryStr(NaN);
+                     let instr_str = '$instr_str'.asString() + ": " + '/top|cpu/imem[imem]<>0$instr'.asBinaryStr(NaN);
                      this.getCanvas().add(new fabric.Text(instr_str, {
                         top: 18 * this.getIndex(),  // TODO: Add support for '#instr_mem'.
                         left: -580,
