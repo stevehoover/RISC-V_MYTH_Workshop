@@ -78,9 +78,8 @@ m4+definitions(['
       logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
    |cpuviz
-      @0
+      @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
-            $instr[31:0]         = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
@@ -90,7 +89,7 @@ m4+definitions(['
                   }
                   if (!global.instr_mem_drawn[this.getIndex()]) {
                      global.instr_mem_drawn[this.getIndex()] = true;
-                     let instr_str = '$instr_str'.asString() + ": " + '$instr'.asBinaryStr(NaN);
+                     let instr_str = '$instr_str'.asString() + ": " + '/top|cpu/imem<>0$instr'.asBinaryStr(NaN);
                      this.getCanvas().add(new fabric.Text(instr_str, {
                         top: 18 * this.getIndex(),  // TODO: Add support for '#instr_mem'.
                         left: -580,
