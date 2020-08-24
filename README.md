@@ -103,7 +103,10 @@ Day 5, Slide 51ish "Load Data" :
 
 ## Pre-generated Diagram
 
-Your generated CPU would look like this after implementing all labs:  
+Your generated CPU would look like this after implementing all labs.
+
+**Note** : As noted above in "HELP!!!" section, refer to this diagram only when stuck. Reverse-engineering this diagram will **not** help you finish faster, and we can tell whether you simply reverse-engineer it.
+
 *Right click and open image in new tab* to use your browser's zooming and to hover over assignment statements.
 
 ![Complete CPU](tlv_lib/fullcore.svg)
