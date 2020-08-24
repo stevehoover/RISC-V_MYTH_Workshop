@@ -65,7 +65,7 @@ Slide    Lab
 
 D4SK2
 -----
-6      Next PC                                
+6      [Not supported] Next PC                                
 7      Fetch (part 1)
 8      Fetch (part 2)
 10     Instruction Types Decode and Immediate Decode
