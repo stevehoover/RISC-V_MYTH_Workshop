@@ -8,15 +8,13 @@ We are running two Makerchip servers specially for this workshop, with support f
 
 ## Labs
 
-Before each lab, clone the previous lab (or save new, initially) and bookmark the new URL, named appropriately for the new lab. You will submit URLs for each lab.
-
 ## Starting-point Code
 
 ### For Intro Labs (all that are not calculator or RISC-V)
 
 No special starting point is required.
 
-Use makerchip.com or:
+Use [makerchip.com](https://www.makerchip.com) or:
 
   - If your birthday is an odd-numbered day, use [myth1.makerchip.com](https://myth1.makerchip.com). (Right-click and "Open in new tab".)
   - If your birthday is an even-numbered day, use [myth2.makerchip.com](https://myth2.makerchip.com). (Right-click and "Open in new tab".)
@@ -36,21 +34,21 @@ Begin with the following starter code.
   - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (right-click and "Open in new tab")
   - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (right-click and "Open in new tab")
 
-Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 
-**Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams, this does **NOT** indicate a problem in your code. 
+**Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams or they might fail to generate altogether.
+This does **not** indicate a problem in your code. 
 
 
 ### Lab Submissions
 
-Labs must be submitted in GitHub Classroom (no longer Google Form).
+Labs involving the calculator or RISC-V CPU must be submitted. This is done via your GitHub Classroom repository (no longer Google Form).
 
-For each lab involving the calculator or RISC-V CPU:
+For each calculator or RISC-V lab:
  - Open your github classroom repository in your web browser.
  - Navigate into the `Day3_5` folder and the corresponding `calculator_solutions.tlv` or `risc-v_solutions.tlv`.
  - Click edit (pencil).
- - Copy your solution. Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then paste into github: select all in github editor (Ctrl-A) and paste with (Ctrl-V).
- - Add comment specifying the slide number or name of the lab and commit changes.
+ - Paste your updated solution. (Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then select all in github editor (Ctrl-A) and paste with (Ctrl-V).)
+ - Add commit message specifying the slide number or name of the lab, and commit changes.
 
 ## HELP!!!
 
@@ -58,21 +56,24 @@ It's important to take your time with each concept and with each lab. Rushing ah
 
 When you get stuck:
 
-  1. Always check the LOG.
+  1. Always check the LOG! Keep your log clean of errors (both SandPiper errors (blue) and Verilator errors (black)). In some cases we expect warnings (LOGIC_ERRORs) for signals that are "used but never assigned" where we want Makerchip to provide random input values.
   1. Check the information below for course corrections, updated during the workshop. (Reload this page if it's been up for a while.)
   1. Review previous lectures.
+  1. Follow conversation in Slack (https://risc-vmythworkshop.slack.com/home) to see if someone else encountered similar issues.
+  1. Discuss the issue with your "Team" in Slack (if assigned).
   1. Explore these reference solutions:
 
  - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
  - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
   
-  No, we're not giving away the answers. This link will open code in Makerchip that you can use to see solutions -- not the source code, but the Makerchip diagrams, waveforms, and visualizations. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
+  No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
+
+  **Note** : Last time we conducted this workshop, students relied to heavily on reference solutions. This **slowed them down** . Furthermore, there are intentional bugs in the reference solutions, and we can easily tell if you are simply copying them.
 
   Note that you have to comment the line with `m4_define(['M4_CALCULATOR'], 1)` to see solutions for RISC-V Labs. 
   
   Also, we've pre-generated a Diagram of the final RISC-V reference solution at the bottom of this README.
 
-  1. There is a WhatsApp Group for everyone in the workshop, both students and mentors: https://chat.whatsapp.com/GTeXhnNrEtJ4m9kcto2GGG
   1. There is a TL-Verilog help room available during the workshop for individual assistance: <a href="https://us02web.zoom.us/j/4218739141" target="_blank" atom_fix="_">TL-Verilog Zoom Room</a>
 
 ## Common Issues and Solutions
