@@ -43,18 +43,14 @@ Visualisation can be enabled by uncommenting `m4+cpu_viz(@4)`.
 
 ### Lab Submissions
 
-There are submission forms for lab solutions:
- - [Days 2 & 3 Submission Form](https://docs.google.com/forms/d/1-FEtrSJvP9g5vqzRfnbYlG2DUmCV7agOHM6bzdWtah8) (Right-click and "Open in new tab".)
- - [Day 4 Submission Form](https://docs.google.com/forms/d/e/1FAIpQLSeLOzOZpPY1QXV-BlCAp0mEOKZFeqxTrDNVW5ROWIxyg_4xLg/viewform?usp=sf_link) (Right-click and "Open in new tab".)
- - [Day 5 Submission Form](https://forms.gle/vUmw2J5TuUikb6fF9) (Right-click and "Open in new tab".) 
+Labs must be submitted in GitHub Classroom (no longer Google Form).
 
-Follow these steps for each lab in the form:
- - Keep the form open while doing the labs.
- - For each lab that is listed in it, submit the URL for your solution.
- - Save answers elsewhere as well, just in case.
- - After filling in a URL, BE SURE TO CLONE your sandbox to avoid modifying your submission.
- - You can make corrections at any time by re-opening a submission URL.
- - After this workshop, these servers will be taken off-line. Your work will not be saved and will not be recoverable, so be sure to save off any work you want to keep.
+For each lab involving the calculator or RISC-V CPU:
+ - Open your github classroom repository in your web browser.
+ - Navigate into the `Day3_5` folder and the corresponding `calculator_solutions.tlv` or `risc-v_solutions.tlv`.
+ - Click edit (pencil).
+ - Copy your solution. Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then paste into github: select all in github editor (Ctrl-A) and paste with (Ctrl-V).
+ - Add comment specifying the slide number or name of the lab and commit changes.
 
 ## HELP!!!
 
