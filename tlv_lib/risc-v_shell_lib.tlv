@@ -6,6 +6,8 @@ m4+definitions(['
    m4_define_vector(['M4_WORD'], 32)
    m4_define(['M4_EXT_I'], 1)
    
+   m4_define(['M4_NUM_INSTRS'], 0)
+   
    m4_echo(m4tlv_riscv_gen__body())
 '])
 
