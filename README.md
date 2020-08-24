@@ -74,6 +74,7 @@ When you get stuck:
   
       Also, we've pre-generated a Diagram of the final RISC-V reference solution at the bottom of this README.
 
+  1. Share your sandbox URL with a mentor via Direct Message in Slack. (Be sure it is saved/cloned, and clone again before editing.)
   1. There is a TL-Verilog help room available during the workshop for individual assistance: <a href="https://us02web.zoom.us/j/4218739141" target="_blank" atom_fix="_">TL-Verilog Zoom Room</a>
 
 ## Common Issues and Solutions
