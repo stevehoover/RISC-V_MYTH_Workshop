@@ -63,7 +63,7 @@ m4+definitions(['
    |cpu
       // for pulling default viz signals into CPU
       // and then back into viz
-      @_stage
+      @0
          $ANY = /top|cpuviz/defaults<>0$ANY;
          `BOGUS_USE($dummy)
          /xreg[31:0]
@@ -77,7 +77,7 @@ m4+definitions(['
    |cpuviz
       @1
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
-            $instr[31:0]         = /top|cpu/imem<>0$instr;
+            $instr[31:0] = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
                renderEach: function() {
@@ -98,11 +98,12 @@ m4+definitions(['
                }
 
 
-      @_stage
+      @0
          /defaults
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
             {$is_addi, $is_slti, $is_sltiu, $is_xori, $is_ori, $is_andi, $is_slli, $is_srli, $is_srai, $is_add, $is_sub, $is_sll, $is_slt, $is_sltu, $is_xor} = '0;
             {$is_srl, $is_sra, $is_or, $is_and, $is_csrrw, $is_csrrs, $is_csrrc, $is_csrrwi, $is_csrrsi, $is_csrrci} = '0;
+            {$is_load, $is_store} = '0;
 
             $valid               = 1'b1;
             $rd[4:0]             = 5'b0;
@@ -145,13 +146,14 @@ m4+definitions(['
             `BOGUS_USE($is_lui $is_auipc $is_jal $is_jalr $is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_lb $is_lh $is_lw $is_lbu $is_lhu $is_sb $is_sh $is_sw)
             `BOGUS_USE($is_addi $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub $is_sll $is_slt $is_sltu $is_xor)
             `BOGUS_USE($is_srl $is_sra $is_or $is_and $is_csrrw $is_csrrs $is_csrrc $is_csrrwi $is_csrrsi $is_csrrci)
+            `BOGUS_USE($is_load $is_store)
             `BOGUS_USE($valid $rd $rs1 $rs2 $src1_value $src2_value $result $pc $imm)
             `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
             `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2 $ld_data)
             `BOGUS_USE($imem_rd_en $imem_rd_addr)
             
             $dummy[0:0]          = 1'b0;
-         
+      @_stage
          $ANY = /top|cpu<>0$ANY;
          
          /xreg[31:0]
@@ -164,7 +166,7 @@ m4+definitions(['
 
          // m4_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
          m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
-         $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr "ILLEGAL   ";
+         $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr $is_load ? "LOAD      " : $is_store ? "STORE     " : "ILLEGAL   ";
          \viz_alpha
             //
             renderEach: function() {

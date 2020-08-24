@@ -2,39 +2,37 @@
 \SV
 
 // Visualization for calculator
-// The @_initial_stage should be the FIRST cycle of execution(place where Inputs are defined).
-// The @_last_stage should be the LAST cycle of execution(place where Outputs are defined).
-\TLV cal_viz(@_initial_stage, @_last_stage)
+\TLV cal_viz(@_stage)
    m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |calc
-      @_initial_stage
+      @0
          $ANY = /top|tb/default<>0$ANY;
-         `BOGUS_USE($dummy $rand2 $rand_op)
+         `BOGUS_USE($dummy $rand2 $rand1)
    |tb
-      @_initial_stage
+      @0
          /default
-            $valid = 1;
-            $op1[2:0] = '0;
+            $valid = ! /top|calc<>0$reset;
+            m4_rand($rand_op, 2, 0)
+            $op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
-            $mem[31:0] = '0;
-            m4_rand($rand_op_temp, 2, 0)
-            m4_rand($rand2_temp, 3, 0)
-            $rand_op[2:0] = $rand_op_temp;
-            $rand2[3:0] = $rand2_temp;
+            $mem[31:0] = 32'habcd1234;
+            m4_rand($rand1, 3, 0)
+            m4_rand($rand2, 3, 0)
             $dummy = 0;
-            `BOGUS_USE($out $mem $valid $op1 $val1 $val2 $dummy)
-      @_last_stage   
+            `BOGUS_USE($out $mem $valid $val1 $val2 $dummy $rand1 $rand2)
+      @_stage   
          $ANY = /top|calc<>0$ANY;
 
-         $op_viz[2:0] = $op1;
+         $op_viz[2:0] = {{($mem == 32'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};	
+         $mem_mod[31:0] = ($mem[31:0] == 32'habcd1234) ? 32'b0 : $mem[31:0];
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
          $is_op_prod    = ($valid && ($op_viz[2:0] == 3'b010)); // prod
          $is_op_quot    = ($valid && ($op_viz[2:0] == 3'b011)); // quot
          $is_op_recall  = ($valid && ($op_viz[2:0] == 3'b100)); // recall(retrieving from memory)
-         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101)); // mem(storing to memory)
+         $is_op_mem     = ($valid && ($op_viz[2:0] == 3'b101) && !($mem == 32'habcd1234)); // mem(storing to memory)
          $is_invalid_op = ($valid && ($op_viz[2:0] == 3'b110 || $op_viz[2:0] == 3'b111)); // invalid operation?
 
          //These signal represents the change in value's and is used to generate colours in \viz according.
@@ -241,6 +239,7 @@
             return {objects: {calbox: calbox, val1box: val1box, val1num: val1num, val2box: val2box, val2num: val2num, outbox: outbox, outnum: outnum, equalname: equalname, sumbox: sumbox, minbox: minbox, prodbox: prodbox, quotbox: quotbox, sumicon: sumicon, prodicon: prodicon, minicon: minicon, quoticon: quoticon, outnegsign: outnegsign,  membox: membox, memname: memname, memnum: memnum, membuttonbox: membuttonbox, recallbuttonbox: recallbuttonbox, membuttonname: membuttonname, recallbuttonname: recallbuttonname, memarrow: memarrow, recallarrow: recallarrow}};
             },
             renderEach: function() {
+               let valid = '$valid'.asBool(false);
                let colorsum =  '$is_op_sum'.asBool(false);
                let colorprod = '$is_op_prod'.asBool(false);
                let colormin = '$is_op_diff'.asBool(false);
@@ -268,7 +267,7 @@
                   '$out_modified'.asInt(NaN).toString() + oldvalout);
                this.getInitObject("outnum").setFill(outmod ? "blue" : "grey");
                this.getInitObject("memnum").setText(
-                  '$mem'.asInt(NaN).toString() + oldvalrecall);
+                  '$mem_mod'.asInt(NaN).toString() + oldvalrecall);
                this.getInitObject("memnum").setFill((recallmod || colormembutton) ? "blue" : "grey");
                this.getInitObject("outnegsign").setFill(colornegnum ?  "blue" : "#eeeeeeff");
                this.getInitObject("sumbox").setFill(colorsum ?  "#9fc5e8ff" : "#eeeeeeff");
@@ -281,3 +280,8 @@
                this.getInitObject("recallarrow").setFill(colorrecallarrow ?  "blue" : "#eeeeeeff");
              }
    '])
+
+// Currently calc solutions calls m4_cpu_viz (a hack to avoid the need to modify Makerchip hidden files). Calc solutions provide their own viz, so make sure cpu_viz is disabled. 
+\TLV cpu_viz(@_st)
+   // Nothing.
+   
