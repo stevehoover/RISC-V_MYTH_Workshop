@@ -61,17 +61,18 @@ When you get stuck:
   1. Discuss the issue with your "Team" in Slack (if assigned).
   1. Explore these reference solutions:
 
- - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
- - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
+     - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
+     - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (right-click and "Open in new tab")
   
-  No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
+      No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
 
-  **Note** : Last time we conducted this workshop, students relied to heavily on reference solutions. This **slowed them down** . Furthermore, there are intentional bugs in the reference solutions, and we can easily tell if you are simply copying them.
+      **Note** : Last time we conducted this workshop, students relied to heavily on reference solutions. This **slowed them down** . Furthermore, there are intentional bugs in the reference solutions, and we can easily tell if you are simply copying them.
 
-  Note that you have to comment the line with `m4_define(['M4_CALCULATOR'], 1)` to see solutions for RISC-V Labs. 
+      Note that you have to comment the line with `m4_define(['M4_CALCULATOR'], 1)` to see solutions for RISC-V Labs. 
   
-  Also, we've pre-generated a Diagram of the final RISC-V reference solution at the bottom of this README.
+      Also, we've pre-generated a Diagram of the final RISC-V reference solution at the bottom of this README.
 
+  1. Share your sandbox URL with a mentor via Direct Message in Slack. (Be sure it is saved/cloned, and clone again before editing.)
   1. There is a TL-Verilog help room available during the workshop for individual assistance: <a href="https://us02web.zoom.us/j/4218739141" target="_blank" atom_fix="_">TL-Verilog Zoom Room</a>
 
 ## Common Issues and Solutions
@@ -100,7 +101,10 @@ Day 5, Slide 51ish "Load Data" :
 
 ## Pre-generated Diagram
 
-Your generated CPU would look like this after implementing all labs:
+Your generated CPU would look like this after implementing all labs.
+
+**Note** : As noted above in "HELP!!!" section, refer to this diagram only when stuck. Reverse-engineering this diagram will **not** help you finish faster, and we can tell whether you simply reverse-engineer it.
+
 *Right click and open image in new tab* to use your browser's zooming and to hover over assignment statements.
 
 ![Complete CPU](tlv_lib/fullcore.svg)
