@@ -6,11 +6,9 @@ For students of "Microprocessor for You in Thirty Hours" Workshop, offered by fo
 
 We are running two Makerchip servers specially for this workshop, with support for visualization not yet available at makerchip.com. Please help us distribute the load by using the appropriate links below based on the day-of-month of your birthday. For all links, open in a new tab using the right-click pull-down menu. (Github Markdown links always replace the page when clicked.) On the off-chance there is an issue with one server, feel free to use the other.
 
-## Labs
+## Labs Starting-Point Code
 
-## Starting-point Code
-
-### For Intro Labs (all that are not calculator or RISC-V)
+### Intro Labs (all that are not calculator or RISC-V)
 
 No special starting point is required.
 
@@ -20,14 +18,14 @@ Use [makerchip.com](https://www.makerchip.com) or:
   - If your birthday is an even-numbered day, use [myth2.makerchip.com](https://myth2.makerchip.com). (Right-click and "Open in new tab".)
 
 
-### For Calculator Labs
+### Calculator Labs
 
 Begin with the following starter code.
 
   - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (right-click and "Open in new tab")
   - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (right-click and "Open in new tab")
 
-### For RISC-V Labs
+### RISC-V Labs
 
 Begin with the following starter code.
 
@@ -39,7 +37,7 @@ Begin with the following starter code.
 This does **not** indicate a problem in your code. 
 
 
-### Lab Submissions
+## Lab Submissions
 
 Labs involving the calculator or RISC-V CPU must be submitted. This is done via your GitHub Classroom repository (no longer Google Form).
 
@@ -95,15 +93,14 @@ Day 3, Slide 16 "Lab: Combinational Calculator":
   - Syntax is required that has not been presented. For boolean selects of `$out` mux, need to compare `$op` with 2-bit constants. Eg: `($op[1:0] == 2'b00)`. `2'b00` (2-bit binary 00) is explained in D3SK2_L2.
 
 Day 4, Slide 15 "Lab: Register File Read (part 1) :
-  - **There was an issue with the visualisation that was resulting in strange errors. It has been fixed, but requires use of a new CPU shell** (updated at 3:41 AM Sunday, August 2, 2020 Indian Standard Time)
   - This seems to be the first time that there are enough signals in the model that the waveform viewer does not display them all by default. There is a little red "+" on the left of the waveform viewer for scopes that can be expanded to see waveforms.
 
 Day 5, Slide 51ish "Load Data" :
-  - The final input of the memory ($dmem_rd_index[5:0]) should not exist.
+  - In videos, the final input of the memory ($dmem_rd_index[5:0]) should not exist.
 
 ## Pre-generated Diagram
 
-Your generated CPU would look like this after implementing all labs:  
+Your generated CPU would look like this after implementing all labs:
 *Right click and open image in new tab* to use your browser's zooming and to hover over assignment statements.
 
 ![Complete CPU](tlv_lib/fullcore.svg)
