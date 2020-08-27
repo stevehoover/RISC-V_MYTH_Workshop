@@ -13,7 +13,7 @@
          /default
             $valid = ! /top|calc<>0$reset;
             m4_rand($rand_op, 2, 0)
-            $op[2:0] = (*cyc_cnt % 2) ? $rand_op[2:0] : >>1$op;
+            $op[2:0] = (*cyc_cnt % 2) ? ( *cyc_cnt > 33 ? ($rand_op[2:0] % 2) : *cyc_cnt > 15 ? $rand_op[2:0] : (($rand_op[2:0] % 2) + ($rand_op[2:0] % 4)) ) : >>1$op;
             $val1[31:0] = '0;
             $val2[31:0] = '0;
             $out[31:0] = '0;
@@ -39,11 +39,24 @@
          $val1_changed = $valid && !$is_op_recall && !$is_invalid_op;
          $val2_changed = $valid && !$is_op_recall && !$is_op_mem && !$is_invalid_op;
          $out_changed  = $valid && ($out_modified || !(|$out_modified)) && !$is_invalid_op && !$is_op_mem;
-         $out_modified[31:0] = ($out > ((1 << 31) - 1)) ? (~$out + 1) : $out;
-         $is_neg_num = ($out > ((1 << 31) - 1));
+         //$out_modified[31:0] = ($out > ((1 << 31) - 1)) ? (~$out + 1) : $out;
+         $out_modified[31:0] = $out;
+         //$is_neg_num = ($out > ((1 << 31) - 1));
 
          \viz_alpha
             initEach: function() {
+            let tlvname = new fabric.Text("TL-V", {
+              left: 150 + 130,
+              top: 150 - 40,
+              fontSize: 22,
+              fontFamily: "Times",
+            });
+            let hexcalname = new fabric.Text("HEX CALCULATOR", {
+              left: 150 + 60,
+              top: 150 - 20,
+              fontSize: 22,
+              fontFamily: "Times",
+            });
             let calbox = new fabric.Rect({
               left: 150,
               top: 150,
@@ -236,7 +249,7 @@
               fontSize: 22,
               fontFamily: "Times",
             });
-            return {objects: {calbox: calbox, val1box: val1box, val1num: val1num, val2box: val2box, val2num: val2num, outbox: outbox, outnum: outnum, equalname: equalname, sumbox: sumbox, minbox: minbox, prodbox: prodbox, quotbox: quotbox, sumicon: sumicon, prodicon: prodicon, minicon: minicon, quoticon: quoticon, outnegsign: outnegsign,  membox: membox, memname: memname, memnum: memnum, membuttonbox: membuttonbox, recallbuttonbox: recallbuttonbox, membuttonname: membuttonname, recallbuttonname: recallbuttonname, memarrow: memarrow, recallarrow: recallarrow}};
+            return {objects: {tlvname: tlvname, hexcalname: hexcalname, calbox: calbox, val1box: val1box, val1num: val1num, val2box: val2box, val2num: val2num, outbox: outbox, outnum: outnum, equalname: equalname, sumbox: sumbox, minbox: minbox, prodbox: prodbox, quotbox: quotbox, sumicon: sumicon, prodicon: prodicon, minicon: minicon, quoticon: quoticon, outnegsign: outnegsign,  membox: membox, memname: memname, memnum: memnum, membuttonbox: membuttonbox, recallbuttonbox: recallbuttonbox, membuttonname: membuttonname, recallbuttonname: recallbuttonname, memarrow: memarrow, recallarrow: recallarrow}};
             },
             renderEach: function() {
                let valid = '$valid'.asBool(false);
@@ -252,24 +265,24 @@
                let val1mod = '$val1_changed'.asBool(false);
                let val2mod = '$val2_changed'.asBool(false);
                let outmod = '$out_changed'.asBool(false);
-               let colornegnum = '$is_neg_num'.asBool(false);
+               //let colornegnum = '$is_neg_num'.asBool(false);
                let oldvalval1 = ""; // for debugging
                let oldvalval2 = ""; // for debugging
                let oldvalout = ""; // for debugging
                let oldvalrecall = ""; // for debugging
                this.getInitObject("val1num").setText(
-                  '$val1'.asInt(NaN).toString() + oldvalval1);
+                  '$val1'.asInt(NaN).toString(16) + oldvalval1);
                this.getInitObject("val1num").setFill(val1mod ? "blue" : "grey");
                this.getInitObject("val2num").setText(
-                  '$val2'.asInt(NaN).toString() + oldvalval2);
+                  '$val2'.asInt(NaN).toString(16) + oldvalval2);
                this.getInitObject("val2num").setFill(val2mod ? "blue" : "grey");
                this.getInitObject("outnum").setText(
-                  '$out_modified'.asInt(NaN).toString() + oldvalout);
+                  '$out_modified'.asInt(NaN).toString(16) + oldvalout);
                this.getInitObject("outnum").setFill(outmod ? "blue" : "grey");
                this.getInitObject("memnum").setText(
-                  '$mem_mod'.asInt(NaN).toString() + oldvalrecall);
+                  '$mem_mod'.asInt(NaN).toString(16) + oldvalrecall);
                this.getInitObject("memnum").setFill((recallmod || colormembutton) ? "blue" : "grey");
-               this.getInitObject("outnegsign").setFill(colornegnum ?  "blue" : "#eeeeeeff");
+               //this.getInitObject("outnegsign").setFill(colornegnum ?  "blue" : "#eeeeeeff");
                this.getInitObject("sumbox").setFill(colorsum ?  "#9fc5e8ff" : "#eeeeeeff");
                this.getInitObject("minbox").setFill(colormin ?  "#9fc5e8ff" : "#eeeeeeff");
                this.getInitObject("prodbox").setFill(colorprod ? "#9fc5e8ff" : "#eeeeeeff");
