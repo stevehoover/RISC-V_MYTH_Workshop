@@ -89,7 +89,7 @@ Combinational logic loops back on itself so the combinational logic does not sta
 
 ### By Slide
 
-(Filled in as issues are identified/reported.)
+Issues identified with particular slides are listed here and also attached as comments to the `.pdf`s of the slides.
 
 Day 3, Slide 18 "Lab: Combinational Calculator":
 
