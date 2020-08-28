@@ -91,11 +91,19 @@ Combinational logic loops back on itself so the combinational logic does not sta
 
 (Filled in as issues are identified/reported.)
 
-Day 3, Slide 16 "Lab: Combinational Calculator":
+Day 3, Slide 18 "Lab: Combinational Calculator":
 
   - Syntax is required that has not been presented. For boolean selects of `$out` mux, need to compare `$op` with 2-bit constants. Eg: `($op[1:0] == 2'b00)`. `2'b00` (2-bit binary 00) is explained in D3SK2_L2.
 
-Day 4, Slide 15 "Lab: Register File Read (part 1) :
+Day 3, Slide 35:
+
+  - The `$reset = *reset` expression should be moved under the pipeline and pipestage as well. (Note that `$reset` outside the pipeline would be a different pipesignal from `$reset` inside the pipeline. On the other hand, `*reset` refers to the same Verilog reset signal whether in an expression inside or outside the pipeline and pipestage.)
+
+Day 3, Slide 43:
+
+  - It is not clear what should be done for $op[2:0] values of 6 and 7. These can be considered to be illegal inputs, and it does not matter what your circuit does. Through a bit of invisible magic, when visualization is enabled, you should not see values of 6 & 7.
+
+Day 4, Slide 16 "Lab: Register File Read (part 1) :
   - This seems to be the first time that there are enough signals in the model that the waveform viewer does not display them all by default. There is a little red "+" on the left of the waveform viewer for scopes that can be expanded to see waveforms.
 
 Day 5, Slide 51ish "Load Data" :
