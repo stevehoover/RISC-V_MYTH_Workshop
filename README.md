@@ -1,6 +1,13 @@
 # RISC-V_MYTH_Workshop
 
-For students of "Microprocessor for You in Thirty Hours" Workshop, offered by for VLSI System Design (VSD) and Redwood EDA, find here accompanying live info and links.
+For students of "Microprocessor for You in Thirty Hours" Workshop, offered by for VLSI System Design (VSD) and Redwood EDA, find here accompanying live info and links for Day 3 - 5.
+
+# Slides
+
+As you listen to videos and do the lab assignments, follow along in the slides. Comments have been added to address points of confusion.
+
+  - [Day 3 Slides](https://drive.google.com/file/d/1ZcjLzg-53It4CO3jDLofiUPZJ485JZ_g/view?usp=sharing)
+  - [Day 4 - 5 Slides](https://drive.google.com/file/d/1tqvXmFru31-tezDX30jTNJoLcQk308UM/view?usp=sharing)
 
 ## Temporary Makerchip Servers
 
