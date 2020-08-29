@@ -61,7 +61,7 @@ It's important to take your time with each concept and with each lab. Rushing ah
 
 When you get stuck:
 
-  1. Always check the LOG! Keep your log clean of errors (both SandPiper errors (blue) and Verilator errors (black)). In some cases we expect warnings (LOGIC_ERRORs) for signals that are "used but never assigned" where we want Makerchip to provide random input values.
+  1. Always check the LOG! Keep your log clean of errors (both SandPiper errors (blue) and Verilator errors (black)). In some cases we expect warnings (LOGIC_ERRORs) for signals that are "used but never assigned" where we want Makerchip to provide random input values. Common "Issues and Solutions" can be found below.
   1. Check the slide PDFs for any corrections, and check below for "Common Issues and Solutions".
   1. Review previous lectures.
   1. Follow conversation in Slack (https://risc-vmythworkshop.slack.com/home) to see if someone else encountered similar issues.
@@ -85,6 +85,8 @@ When you get stuck:
      `/zoom meeting My topic`
 
 ## Common Issues and Solutions
+
+In some cases the viz logic will make error/warning messages a bit more obscure. If you have enabled visualization, try disabling it.
 
 ### SandPiper(TM) (blue log output)
 
