@@ -96,6 +96,8 @@ In some cases the viz logic will make error/warning messages a bit more obscure.
 
 Combinational logic loops back on itself so the combinational logic does not stabilize. Perhaps you missed a `>>1`.
 
+Errors related to `[***NULL***:***NULL***]`: Disable viz macro and this error will most likely go away. Debug other SandPiper errors and re-enable viz.
+
 ## Pre-generated Diagram
 
 Your generated CPU would look like this after implementing all labs.
