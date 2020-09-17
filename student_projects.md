@@ -17,3 +17,5 @@ These cores are significant in that:
   - They are documented to help others create cores of their own.
   
 All these cores can be compiled and simulated by cut-n-pasting into the [makerchip.com](makerchip.com) IDE.
+
+[Workshop info, including slides](https://github.com/stevehoover/RISC-V_MYTH_Workshop).
