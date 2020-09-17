@@ -15,3 +15,5 @@ These cores are significant in that:
   - They were created by students with limited logic design experience in a 5-day Workshop.
   - They implement a 4-stage pipelined RV32I in < 200 lines of code.
   - They are documented to help others create cores of their own.
+  
+All these cores can be compiled and simulated by cut-n-pasting into the [makerchip.com](makerchip.com) IDE.
