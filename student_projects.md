@@ -10,6 +10,7 @@ Many students who have taken part in this MYTH Workshop have released their work
 - Rohit Kankal	https://github.com/iamrk-vlsi/risc-v-myth-workshop-august-iamrk-vlsi
 - Shivani Shah	https://github.com/shivanishah269/risc-v-core
 - Vibhor Singh	https://github.com/vibhor68/risc-v-myth-workshop-august-vibhor68
+- Kubiran Karakaran https://github.com/kuby1412/RISC-V-MYTH-Workshop
 
 These cores are significant in that:
   - They were created by students with limited logic design experience in a 5-day Workshop.
