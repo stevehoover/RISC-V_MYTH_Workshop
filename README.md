@@ -1,6 +1,6 @@
 # RISC-V_MYTH_Workshop
 
-For students of "Microprocessor for You in Thirty Hours" Workshop, offered by for VLSI System Design (VSD) and Redwood EDA, find here accompanying live info and links for Day 3 - 5.
+For students of ["Microprocessor for You in Thirty Hours" Workshop](https://www.vlsisystemdesign.com/riscv-based-myth/), offered by for [VLSI System Design (VSD)](https://www.vlsisystemdesign.com/) and [Redwood EDA](https://www.redwoodeda.com/), find here accompanying live info and links for Day 3 - 5.
 
 # Slides
 
