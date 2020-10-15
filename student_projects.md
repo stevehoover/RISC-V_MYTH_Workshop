@@ -11,7 +11,7 @@ Many students who have taken part in this MYTH Workshop have released their work
 - [Shivani Shah](https://github.com/shivanishah269/risc-v-core)
 - [Vibhor Singh](https://github.com/vibhor68/risc-v-myth-workshop-august-vibhor68)
 - [Kubiran Karakaran](https://github.com/kuby1412/RISC-V-MYTH-Workshop)
-- [Mukhul Javadekar](https://github.com/RISCV-MYTH-WORKSHOP/risc-v-myth-workshop-august-mukuljava)
+- [Mukul Javadekar](https://github.com/RISCV-MYTH-WORKSHOP/risc-v-myth-workshop-august-mukuljava)
 
 These cores are significant in that:
   - They were created by students with limited logic design experience in a 5-day Workshop.
