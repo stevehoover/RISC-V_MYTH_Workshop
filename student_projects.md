@@ -13,6 +13,7 @@ Many students who have taken part in this MYTH Workshop have released their work
 - [Kubiran Karakaran](https://github.com/kuby1412/RISC-V-MYTH-Workshop)
 - [Mukul Javadekar](https://github.com/RISCV-MYTH-WORKSHOP/risc-v-myth-workshop-august-mukuljava)
 - [Joseph Aronson](https://github.com/aronsonj52/riscv_myth_workshop)
+- [Akil M.](https://github.com/akilm/MYTH-RV32I-core-akilm)
 
 These cores are significant in that:
   - They were created by students with limited logic design experience in a 5-day Workshop.
