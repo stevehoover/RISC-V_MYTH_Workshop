@@ -26,7 +26,7 @@
    
    // For RISC-V solutions, comment the line below.
    m4_define(['M4_CALCULATOR'], 1)
-   // Provide a slide number for the lab.
+   // Provide a slide number for the lab (reference below).
    m4_define(['M4_SLIDE_NUM'], 100)
 
 
