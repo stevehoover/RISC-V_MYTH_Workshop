@@ -2,7 +2,15 @@
 
 For students of ["Microprocessor for You in Thirty Hours" Workshop](https://www.vlsisystemdesign.com/riscv-based-myth/), offered by for [VLSI System Design (VSD)](https://www.vlsisystemdesign.com/) and [Redwood EDA](https://www.redwoodeda.com/), find here accompanying live info and links for Day 3 - 5.
 
-# Slides
+## About the Workshop
+
+This workshop has recieved a great deal of attention in the RISC-V community for enabling students to learn at a pace never before possible through the use of TL-Verilog and [Makerchip](https://www.makerchip.com). Some links:
+  - [Workshop info](https://www.vlsisystemdesign.com/vsd-iat/)
+  - riscv.org blogs about [13-year-old Nicholas Sharkey](https://riscv.org/blog/2020/11/13-year-old-nicholas-sharkey-creates-a-risc-v-core/) and [12-year-old Niel Josiah](https://riscv.org/blog/2020/12/risc-v-microarchitecture-for-kids-steve-hoover-redwood-eda/)
+  - [Linkedin posts](https://www.linkedin.com/search/results/all/?keywords=%23mythworkshop&origin=GLOBAL_SEARCH_HEADER)
+  - [riscv.org's list of RISC-V cores, including MYTH cores](https://riscv.org/exchange/cores-socs/)
+
+## Slides
 
 As you listen to videos and do the lab assignments, follow along in the slides. Comments have been added to address points of confusion.
 
