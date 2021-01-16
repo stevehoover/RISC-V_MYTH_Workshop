@@ -1,7 +1,8 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
    m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/2d6d36baa4d2bc62321f982f78c8fe1456641a43/risc-v_defs.tlv'])
-
+   `define READONLY_MEM(ADDR, DATA) assign DATA = instrs[ADDR];
+   
 m4+definitions(['
    m4_define_vector(['M4_WORD'], 32)
    m4_define(['M4_EXT_I'], 1)
