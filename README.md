@@ -10,7 +10,16 @@ This workshop has recieved a great deal of attention in the RISC-V community for
   - [Linkedin posts](https://www.linkedin.com/search/results/all/?keywords=%23mythworkshop&origin=GLOBAL_SEARCH_HEADER)
   - [riscv.org's list of RISC-V cores, including MYTH cores](https://riscv.org/exchange/cores-socs/)
 
-## Slides
+## Slack
+
+You should have been invited to a Slack workspace for collaborative discussions.
+
+  - This workspace has been used for all MYTH Workshops, so you can benefit from the questions and answers of past participants using the search box at the top.
+  - Channels for your workshop will have a prefix such as "m5" for the MYTH Workshop on March, 24, 2021. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
+  - Please introduce yourself in the "m#-introductions" channel.
+  - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack close to 24 hours/day throughout the workshop.
+
+## Day 3-5 Slides
 
 As you listen to videos and do the lab assignments, follow along in the slides. Comments have been added to address points of confusion.
 
@@ -52,7 +61,7 @@ Begin with the following starter code.
 This does **not** indicate a problem in your code. 
 
 
-## Lab Submissions
+## Lab Submissions - GitHub Classroom
 
 Labs involving the calculator or RISC-V CPU must be submitted. This is done via your GitHub Classroom repository.
 
@@ -115,3 +124,18 @@ Your generated CPU would look like this after implementing all labs.
 *Ctrl-click* to use your browser's zooming and to hover over assignment statements.
 
 ![Complete CPU](tlv_lib/fullcore.svg)
+
+## After the Workshop
+
+### Show off your work!
+
+GitHub is the new resume. Show off your work to the world. Many former students have developed impressive READMEs for their repositories, and even developed additional features for their cores to showcase what they learned, to further explore the technology, and to contribute the the community. If you have something unique to share about your experience in the workshop and the core you have built, we would be happy to showcase it from [RISC-V International's list of RISC-V Cores](https://riscv.org/exchange/cores-socs/) by adding it to [this list](https://github.com/stevehoover/RISC-V_MYTH_Workshop/blob/master/student_projects.md). Just [let us know](mailto:steve.hoover@redwoodeda.com).
+
+If you choose to make your workshop repository public, follow these steps:
+
+  1. Go to repository ('risc-v-myth-workshop-august-<yourname>') on Github.
+  2. Click on the 'Settings' in top ribbon (below repo name).
+  3. Scroll down to the bottom, in 'Danger Zone', click 'Change visibility'.
+  4. In the window that opens, select "Make public", type the given text, and click "I understand ....".
+  5. Done! You can use private mode (in firefox) or incognito (in chrome) to visit the repo and see how it would look like to the world.
+  6. Optionally, you can change the repository name. If you have any clones of your repository, you'll want to push changes and delete them first.
