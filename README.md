@@ -54,7 +54,7 @@ This does **not** indicate a problem in your code.
 
 ## Lab Submissions
 
-Labs involving the calculator or RISC-V CPU must be submitted. This is done via your GitHub Classroom repository (no longer Google Form).
+Labs involving the calculator or RISC-V CPU must be submitted. This is done via your GitHub Classroom repository.
 
 For each calculator or RISC-V lab:
  - Open your github classroom repository in your web browser.
