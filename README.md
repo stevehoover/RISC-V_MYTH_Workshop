@@ -17,7 +17,20 @@ You should have been invited to a Slack workspace for collaborative discussions.
   - This workspace has been used for all MYTH Workshops, so you can benefit from the questions and answers of past participants using the search box at the top.
   - Channels for your workshop will have a prefix such as "m5" for the MYTH Workshop on March, 24, 2021. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
   - Please introduce yourself in the "m#-introductions" channel.
-  - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack close to 24 hours/day throughout the workshop.
+  - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack nearly 24 hours/day throughout the workshop.
+
+## GitHub Classroom Setup and Lab Submissions
+
+Lab submissions begin on Day 2 and are done via GitHub Classroom. You should receive a link to join prior to Day 2. For this course, all interactions with your GitHub repository can be done from your browser. You can add files using the "Add File" dropdown menu. You can edit a text file by navigating to it and clicking the pencil icon.
+
+  - Day 2: We just want to see that you have done the work. Capture a few screenshots and save them in the `Day2` folder of your repository.
+  - Day 3-5: Labs involving the calculator or RISC-V CPU should be submitted. If you miss a few, don't sweat it, but we want to see your progress. For each calculator or RISC-V lab:
+    - Open your github classroom repository in your web browser.
+    - Navigate into the `Day3_5` folder and the corresponding `calculator_solutions.tlv` or `risc-v_solutions.tlv`.
+    - Click edit (pencil).
+    - Paste your updated solution. (Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then select all in github editor (Ctrl-A) and paste with (Ctrl-V).)
+    - Add commit message specifying the slide number or name of the lab, and commit changes.
+    - (Do not *append* your changes, replace them entirely. you prior work is captured in the "History" (or "Commits").)
 
 ## Day 3-5 Slides
 
@@ -60,17 +73,6 @@ Begin with the following starter code.
 **Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams or they might fail to generate altogether.
 This does **not** indicate a problem in your code. 
 
-
-## Lab Submissions - GitHub Classroom
-
-Labs involving the calculator or RISC-V CPU must be submitted. This is done via your GitHub Classroom repository.
-
-For each calculator or RISC-V lab:
- - Open your github classroom repository in your web browser.
- - Navigate into the `Day3_5` folder and the corresponding `calculator_solutions.tlv` or `risc-v_solutions.tlv`.
- - Click edit (pencil).
- - Paste your updated solution. (Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then select all in github editor (Ctrl-A) and paste with (Ctrl-V).)
- - Add commit message specifying the slide number or name of the lab, and commit changes.
 
 ## HELP!!!
 
@@ -133,7 +135,7 @@ GitHub is the new resume. Show off your work to the world. Many former students 
 
 If you choose to make your workshop repository public, follow these steps:
 
-  1. Go to repository ('risc-v-myth-workshop-august-<yourname>') on Github.
+  1. Go to repository ('risc-v-myth-workshop-<date>-<yourname>') on Github.
   2. Click on the 'Settings' in top ribbon (below repo name).
   3. Scroll down to the bottom, in 'Danger Zone', click 'Change visibility'.
   4. In the window that opens, select "Make public", type the given text, and click "I understand ....".
