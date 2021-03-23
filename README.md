@@ -19,9 +19,15 @@ You should have been invited to a Slack workspace for collaborative discussions.
   - Please introduce yourself in the "m#-introductions" channel.
   - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack nearly 24 hours/day throughout the workshop.
 
+## VSD-IAT
+
+You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.jnaapti.io/). If you missed the live tutorial in the first call, here's [a recording](https://1drv.ms/v/s!Ai4WW_jutengg4RWQUb_sks0BFZbiw). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](kunalpghosh@gmail.com).
+
 ## GitHub Classroom Setup and Lab Submissions
 
-Lab submissions begin on Day 2 and are done via GitHub Classroom. You should receive a link to join prior to Day 2. For this course, all interactions with your GitHub repository can be done from your browser. You can add files using the "Add File" dropdown menu. You can edit a text file by navigating to it and clicking the pencil icon.
+Lab submissions begin on Day 2 and are done via GitHub Classroom. You should receive a link to join prior to Day 2. For this course, all interactions with your GitHub repository can be done from your browser. You can add files using the "Add File" dropdown menu. You can edit a text file by navigating to it and clicking the pencil icon. Live training is provided, but, in case you missed it, here's the [recording from MYTH 4](https://risc-vmythworkshop.slack.com/archives/C0193AG66JC/p1603467114063700).
+
+Submission process:
 
   - Day 2: We just want to see that you have done the work. Capture a few screenshots and save them in the `Day2` folder of your repository.
   - Day 3-5: Labs involving the calculator or RISC-V CPU should be submitted. If you miss a few, don't sweat it, but we want to see your progress. For each calculator or RISC-V lab:
