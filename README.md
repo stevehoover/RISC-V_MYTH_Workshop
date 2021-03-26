@@ -57,23 +57,23 @@ No special starting point is required.
 
 Use [makerchip.com](https://www.makerchip.com) or:
 
-  - If your birthday is an odd-numbered day, use [myth1.makerchip.com](https://myth1.makerchip.com). (Ctrl-click)
-  - If your birthday is an even-numbered day, use [myth2.makerchip.com](https://myth2.makerchip.com). (Ctrl-click)
+  - If your birthday is an odd-numbered day, use [myth3.makerchip.com](https://myth3.makerchip.com). (Ctrl-click)
+  - If your birthday is an even-numbered day, also use [myth3.makerchip.com](https://myth3.makerchip.com). (Ctrl-click)
 
 
 ### Calculator Labs
 
 Begin with the following starter code.
 
-  - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (Ctrl-click)
-  - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (Ctrl-click)
+  - Odd birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (Ctrl-click)
+  - Even birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (Ctrl-click)
 
 ### RISC-V Labs
 
 Begin with the following starter code.
 
-  - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (Ctrl-click)
-  - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (Ctrl-click)
+  - Odd birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (Ctrl-click)
+  - Even birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (Ctrl-click)
 
 
 **Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams or they might fail to generate altogether.
@@ -93,8 +93,8 @@ When you get stuck:
   1. Discuss the issue with your "Team" in Slack (if assigned).
   1. Explore these reference solutions:
 
-     - Odd birthday: <a href="https://myth1.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (Ctrl-click)
-     - Even birthday: <a href="https://myth2.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (Ctrl-click)
+     - Odd birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (Ctrl-click)
+     - Even birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (Ctrl-click)
   
      No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
 
