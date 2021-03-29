@@ -34,7 +34,7 @@ Submission process:
     - Open your github classroom repository in your web browser.
     - Navigate into the `Day3_5` folder and the corresponding `calculator_solutions.tlv` or `risc-v_solutions.tlv`.
     - Click edit (pencil).
-    - Paste your updated solution. (Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then select all in github editor (Ctrl-A) and paste with (Ctrl-V).)
+    - Paste your updated solution, *replacing* the existing code. (Within Makerchip editor select all (Ctrl-A) and copy (Ctrl-C), then select all in github editor (Ctrl-A) and paste with (Ctrl-V).)
     - Add commit message specifying the slide number or name of the lab, and commit changes.
     - (Do not *append* your changes, replace them entirely. you prior work is captured in the "History" (or "Commits").)
 
