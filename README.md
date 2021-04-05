@@ -21,7 +21,7 @@ You should have been invited to a Slack workspace for collaborative discussions.
 
 ## VSD-IAT
 
-You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.jnaapti.io/). If you missed the live tutorial in the first call, here's [a recording](https://1drv.ms/v/s!Ai4WW_jutengg4RWQUb_sks0BFZbiw). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](kunalpghosh@gmail.com).
+You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.jnaapti.io/). If you missed the live tutorial in the first call, here's [a recording](https://1drv.ms/v/s!Ai4WW_jutengg4RWQUb_sks0BFZbiw). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](mailto:kunalpghosh@gmail.com).
 
 ## GitHub Classroom Setup and Lab Submissions
 
