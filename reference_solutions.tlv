@@ -30,6 +30,8 @@
    m4_define(['M4_SLIDE_NUM'], 100)
 
 
+   // Temporary bug workaround:
+   m4_define(['M4_FMT_NO_SOURCE'], 1)
 
    // Default Makerchip TL-Verilog Code Template
    m4_include_makerchip_hidden(['myth_workshop_solutions.private.tlv'])
