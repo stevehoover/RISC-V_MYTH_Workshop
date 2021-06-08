@@ -15,13 +15,13 @@ This workshop has recieved a great deal of attention in the RISC-V community for
 You should have been invited to a Slack workspace for collaborative discussions.
 
   - This workspace has been used for all MYTH Workshops, so you can benefit from the questions and answers of past participants using the search box at the top.
-  - Channels for your workshop will have a prefix such as "m5" for the MYTH Workshop on March, 24, 2021. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
+  - Channels for your workshop will have a prefix such as "m6" for the MYTH Workshop on March, 24, 2021. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
   - Please introduce yourself in the "m#-introductions" channel.
   - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack nearly 24 hours/day throughout the workshop.
 
 ## VSD-IAT
 
-You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.jnaapti.io/). If you missed the live tutorial in the first call, here's [a recording](https://1drv.ms/v/s!Ai4WW_jutengg4RWQUb_sks0BFZbiw). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](mailto:kunalpghosh@gmail.com).
+You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.jnaapti.io/). If you missed the live tutorial in the first call, here's [a recording (TBD)](https://TBD). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](mailto:kunalpghosh@gmail.com).
 
 ## GitHub Classroom Setup and Lab Submissions
 
