@@ -21,7 +21,7 @@ You should have been invited to a Slack workspace for collaborative discussions.
 
 ## VSD-IAT
 
-You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.jnaapti.io/). If you missed the live tutorial in the first call, here's [a recording (TBD)](https://TBD). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](mailto:kunalpghosh@gmail.com).
+You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.com/). If you missed the live tutorial in the first call, here's [the recording](https://risc-vmythworkshop.slack.com/files/U01875BT75L/F023YE02E5V/zoom_0.mp4). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](mailto:kunalpghosh@gmail.com).
 
 ## GitHub Classroom Setup and Lab Submissions
 
@@ -47,7 +47,7 @@ As you listen to videos and do the lab assignments, follow along in the slides. 
 
 ## Temporary Makerchip Servers
 
-We are running two Makerchip servers specially for this workshop, with support for visualization not yet available at makerchip.com. Please help us distribute the load by using the appropriate links below based on the day-of-month of your birthday. For all links, open in a new tab using ctrl-click. (Github Markdown links always replace the page when clicked.) On the off-chance there is an issue with one server, feel free to use the other.
+We are running two Makerchip servers specially for this workshop. Please help us distribute the load by using the appropriate links below based on the day-of-month of your birthday. For all links, open in a new tab using ctrl-click. (Github Markdown links always replace the page when clicked.) On the off-chance there is an issue with one server, feel free to use the other.
 
 ## Labs Starting-Point Code
 
