@@ -18,6 +18,7 @@ Many students who have taken part in this MYTH Workshop have released their work
 - [Razvan Ionescu](https://github.com/RISCV-MYTH-WORKSHOP/riscv_myth_workshop_dec20-razvanionescu-77)
 - [Karthik K](https://github.com/RISCV-MYTH-WORKSHOP/riscv_myth_workshop_dec20-karthikvnit)
 - [Shon Taware](https://github.com/ShonTaware/RISC-V_Core_4_Stage) <-- Added support for compressed instructions (C extension)!
+- [Ninad Jangle](https://github.com/ninja3011/riscv-cpu-core)
 
 These cores are significant in that:
   - They were created by students with limited logic design experience in a 5-day Workshop.
