@@ -29,10 +29,6 @@
    // Provide a slide number for the lab (reference below).
    m4_define(['M4_SLIDE_NUM'], 100)
 
-
-   // Temporary bug workaround:
-   m4_define(['M4_FMT_NO_SOURCE'], 1)
-
    // Default Makerchip TL-Verilog Code Template
    m4_include_makerchip_hidden(['myth_workshop_solutions.private.tlv'])
 
@@ -41,8 +37,7 @@
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
    m4+solution(M4_SLIDE_NUM)
-   // The stage that is represented by visualization.
-   m4+cpu_viz(@4)
+   m4+cpu_viz(@4)   // The visualization, configured to reflect the given pipeline stage.
 \SV
    endmodule
 
