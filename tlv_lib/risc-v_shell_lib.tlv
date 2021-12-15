@@ -246,10 +246,9 @@ m4+definitions(['
                   let reg = parseInt(this.getIndex());
                   let regIdent = reg.toString();
                   let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
-                  this.getInitObject("reg").setText(
-                     regIdent + ": " +
-                     '$value'.asInt(NaN).toString() + oldValStr);
-                  this.getInitObject("reg").setFill(mod ? "blue" : "black");
+                  this.getInitObject("reg").set({
+                     text: regIdent + ": " + '$value'.asInt(NaN).toString() + oldValStr,
+                     fill(mod ? "blue" : "black")});
                }
          //
          // DMem
@@ -276,9 +275,8 @@ m4+definitions(['
                   let mem = parseInt(this.getIndex());
                   let memIdent = mem.toString();
                   let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
-                  this.getInitObject("mem").setText(
-                     memIdent + ": " +
-                     '$value'.asInt(NaN).toString() + oldValStr);
-                  this.getInitObject("mem").setFill(mod ? "blue" : "black");
+                  this.getInitObject("mem").set({
+                     text: memIdent + ": " + '$value'.asInt(NaN).toString() + oldValStr,
+                     fill: mod ? "blue" : "black"});
                }
    '])
