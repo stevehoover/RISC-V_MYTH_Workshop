@@ -2,7 +2,7 @@
 \SV
    // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
    
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/bd1f186fde018ff9e3fd80597b7397a1c862cf15/tlv_lib/calculator_shell_lib.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/ee14347fdb8b8e54ced882f74f4fd86171cc8ecf/tlv_lib/calculator_shell_lib.tlv'])
 
 \SV
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
