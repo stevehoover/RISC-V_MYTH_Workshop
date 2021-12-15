@@ -248,7 +248,7 @@ m4+definitions(['
                   let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
                   this.getInitObject("reg").set({
                      text: regIdent + ": " + '$value'.asInt(NaN).toString() + oldValStr,
-                     fill(mod ? "blue" : "black")});
+                     fill: mod ? "blue" : "black"});
                }
          //
          // DMem
