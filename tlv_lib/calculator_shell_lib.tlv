@@ -44,6 +44,7 @@
          //$is_neg_num = ($out > ((1 << 31) - 1));
 
          \viz_js
+            box: {strokeWidth: 0},
             init() {
                let tlvname = new fabric.Text("TL-V", {
                  left: 150 + 130,
