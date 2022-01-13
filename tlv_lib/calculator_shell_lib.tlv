@@ -252,7 +252,7 @@
                });
                return {tlvname, hexcalname, calbox, val1box, val1num, val2box, val2num, outbox, outnum, equalname, sumbox, minbox, prodbox, quotbox, sumicon, prodicon, minicon, quoticon, outnegsign,  membox, memname, memnum, membuttonbox, recallbuttonbox, membuttonname, recallbuttonname, memarrow, recallarrow};
             },
-            renderEach: function() {
+            render() {
                let valid = '$valid'.asBool(false);
                let colorsum =  '$is_op_sum'.asBool(false);
                let colorprod = '$is_op_prod'.asBool(false);
