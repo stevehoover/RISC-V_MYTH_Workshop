@@ -25,7 +25,7 @@
       @_stage   
          $ANY = /top|calc<>0$ANY;
 
-         $op_viz[2:0] = {{($mem == 32'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};	
+         $op_viz[2:0] = {{($mem == 32'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
          $mem_mod[31:0] = ($mem[31:0] == 32'habcd1234) ? 32'b0 : $mem[31:0];
          $is_op_sum     = ($valid && ($op_viz[2:0] == 3'b000)); // sum
          $is_op_diff    = ($valid && ($op_viz[2:0] == 3'b001)); // diff
@@ -43,213 +43,213 @@
          $out_modified[31:0] = $out;
          //$is_neg_num = ($out > ((1 << 31) - 1));
 
-         \viz_alpha
-            initEach: function() {
-            let tlvname = new fabric.Text("TL-V", {
-              left: 150 + 130,
-              top: 150 - 40,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let hexcalname = new fabric.Text("HEX CALCULATOR", {
-              left: 150 + 60,
-              top: 150 - 20,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let calbox = new fabric.Rect({
-              left: 150,
-              top: 150,
-              fill: "#eeeeeeff",
-              width: 316,
-              height: 366,
-              stroke: "black",
-              strokeWidth: 1,
-            });
-            let val1box = new fabric.Rect({
-              left: 150 + 28,
-              top: 150 + 83,
-              fill: "#eeeeeeff",
-              width: 254 + 14,
-              height: 40,
-              stroke: "black",
-              strokeWidth: 1,
-            });
-            let val1num = new fabric.Text("", {
-              left: 150 + 28 + 30,
-              top: 150 + 89,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let val2box = new fabric.Rect({
-              left: 150 + 187,
-              top: 150 + 221,
-              fill: "#eeeeeeff",
-              width: 109,
-              height: 40,
-              stroke: "black",
-              strokeWidth: 1,
-            });
-            let val2num = new fabric.Text("", {
-              left: 150 + 187 + 1,
-              top: 150 + 221 + 7,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let outbox = new fabric.Rect({
-              left: 150 + 97,
-              top: 150 + 300,
-              fill: "#eeeeeeff",
-              width: 199,
-              height: 40,
-              stroke: "black",
-              strokeWidth: 1,
-            });
-            let outnum = new fabric.Text("", {
-              left: 150 + 97 + 20,
-              top: 150 + 300 + 8,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let outnegsign = new fabric.Text("-", {
-              left: 150 + 97 + 8,
-              top: 150 + 300 + 6,
-              fontSize: 22,
-              fontFamily: "Times",
-              fill : "#eeeeeeff",
-            });
-            let equalname = new fabric.Text("=", {
-              left: 150 + 38,
-              top: 150 + 306,
-              fontSize: 28,
-              fontFamily: "Times",
-            });
-              let sumbox = new fabric.Rect({
-              left: 150 + 28,
-              top: 150 + 148,
-              fill: "#eeeeeeff",
-              width: 64,
-              height: 64,
-              stroke: "black",
-              strokeWidth: 1
-            });
-            let prodbox = new fabric.Rect({
-              left: 150 + 28,
-              top: 150 + 222,
-              fill: "#eeeeeeff",
-              width: 64,
-              height: 64,
-              stroke: "black",
-              strokeWidth: 1
-            });
-            let minbox = new fabric.Rect({
-              left: 150 + 105,
-              top: 150 + 148,
-              fill: "#eeeeeeff",
-              width: 64,
-              height: 64,
-              stroke: "black",
-              strokeWidth: 1
-            });
-            let quotbox = new fabric.Rect({
-              left: 150 + 105,
-              top: 150 + 222,
-              fill: "#eeeeeeff",
-              width: 64,
-              height: 64,
-              stroke: "black",
-              strokeWidth: 1
-            });
-            let sumicon = new fabric.Text("+", {
-              left: 150 + 28 + 26,
-              top: 150 + 148 + 22,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let prodicon = new fabric.Text("*", {
-              left: 150 + 28 + 26,
-              top: 150 + 222 + 22,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let minicon = new fabric.Text("-", {
-              left: 150 + 105 + 26,
-              top: 150 + 148 + 22,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let quoticon = new fabric.Text("/", {
-              left: 150 + 105 + 26,
-              top: 150 + 222 + 22,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-              let membox = new fabric.Rect({
-              left: 105 + 150,
-              top: 150 + 25,
-              fill: "#eeeeeeff",
-              width: 191,
-              height: 23,
-              stroke: "black",
-              strokeWidth: 1,
-            });
-            let memname = new fabric.Text("mem", {
-              left: 150 + 28,
-              top: 150 + 25,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let memarrow = new fabric.Text("->", {
-              left: 150 + 32 + 47,
-              top: 150 + 25,
-              fill: "#eeeeeeff",
-              fontSize: 22,
-              fontFamily: "monospace",
-            });
-            let recallarrow = new fabric.Text("->", {
-              left: 150 + 38 + 28,
-              top: 150 + 308,
-              fill: "#eeeeeeff",
-              fontSize: 22,
-              fontFamily: "monospace",
-            });
-            let memnum = new fabric.Text("", {
-              left: 150 + 105 + 30,
-              top: 150 + 25,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let membuttonbox = new fabric.Rect({
-              left: 150 + 187,
-              top: 150 + 151,
-              fill: "#eeeeeeff",
-              width: 45,
-              height: 40,
-              stroke: "black",
-              strokeWidth: 1
-            });
-            let recallbuttonbox = new fabric.Rect({
-              left: 150 + 245,
-              top: 150 + 151,
-              fill: "#eeeeeeff",
-              width: 51,
-              height: 40,
-              stroke: "black",
-              strokeWidth: 1
-            });
-            let membuttonname = new fabric.Text("mem", {
-              left: 150 + 187 + 1,
-              top: 150 + 151 + 7,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            let recallbuttonname = new fabric.Text("recall", {
-              left: 150 + 245 + 1,
-              top: 150 + 151 + 7,
-              fontSize: 22,
-              fontFamily: "Times",
-            });
-            return {objects: {tlvname: tlvname, hexcalname: hexcalname, calbox: calbox, val1box: val1box, val1num: val1num, val2box: val2box, val2num: val2num, outbox: outbox, outnum: outnum, equalname: equalname, sumbox: sumbox, minbox: minbox, prodbox: prodbox, quotbox: quotbox, sumicon: sumicon, prodicon: prodicon, minicon: minicon, quoticon: quoticon, outnegsign: outnegsign,  membox: membox, memname: memname, memnum: memnum, membuttonbox: membuttonbox, recallbuttonbox: recallbuttonbox, membuttonname: membuttonname, recallbuttonname: recallbuttonname, memarrow: memarrow, recallarrow: recallarrow}};
+         \viz_js
+            init() {
+               let tlvname = new fabric.Text("TL-V", {
+                 left: 150 + 130,
+                 top: 150 - 40,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let hexcalname = new fabric.Text("HEX CALCULATOR", {
+                 left: 150 + 60,
+                 top: 150 - 20,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let calbox = new fabric.Rect({
+                 left: 150,
+                 top: 150,
+                 fill: "#eeeeeeff",
+                 width: 316,
+                 height: 366,
+                 stroke: "black",
+                 strokeWidth: 1,
+               });
+               let val1box = new fabric.Rect({
+                 left: 150 + 28,
+                 top: 150 + 83,
+                 fill: "#eeeeeeff",
+                 width: 254 + 14,
+                 height: 40,
+                 stroke: "black",
+                 strokeWidth: 1,
+               });
+               let val1num = new fabric.Text("", {
+                 left: 150 + 28 + 30,
+                 top: 150 + 89,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let val2box = new fabric.Rect({
+                 left: 150 + 187,
+                 top: 150 + 221,
+                 fill: "#eeeeeeff",
+                 width: 109,
+                 height: 40,
+                 stroke: "black",
+                 strokeWidth: 1,
+               });
+               let val2num = new fabric.Text("", {
+                 left: 150 + 187 + 1,
+                 top: 150 + 221 + 7,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let outbox = new fabric.Rect({
+                 left: 150 + 97,
+                 top: 150 + 300,
+                 fill: "#eeeeeeff",
+                 width: 199,
+                 height: 40,
+                 stroke: "black",
+                 strokeWidth: 1,
+               });
+               let outnum = new fabric.Text("", {
+                 left: 150 + 97 + 20,
+                 top: 150 + 300 + 8,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let outnegsign = new fabric.Text("-", {
+                 left: 150 + 97 + 8,
+                 top: 150 + 300 + 6,
+                 fontSize: 22,
+                 fontFamily: "Times",
+                 fill : "#eeeeeeff",
+               });
+               let equalname = new fabric.Text("=", {
+                 left: 150 + 38,
+                 top: 150 + 306,
+                 fontSize: 28,
+                 fontFamily: "Times",
+               });
+                 let sumbox = new fabric.Rect({
+                 left: 150 + 28,
+                 top: 150 + 148,
+                 fill: "#eeeeeeff",
+                 width: 64,
+                 height: 64,
+                 stroke: "black",
+                 strokeWidth: 1
+               });
+               let prodbox = new fabric.Rect({
+                 left: 150 + 28,
+                 top: 150 + 222,
+                 fill: "#eeeeeeff",
+                 width: 64,
+                 height: 64,
+                 stroke: "black",
+                 strokeWidth: 1
+               });
+               let minbox = new fabric.Rect({
+                 left: 150 + 105,
+                 top: 150 + 148,
+                 fill: "#eeeeeeff",
+                 width: 64,
+                 height: 64,
+                 stroke: "black",
+                 strokeWidth: 1
+               });
+               let quotbox = new fabric.Rect({
+                 left: 150 + 105,
+                 top: 150 + 222,
+                 fill: "#eeeeeeff",
+                 width: 64,
+                 height: 64,
+                 stroke: "black",
+                 strokeWidth: 1
+               });
+               let sumicon = new fabric.Text("+", {
+                 left: 150 + 28 + 26,
+                 top: 150 + 148 + 22,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let prodicon = new fabric.Text("*", {
+                 left: 150 + 28 + 26,
+                 top: 150 + 222 + 22,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let minicon = new fabric.Text("-", {
+                 left: 150 + 105 + 26,
+                 top: 150 + 148 + 22,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let quoticon = new fabric.Text("/", {
+                 left: 150 + 105 + 26,
+                 top: 150 + 222 + 22,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+                 let membox = new fabric.Rect({
+                 left: 105 + 150,
+                 top: 150 + 25,
+                 fill: "#eeeeeeff",
+                 width: 191,
+                 height: 23,
+                 stroke: "black",
+                 strokeWidth: 1,
+               });
+               let memname = new fabric.Text("mem", {
+                 left: 150 + 28,
+                 top: 150 + 25,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let memarrow = new fabric.Text("->", {
+                 left: 150 + 32 + 47,
+                 top: 150 + 25,
+                 fill: "#eeeeeeff",
+                 fontSize: 22,
+                 fontFamily: "monospace",
+               });
+               let recallarrow = new fabric.Text("->", {
+                 left: 150 + 38 + 28,
+                 top: 150 + 308,
+                 fill: "#eeeeeeff",
+                 fontSize: 22,
+                 fontFamily: "monospace",
+               });
+               let memnum = new fabric.Text("", {
+                 left: 150 + 105 + 30,
+                 top: 150 + 25,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let membuttonbox = new fabric.Rect({
+                 left: 150 + 187,
+                 top: 150 + 151,
+                 fill: "#eeeeeeff",
+                 width: 45,
+                 height: 40,
+                 stroke: "black",
+                 strokeWidth: 1
+               });
+               let recallbuttonbox = new fabric.Rect({
+                 left: 150 + 245,
+                 top: 150 + 151,
+                 fill: "#eeeeeeff",
+                 width: 51,
+                 height: 40,
+                 stroke: "black",
+                 strokeWidth: 1
+               });
+               let membuttonname = new fabric.Text("mem", {
+                 left: 150 + 187 + 1,
+                 top: 150 + 151 + 7,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               let recallbuttonname = new fabric.Text("recall", {
+                 left: 150 + 245 + 1,
+                 top: 150 + 151 + 7,
+                 fontSize: 22,
+                 fontFamily: "Times",
+               });
+               return {tlvname, hexcalname, calbox, val1box, val1num, val2box, val2num, outbox, outnum, equalname, sumbox, minbox, prodbox, quotbox, sumicon, prodicon, minicon, quoticon, outnegsign,  membox, memname, memnum, membuttonbox, recallbuttonbox, membuttonname, recallbuttonname, memarrow, recallarrow};
             },
             renderEach: function() {
                let valid = '$valid'.asBool(false);
@@ -270,26 +270,26 @@
                let oldvalval2 = ""; // for debugging
                let oldvalout = ""; // for debugging
                let oldvalrecall = ""; // for debugging
-               this.getInitObject("val1num").set({
+               this.getObjects().val1num.set({
                   text: '$val1'.asInt(NaN).toString(16) + oldvalval1,
                   fill: val1mod ? "blue" : "grey"});
-               this.getInitObject("val2num").set({
+               this.getObjects().val2num.set({
                   text: '$val2'.asInt(NaN).toString(16) + oldvalval2,
                   fill: val2mod ? "blue" : "grey"});
-               this.getInitObject("outnum").set({
+               this.getObjects().outnum.set({
                   text: '$out_modified'.asInt(NaN).toString(16) + oldvalout,
                   fill: outmod ? "blue" : "grey"});
-               this.getInitObject("memnum").set({
+               this.getObjects().memnum.set({
                   text: '$mem_mod'.asInt(NaN).toString(16) + oldvalrecall,
                   fill: (recallmod || colormembutton) ? "blue" : "grey"});
-               this.getInitObject("sumbox").set({fill: colorsum ?  "#9fc5e8ff" : "#eeeeeeff"});
-               this.getInitObject("minbox").set({fill: colormin ?  "#9fc5e8ff" : "#eeeeeeff"});
-               this.getInitObject("prodbox").set({fill: colorprod ? "#9fc5e8ff" : "#eeeeeeff"});
-               this.getInitObject("quotbox").set({fill: colorquot ?  "#9fc5e8ff" : "#eeeeeeff"});
-               this.getInitObject("membuttonbox").set({fill: colormembutton ? "#9fc5e8ff" : "#eeeeeeff"});
-               this.getInitObject("recallbuttonbox").set({fill: colorrecallbutton ?  "#9fc5e8ff" : "#eeeeeeff"});
-               this.getInitObject("memarrow").set({fill: colormemarrow ? "blue" : "#eeeeeeff"});
-               this.getInitObject("recallarrow").set({fill: colorrecallarrow ?  "blue" : "#eeeeeeff"});
+               this.getObjects().sumbox.set({fill: colorsum ?  "#9fc5e8ff" : "#eeeeeeff"});
+               this.getObjects().minbox.set({fill: colormin ?  "#9fc5e8ff" : "#eeeeeeff"});
+               this.getObjects().prodbox.set({fill: colorprod ? "#9fc5e8ff" : "#eeeeeeff"});
+               this.getObjects().quotbox.set({fill: colorquot ?  "#9fc5e8ff" : "#eeeeeeff"});
+               this.getObjects().membuttonbox.set({fill: colormembutton ? "#9fc5e8ff" : "#eeeeeeff"});
+               this.getObjects().recallbuttonbox.set({fill: colorrecallbutton ?  "#9fc5e8ff" : "#eeeeeeff"});
+               this.getObjects().memarrow.set({fill: colormemarrow ? "blue" : "#eeeeeeff"});
+               this.getObjects().recallarrow.set({fill: colorrecallarrow ?  "blue" : "#eeeeeeff"});
              }
    '])
 

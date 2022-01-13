@@ -81,23 +81,18 @@ m4+definitions(['
          /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
             $instr[31:0] = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
-            \viz_alpha
-               renderEach: function() {
-                  // Instruction memory is constant, so just create it once.
-                  if (!global.instr_mem_drawn) {
-                     global.instr_mem_drawn = [];
-                  }
-                  if (!global.instr_mem_drawn[this.getIndex()]) {
-                     global.instr_mem_drawn[this.getIndex()] = true;
-                     let instr_str = '$instr_str'.asString() + ": " + '$instr'.asBinaryStr(NaN);
-                     this.getCanvas().add(new fabric.Text(instr_str, {
-                        top: 18 * this.getIndex(),  // TODO: Add support for '#instr_mem'.
-                        left: -580,
-                        fontSize: 14,
-                        fontFamily: "monospace"
-                     }));
-                  }
-               }
+            \viz_js
+               box: {width: 500, height: 18, strokeWidth: 0},
+               onTraceData() {
+                  let instr_str = '$instr_str'.asString() + ": " + '$instr'.asBinaryStr(NaN);
+                  return {objects: {instr_str: new fabric.Text(instr_str, {
+                     top: 0,
+                     left: 0,
+                     fontSize: 14,
+                     fontFamily: "monospace"
+                  })}};
+               },
+               where: {left: -580, top: 0}
 
 
       @0
@@ -169,10 +164,9 @@ m4+definitions(['
          // m4_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
          m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
          $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr $is_load ? "LOAD      " : $is_store ? "STORE     " : "ILLEGAL   ";
-         \viz_alpha
-            //
-            renderEach: function() {
-               debugger;
+         \viz_js
+            box: {left: -600, top: -20, width: 2000, height: 1000, strokeWidth: 0},
+            render() {
                //
                // PC instr_mem pointer
                //
@@ -219,64 +213,80 @@ m4+definitions(['
                   fontSize: 14,
                   fontFamily: "monospace"
                });
-               return {objects: [pcPointer, instrWithValues]};
+               return [pcPointer, instrWithValues];
             }
          //
          // Register file
          //
          /xreg[31:0]           
-            \viz_alpha
-               initEach: function() {
-                  let regname = new fabric.Text("Reg File", {
-                        top: -20,
-                        left: 367,
-                        fontSize: 14,
-                        fontFamily: "monospace"
-                     });
+            \viz_js
+               box: {width: 90, height: 18, strokeWidth: 0},
+               all: {
+                  box: {strokeWidth: 0},
+                  init() {
+                     let regname = new fabric.Text("Reg File", {
+                           top: -20, left: 2,
+                           fontSize: 14,
+                           fontFamily: "monospace"
+                        });
+                     return {regname};
+                  }
+               },
+               init() {
                   let reg = new fabric.Text("", {
-                     top: 18 * this.getIndex(),
-                     left: 375,
+                     top: 0, left: 0,
                      fontSize: 14,
                      fontFamily: "monospace"
                   });
-                  return {objects: {regname: regname, reg: reg}};
+                  return {reg};
                },
-               renderEach: function() {
+               render() {
                   let mod = '$wr'.asBool(false);
                   let reg = parseInt(this.getIndex());
                   let regIdent = reg.toString();
                   let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
-                  this.getInitObject("reg").set({
+                  this.getObjects().reg.set({
                      text: regIdent + ": " + '$value'.asInt(NaN).toString() + oldValStr,
                      fill: mod ? "blue" : "black"});
-               }
+               },
+               where: {left: 365, top: -20},
+               where0: {left: 0, top: 0}
          //
          // DMem
          //
          /dmem[15:0]
-            \viz_alpha
-               initEach: function() {
-                  let memname = new fabric.Text("Mini DMem", {
-                        top: -20,
-                        left: 460,
-                        fontSize: 14,
-                        fontFamily: "monospace"
-                     });
+            \viz_js
+               box: {width: 100, height: 18, strokeWidth: 0},
+               all: {
+                  box: {strokeWidth: 0},
+                  init() {
+                     let memname = new fabric.Text("Mini DMem", {
+                           top: -20,
+                           left: 2,
+                           fontSize: 14,
+                           fontFamily: "monospace"
+                        });
+                     return {memname};
+                  }
+               },
+               init() {
                   let mem = new fabric.Text("", {
-                     top: 18 * this.getIndex(),
-                     left: 468,
+                     top: 0,
+                     left: 10,
                      fontSize: 14,
                      fontFamily: "monospace"
                   });
-                  return {objects: {memname: memname, mem: mem}};
+                  return {mem};
                },
-               renderEach: function() {
+               render() {
                   let mod = '$wr'.asBool(false);
                   let mem = parseInt(this.getIndex());
                   let memIdent = mem.toString();
                   let oldValStr = mod ? `(${'>>1$value'.asInt(NaN).toString()})` : "";
-                  this.getInitObject("mem").set({
+                  this.getObjects().mem.set({
                      text: memIdent + ": " + '$value'.asInt(NaN).toString() + oldValStr,
                      fill: mod ? "blue" : "black"});
-               }
+               },
+               where: {left: 458, top: -20},
+               where0: {left: 0, top: 0}
    '])
