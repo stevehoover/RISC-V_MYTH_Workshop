@@ -8,24 +8,24 @@ This workshop has recieved a great deal of attention in the RISC-V community for
   - [Workshop info](https://www.vlsisystemdesign.com/vsd-iat/)
   - riscv.org blogs about [13-year-old Nicholas Sharkey](https://riscv.org/blog/2020/11/13-year-old-nicholas-sharkey-creates-a-risc-v-core/) and [12-year-old Niel Josiah](https://riscv.org/blog/2020/12/risc-v-microarchitecture-for-kids-steve-hoover-redwood-eda/)
   - [Linkedin posts](https://www.linkedin.com/search/results/all/?keywords=%23mythworkshop&origin=GLOBAL_SEARCH_HEADER)
-  - [riscv.org's list of RISC-V cores, including MYTH cores](https://riscv.org/exchange/cores-socs/)
+  - [riscv.org's maintains a list of RISC-V cores, including MYTH cores](https://riscv.org/exchange/)
 
 ## Slack
 
 You should have been invited to a Slack workspace for collaborative discussions.
 
-  - This workspace has been used for all MYTH Workshops, so you can benefit from the questions and answers of past participants using the search box at the top.
-  - Channels for your workshop will have a prefix such as "m6" for the MYTH Workshop on March, 24, 2021. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
+  - Channels for your workshop will have a prefix such as "m10" for the MYTH Workshop in Nov. 2022. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
   - Please introduce yourself in the "m#-introductions" channel.
   - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack nearly 24 hours/day throughout the workshop.
+  - The search box at the top is your friend. Others may have encountered similar issues.
 
 ## VSD-IAT
 
-You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.com/). If you missed the live tutorial in the first call, here's [the recording](https://risc-vmythworkshop.slack.com/files/U01875BT75L/F023YE02E5V/zoom_0.mp4). Issues can be reported in the Slack "iat-platform-issues' channel, or check with [Kunal Ghosh](mailto:kunalpghosh@gmail.com).
+You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.com/). If you missed the live tutorial in the first call, the recording should have been posted in Slack, and you can search for it.
 
 ## GitHub Classroom Setup and Lab Submissions
 
-Lab submissions begin on Day 2 and are done via GitHub Classroom. You should receive a link to join prior to Day 2. For this course, all interactions with your GitHub repository can be done from your browser. You can add files using the "Add File" dropdown menu. You can edit a text file by navigating to it and clicking the pencil icon. Live training is provided, but, in case you missed it, here's the [recording from MYTH 4](https://risc-vmythworkshop.slack.com/archives/C0193AG66JC/p1603467114063700).
+Lab submissions begin on Day 2 and are done via GitHub Classroom. You should receive a link to join prior to Day 2. For this course, all interactions with your GitHub repository can be done from your browser. You can add files using the "Add File" dropdown menu. You can edit a text file by navigating to it and clicking the pencil icon. Live training is provided, and the recording should have been posted in Slack.
 
 Submission process:
 
@@ -55,26 +55,15 @@ We are running two Makerchip servers specially for this workshop. Please help us
 
 No special starting point is required.
 
-Use [makerchip.com](https://www.makerchip.com) or:
-
-  - If your birthday is an odd-numbered day, use [myth3.makerchip.com](https://myth3.makerchip.com). (Ctrl-click)
-  - If your birthday is an even-numbered day, also use [myth3.makerchip.com](https://myth3.makerchip.com). (Ctrl-click)
-
+Use [makerchip.com](https://www.makerchip.com).
 
 ### Calculator Labs
 
-Begin with the following starter code.
-
-  - Odd birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (Ctrl-click)
-  - Even birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv" target="_blank" atom_fix="_">Calculator Starter Code</a> (Ctrl-click)
+Begin with the following [starter code](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv) (Ctrl-click).
 
 ### RISC-V Labs
 
-Begin with the following starter code.
-
-  - Odd birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (Ctrl-click)
-  - Even birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv" target="_blank" atom_fix="_">RISC-V Starter Code</a> (Ctrl-click)
-
+Begin with the following [starter code](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv) (Ctrl-click).
 
 **Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams or they might fail to generate altogether.
 This does **not** indicate a problem in your code. 
@@ -91,10 +80,7 @@ When you get stuck:
   1. Review previous lectures.
   1. Follow conversation in Slack (https://risc-vmythworkshop.slack.com/home) to see if someone else encountered similar issues.
   1. Discuss the issue with your "Team" in Slack (if assigned).
-  1. Explore these reference solutions:
-
-     - Odd birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (Ctrl-click)
-     - Even birthday: <a href="https://myth3.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv" target="_blank" atom_fix="_">Reference Solutions</a> (Ctrl-click)
+  1. Explore these [reference solutions](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv) (Ctrl-click).
   
      No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
 
@@ -137,7 +123,7 @@ Your generated CPU would look like this after implementing all labs.
 
 ### Show off your work!
 
-GitHub is the new resume. Show off your work to the world. Many former students have developed impressive READMEs for their repositories, and even developed additional features for their cores to showcase what they learned, to further explore the technology, and to contribute the the community. If you have something unique to share about your experience in the workshop and the core you have built, we would be happy to showcase it from [RISC-V International's list of RISC-V Cores](https://riscv.org/exchange/cores-socs/) by adding it to [this list](https://github.com/stevehoover/RISC-V_MYTH_Workshop/blob/master/student_projects.md). Just [let us know](mailto:steve.hoover@redwoodeda.com).
+GitHub is the new resume. Show off your work to the world. Many former students have developed impressive READMEs for their repositories, and even developed additional features for their cores to showcase what they learned, to further explore the technology, and to contribute the the community. If you have something unique to share about your experience in the workshop and the core you have built, we would be happy to showcase it from [RISC-V International's list of RISC-V Cores](https://riscv.org/exchange/) by adding it to [this list](https://github.com/stevehoover/RISC-V_MYTH_Workshop/blob/master/student_projects.md). Just [let us know](mailto:steve.hoover@redwoodeda.com).
 
 If you choose to make your workshop repository public, follow these steps:
 
