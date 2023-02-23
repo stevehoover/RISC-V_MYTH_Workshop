@@ -2,18 +2,19 @@
 \SV
    m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/2d6d36baa4d2bc62321f982f78c8fe1456641a43/risc-v_defs.tlv'])
 
-m4_ifelse_block(M4_MAKERCHIP, 1,['
 m4+definitions(['
+m4_ifelse_block(M4_MAKERCHIP, 1,['
    m4_define_vector(['M4_WORD'], 32)
    m4_define(['M4_EXT_I'], 1)
    m4_define(['M4_NUM_INSTRS'], 0)
    m4_echo(m4tlv_riscv_gen__body())
-'])
 '],['
-   m4_define(['m4_asm'], m4_defn(['m4_asm'])['m4_define(['M4_NUM_INSTRS'], 30)'])
-   m4_define(['m4_makerchip_module'], ['module riscv(input clk, input reset, input [31:0] idata0, idata1, idata2, idata3, idata4, idata5, idata6, idata7, idata8, idata9, idata10, idata11, idata12, idata13, idata14, idata15, idata16, idata17, idata18, idata19, idata20, idata21, idata22, idata23, idata24, idata25, idata26, idata27, idata28, idata29, idata30, idata31, output reg [31:0] reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31);'])
-
+   m4_define(['m4_asm'], )
+   m4_define(['M4_NUM_INSTRS'], 1073741824)
+   m4_define(['m4_makerchip_module'], ['module riscv(input clk, input reset, input [31:0] idata0, idata1, idata2, idata3, idata4, idata5, idata6, idata7, idata8, idata9, idata10, idata11, idata12, idata13, idata14, idata15, idata16, idata17, idata18, idata19, idata20, idata21, idata22, idata23, idata24, idata25, idata26, idata27, idata28, idata29, idata30, idata31, output reg [31:0] reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31); wire cyc_cnt; wire passed; wire failed; assign cyc_cnt = 100; // cyc_cnt, passed and failed signals are valid only when running on makerchip, not valid here!'])
 '])
+'])
+
 // Instruction memory in |cpu at the given stage.
 \TLV imem(@_stage)
    // Instruction Memory containing program defined by m4_asm(...) instantiations.
@@ -100,7 +101,7 @@ m4+definitions(['
          $dmem_rd_data[31:0] = /dmem[$dmem_addr]>>1$value;
       `BOGUS_USE($dmem_rd_data)
 
-\TLV outputs_fpga(@_stage)
+\TLV myth_fpga(@_stage)
    @_stage
       \SV_plus
          m4_ifelse_block(M4_MAKERCHIP, 1,[''],['
@@ -174,8 +175,7 @@ m4+definitions(['
                   })}};
                },
                where: {left: -580, top: 0}
-
-
+             
       @0
          /defaults
             {$is_lui, $is_auipc, $is_jal, $is_jalr, $is_beq, $is_bne, $is_blt, $is_bge, $is_bltu, $is_bgeu, $is_lb, $is_lh, $is_lw, $is_lbu, $is_lhu, $is_sb, $is_sh, $is_sw} = '0;
