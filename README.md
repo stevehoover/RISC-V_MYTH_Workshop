@@ -1,6 +1,6 @@
 # RISC-V_MYTH_Workshop
 
-For students of ["Microprocessor for You in Thirty Hours" Workshop](https://www.vlsisystemdesign.com/riscv-based-myth/), offered by for [VLSI System Design (VSD)](https://www.vlsisystemdesign.com/) and [Redwood EDA](https://www.redwoodeda.com/), find here accompanying live info and links for Day 3 - 5.
+For students of ["Microprocessor for You in Thirty Hours/THree weeks" (MYTH) Workshop](https://www.vlsisystemdesign.com/riscv-based-myth/), offered by [Redwood EDA](https://www.redwoodeda.com/) and training partners [VLSI System Design (VSD)](https://www.vlsisystemdesign.com/) and [The EEView](https://theeeview.com). Find here accompanying live info and links for "Day 3" - "Day 5" (which may not correspond to actual days, depending on the delivery format).
 
 ## About the Workshop
 
@@ -14,12 +14,12 @@ This workshop has recieved a great deal of attention in the RISC-V community for
 
 You should have been invited to a Slack workspace for collaborative discussions.
 
-  - Channels for your workshop will have a prefix such as "m10" for the MYTH Workshop in Nov. 2022. If you have not already been added to these channels, do so using the `+` next to "Channels", and "Browse Channels".
-  - Please introduce yourself in the "m#-introductions" channel.
-  - Use channels appropriately to ask questions throughout the workshop. Mentors monitor Slack nearly 24 hours/day throughout the workshop.
+  - If you have not already been added to the established Slack channels, request to be added.
+  - Please introduce yourself in the appropriate channel.
+  - Use the provided channels appropriately to ask questions throughout the workshop. Mentors monitor Slack nearly 24 hours/day throughout the workshop.
   - The search box at the top is your friend. Others may have encountered similar issues.
 
-## VSD-IAT
+## VSD-IAT (for Day 1-2 content only, if included)
 
 You should already be up and running with the [VLSI Design Systems - Intelligent Assessment Technology platform](https://vsdiat.com/). If you missed the live tutorial in the first call, the recording should have been posted in Slack, and you can search for it.
 
@@ -44,10 +44,6 @@ As you listen to videos and do the lab assignments, follow along in the slides. 
 
   - [Day 3 Slides](https://drive.google.com/file/d/1ZcjLzg-53It4CO3jDLofiUPZJ485JZ_g/view?usp=sharing)
   - [Day 4 - 5 Slides](https://drive.google.com/file/d/1tqvXmFru31-tezDX30jTNJoLcQk308UM/view?usp=sharing)
-
-## Temporary Makerchip Servers
-
-We are running two Makerchip servers specially for this workshop. Please help us distribute the load by using the appropriate links below based on the day-of-month of your birthday. For all links, open in a new tab using ctrl-click. (Github Markdown links always replace the page when clicked.) On the off-chance there is an issue with one server, feel free to use the other.
 
 ## Labs Starting-Point Code
 
@@ -78,8 +74,7 @@ When you get stuck:
   1. Always check the LOG! Keep your log clean of errors (both SandPiper errors (blue) and Verilator errors (black)). In some cases we expect warnings (LOGIC_ERRORs) for signals that are "used but never assigned" where we want Makerchip to provide random input values. Common "Issues and Solutions" can be found below.
   1. Check the slide PDFs for any corrections, and check below for "Common Issues and Solutions".
   1. Review previous lectures.
-  1. Follow conversation in Slack (https://risc-vmythworkshop.slack.com/home) to see if someone else encountered similar issues.
-  1. Discuss the issue with your "Team" in Slack (if assigned).
+  1. Follow conversation in Slack to see if someone else encountered similar issues.
   1. Explore these [reference solutions](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv) (Ctrl-click).
   
      No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
