@@ -4,7 +4,7 @@ For students of ["Microprocessor for You in Thirty Hours/THree weeks" (MYTH) Wor
 
 ## About the Workshop
 
-This workshop has recieved a great deal of attention in the RISC-V community for enabling students to learn at a pace never before possible through the use of TL-Verilog and [Makerchip](https://www.makerchip.com). Some links:
+This workshop has recieved a great deal of attention in the RISC-V community for enabling students to learn at a pace never before possible through the use of TL-Verilog and [Makerchip](https://makerchip.com). Some links:
   - [Workshop info](https://www.vlsisystemdesign.com/vsd-iat/)
   - riscv.org blogs about [13-year-old Nicholas Sharkey](https://riscv.org/blog/2020/11/13-year-old-nicholas-sharkey-creates-a-risc-v-core/) and [12-year-old Niel Josiah](https://riscv.org/blog/2020/12/risc-v-microarchitecture-for-kids-steve-hoover-redwood-eda/)
   - [Linkedin posts](https://www.linkedin.com/search/results/all/?keywords=%23mythworkshop&origin=GLOBAL_SEARCH_HEADER)
@@ -49,17 +49,17 @@ As you listen to videos and do the lab assignments, follow along in the slides. 
 
 ### Intro Labs (all that are not calculator or RISC-V)
 
-No special starting point is required.
+No special starting point code is required.
 
-Use [makerchip.com](https://www.makerchip.com).
+Use [myth.makerchip.com](https://myth.makerchip.com).
 
 ### Calculator Labs
 
-Begin with the following [starter code](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv) (Ctrl-click).
+Begin with the following [starter code](https://myth.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Fcalculator_shell.tlv) (Ctrl-click).
 
 ### RISC-V Labs
 
-Begin with the following [starter code](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv) (Ctrl-click).
+Begin with the following [starter code](https://myth.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Frisc-v_shell.tlv) (Ctrl-click).
 
 **Note** : As the complexity of your design increases, it might take long time (~3 mins) to generate the diagrams or they might fail to generate altogether.
 This does **not** indicate a problem in your code. 
@@ -75,7 +75,7 @@ When you get stuck:
   1. Check the slide PDFs for any corrections, and check below for "Common Issues and Solutions".
   1. Review previous lectures.
   1. Follow conversation in Slack to see if someone else encountered similar issues.
-  1. Explore these [reference solutions](https://makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv) (Ctrl-click).
+  1. Explore these [reference solutions](https://myth.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2FRISC-V_MYTH_Workshop%2Fmaster%2Freference_solutions.tlv) (Ctrl-click).
   
      No, we're not giving away the answers! This link will open in Makerchip the diagram, waveform, and visualization for the solution, but will not show source code. Explore these to figure out the issue that's plaguing you, and then go back to doing the lab on your own. If you are stuck on syntax, hover over a signal assignment in the diagram to see an expression.
 
