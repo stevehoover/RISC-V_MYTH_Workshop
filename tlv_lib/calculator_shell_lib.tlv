@@ -2,16 +2,17 @@
 \SV
 
 // Visualization for calculator
-\TLV cal_viz(@_stage)
+\TLV cal_viz(@_stage, /_top)
+   m4_pushdef(['m4_top'], m4_ifelse(/_top, [''], ['['/top']'], ['['/_top']']))
    m4_ifelse_block(m4_sp_graph_dangerous, 1, [''], ['
    |calc
       @0
-         $ANY = /top|tb/default<>0$ANY;
+         $ANY = m4_top|tb/default<>0$ANY;
          `BOGUS_USE($dummy $rand2 $rand1)
    |tb
       @0
          /default
-            $valid = ! /top|calc<>0$reset;
+            $valid = ! m4_top|calc<>0$reset;
             m4_rand($rand_op, 2, 0)
             $op[2:0] = (*cyc_cnt % 2) ? ( *cyc_cnt > 33 ? ($rand_op[2:0] % 2) : *cyc_cnt > 15 ? $rand_op[2:0] : (($rand_op[2:0] % 2) + ($rand_op[2:0] % 4)) ) : >>1$op;
             $val1[31:0] = '0;
@@ -23,7 +24,7 @@
             $dummy = 0;
             `BOGUS_USE($out $mem $valid $val1 $val2 $dummy $rand1 $rand2)
       @_stage   
-         $ANY = /top|calc<>0$ANY;
+         $ANY = m4_top|calc<>0$ANY;
 
          $op_viz[2:0] = {{($mem == 32'habcd1234) ? 1'b0 : $op[2]}, $op[1:0]};
          $mem_mod[31:0] = ($mem[31:0] == 32'habcd1234) ? 32'b0 : $mem[31:0];
@@ -293,8 +294,8 @@
                this.getObjects().recallarrow.set({fill: colorrecallarrow ?  "blue" : "#eeeeeeff"});
              }
    '])
+   m4_popdef(['m4_top'])
 
 // Currently calc solutions calls m4_cpu_viz (a hack to avoid the need to modify Makerchip hidden files). Calc solutions provide their own viz, so make sure cpu_viz is disabled. 
 \TLV cpu_viz(@_st)
    // Nothing.
-   
