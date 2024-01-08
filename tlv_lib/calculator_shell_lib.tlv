@@ -3,7 +3,7 @@
 
 \TLV cal_viz(@_stage, /_top)
    // Only for Makerchip.
-   m4_ifdef(['m4_MAKERCHIP'], ['m4+cal_viz_internal(['@_stage'], ['/_top'])'], [''])
+   m4_ifdef(['M4_MAKERCHIP'], ['m4+cal_viz_internal(['@_stage'], ['/_top'])'], [''])
 
 // Visualization for calculator
 // #rand_mode is for transitioning from m4_rand(..) to \$random() to enable instantiation below top level.
