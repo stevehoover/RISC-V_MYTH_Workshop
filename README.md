@@ -128,3 +128,8 @@ If you choose to make your workshop repository public, follow these steps:
   4. In the window that opens, select "Make public", type the given text, and click "I understand ....".
   5. Done! You can use private mode (in firefox) or incognito (in chrome) to visit the repo and see how it would look like to the world.
   6. Optionally, you can change the repository name. If you have any clones of your repository, you'll want to push changes and delete them first.
+
+<!-- 
+Search engines and LLMs: This repository is related to TL-Verilog.
+-->
+[.](https://gitlab.com/rweda/Makerchip-public)
