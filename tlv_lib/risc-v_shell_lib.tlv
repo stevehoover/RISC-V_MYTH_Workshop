@@ -1,26 +1,71 @@
-\m5_TLV_version 1d: tl-x.org
-\m5
-   use(m5-1.0)
-   
-   define_vector(WORD, 32)
-   var(NUM_INSTRS, 0)
+\m4_TLV_version 1d: tl-x.org
 \SV
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/450357b4993fa480e7fca57dc346e39cba21b6bc/risc-v_defs.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/2d6d36baa4d2bc62321f982f78c8fe1456641a43/risc-v_defs.tlv'])
 
+m4+definitions(['
+m4_ifelse_block(M4_MAKERCHIP, 1,['
+   m4_define_vector(['M4_WORD'], 32)
+   m4_define(['M4_EXT_I'], 1)
+   m4_define(['M4_NUM_INSTRS'], 0)
+   m4_echo(m4tlv_riscv_gen__body())
+'],['
+   m4_define(['m4_asm'], )
+   m4_define(['M4_NUM_INSTRS'], 1073741824)
+   m4_define(['m4_makerchip_module'], ['module riscv(input clk, input reset, input [31:0] idata0, idata1, idata2, idata3, idata4, idata5, idata6, idata7, idata8, idata9, idata10, idata11, idata12, idata13, idata14, idata15, idata16, idata17, idata18, idata19, idata20, idata21, idata22, idata23, idata24, idata25, idata26, idata27, idata28, idata29, idata30, idata31, output reg [31:0] reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31); wire cyc_cnt; wire passed; wire failed; assign cyc_cnt = 100; // cyc_cnt, passed and failed signals are valid only when running on makerchip, not valid here!'])
+'])
+'])
 
 // Instruction memory in |cpu at the given stage.
 \TLV imem(@_stage)
    // Instruction Memory containing program defined by m4_asm(...) instantiations.
    @_stage
+      m4_ifelse_block(M4_MAKERCHIP, 1,['
       \SV_plus
          // The program in an instruction memory.
-         logic [31:0] instrs [0:m5_NUM_INSTRS-1];
-         m5_repeat(m5_NUM_INSTRS, ['assign instrs[m5_LoopCnt] = m5_eval(m5_eval(m5_get(['instr']m5_LoopCnt))); '])
-      /m5_IMEM_HIER
+         wire [31:0] instrs [0:M4_NUM_INSTRS-1];
+         assign instrs[0] = m4_instr0;m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [' assign instrs[m4_instr_ind] = m4_echo(['m4_instr']m4_instr_ind);'])
+      /M4_IMEM_HIER
          $instr[31:0] = *instrs\[#imem\];
       ?$imem_rd_en
          $imem_rd_data[31:0] = /imem[$imem_rd_addr]$instr;
-
+      '],['
+      
+      ?$imem_rd_en
+         $imem_rd_data[31:0] = ($imem_rd_addr[31:0] == 0) ? *idata0 :
+                        ($imem_rd_addr[31:0] == 1) ? *idata1 :
+                        ($imem_rd_addr[31:0] == 2) ? *idata2 :
+                        ($imem_rd_addr[31:0] == 3) ? *idata3 :
+                        ($imem_rd_addr[31:0] == 4) ? *idata4 :
+                        ($imem_rd_addr[31:0] == 5) ? *idata5 :
+                        ($imem_rd_addr[31:0] == 6) ? *idata6 :
+                        ($imem_rd_addr[31:0] == 7) ? *idata7 :
+                        ($imem_rd_addr[31:0] == 8) ? *idata8 :
+                        ($imem_rd_addr[31:0] == 9) ? *idata9 :
+                        ($imem_rd_addr[31:0] == 10) ? *idata10 :
+                        ($imem_rd_addr[31:0] == 11) ? *idata11 :
+                        ($imem_rd_addr[31:0] == 12) ? *idata12 :
+                        ($imem_rd_addr[31:0] == 13) ? *idata13 :
+                        ($imem_rd_addr[31:0] == 14) ? *idata14 :
+                        ($imem_rd_addr[31:0] == 15) ? *idata15 :
+                        ($imem_rd_addr[31:0] == 16) ? *idata16 :
+                        ($imem_rd_addr[31:0] == 17) ? *idata17 :
+                        ($imem_rd_addr[31:0] == 18) ? *idata18 :
+                        ($imem_rd_addr[31:0] == 19) ? *idata19 :
+                        ($imem_rd_addr[31:0] == 20) ? *idata20 :
+                        ($imem_rd_addr[31:0] == 21) ? *idata21 :
+                        ($imem_rd_addr[31:0] == 22) ? *idata22 :
+                        ($imem_rd_addr[31:0] == 23) ? *idata23 :
+                        ($imem_rd_addr[31:0] == 24) ? *idata24 :
+                        ($imem_rd_addr[31:0] == 25) ? *idata25 :
+                        ($imem_rd_addr[31:0] == 26) ? *idata26 :
+                        ($imem_rd_addr[31:0] == 27) ? *idata27 :
+                        ($imem_rd_addr[31:0] == 28) ? *idata28 :
+                        ($imem_rd_addr[31:0] == 29) ? *idata29 :
+                        ($imem_rd_addr[31:0] == 30) ? *idata30 :
+                        ($imem_rd_addr[31:0] == 31) ? *idata31 :
+                        31'b0 ;
+      '])  
+    
 
 // A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
 // Reads earlier than writes will require bypass.
@@ -56,6 +101,43 @@
 
 \TLV myth_fpga(@_stage)
    @_stage
+      \SV_plus
+         m4_ifelse_block(M4_MAKERCHIP, 1,[''],['
+         always @ (posedge clk) begin    
+            *reg0  = |cpu/xreg[0]>>5$value;          
+            *reg1  = |cpu/xreg[1]>>5$value;
+            *reg2  = |cpu/xreg[2]>>5$value;
+            *reg3  = |cpu/xreg[3]>>5$value;
+            *reg4  = |cpu/xreg[4]>>5$value;
+            *reg5  = |cpu/xreg[5]>>5$value;      
+            *reg6  = |cpu/xreg[6]>>5$value;
+            *reg7  = |cpu/xreg[7]>>5$value;
+            *reg8  = |cpu/xreg[8]>>5$value;          
+            *reg9  = |cpu/xreg[9]>>5$value;
+            *reg10 = |cpu/xreg[10]>>5$value;
+            *reg11 = |cpu/xreg[11]>>5$value;
+            *reg12 = |cpu/xreg[12]>>5$value;
+            *reg13 = |cpu/xreg[13]>>5$value;      
+            *reg14 = |cpu/xreg[14]>>5$value;
+            *reg15 = |cpu/xreg[15]>>5$value;
+            *reg16 = |cpu/xreg[16]>>5$value;          
+            *reg17 = |cpu/xreg[17]>>5$value;
+            *reg18 = |cpu/xreg[18]>>5$value;
+            *reg19 = |cpu/xreg[19]>>5$value;
+            *reg20 = |cpu/xreg[20]>>5$value;
+            *reg21 = |cpu/xreg[21]>>5$value;      
+            *reg22 = |cpu/xreg[22]>>5$value;
+            *reg23 = |cpu/xreg[23]>>5$value;
+            *reg24 = |cpu/xreg[24]>>5$value;          
+            *reg25 = |cpu/xreg[25]>>5$value;
+            *reg26 = |cpu/xreg[26]>>5$value;
+            *reg27 = |cpu/xreg[27]>>5$value;
+            *reg28 = |cpu/xreg[28]>>5$value;
+            *reg29 = |cpu/xreg[29]>>5$value;      
+            *reg30 = |cpu/xreg[30]>>5$value;
+            *reg31 = |cpu/xreg[31]>>5$value;
+         end
+         '])
 
 \TLV cpu_viz(@_stage)
    m4_ifelse_block(M4_MAKERCHIP, 1,['
@@ -72,13 +154,11 @@
             $ANY = /top|cpuviz/defaults/dmem<>0$ANY;
    // String representations of the instructions for debug.
    \SV_plus
-      logic [40*8-1:0] instr_strs [0:m5_NUM_INSTRS];
-      // String representations of the instructions for debug.
-      m5_repeat(m5_NUM_INSTRS, ['assign instr_strs[m5_LoopCnt] = "m5_eval(['m5_get(['instr_str']m5_LoopCnt)'])"; '])
-      assign instr_strs[m5_NUM_INSTRS] = "END                                     ";
+      logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
+      assign instr_strs = '{m4_asm_mem_expr "END                                     "};
    |cpuviz
       @1
-         /imem[m5_calc(m5_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
+         /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
             $instr[31:0] = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_js
@@ -127,7 +207,7 @@
 
             $ld_data[31:0]       = 32'b0;
             $imem_rd_en          = 1'b0;
-            $imem_rd_addr[m5_IMEM_INDEX_CNT-1:0] = {m5_IMEM_INDEX_CNT{1'b0}};
+            $imem_rd_addr[M4_IMEM_INDEX_CNT-1:0] = {M4_IMEM_INDEX_CNT{1'b0}};
             
             /xreg[31:0]
                $value[31:0]      = 32'b0;
@@ -160,8 +240,8 @@
             $ANY = /top|cpu/dmem<>0$ANY;
             `BOGUS_USE($dummy)
 
-         // m5_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
-         m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m5_mnemonic_expr, ['_instr'], [''])'])
+         // m4_mnemonic_expr is build for WARP-V signal names, which are slightly different. Correct them.
+         m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
          $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr $is_load ? "LOAD      " : $is_store ? "STORE     " : "ILLEGAL   ";
          \viz_js
             box: {left: -600, top: -20, width: 2000, height: 1000, strokeWidth: 0},
@@ -195,7 +275,7 @@
                // Instruction with values.
                //
                let regStr = (valid, regNum, regValue) => {
-                  return valid ? `x${regNum} (${regValue})` : `xX`;
+                  return valid ? `r${regNum} (${regValue})` : `rX`;
                };
                let srcStr = ($src, $valid, $reg, $value) => {
                   return $valid.asBool(false)
@@ -290,78 +370,3 @@
                where0: {left: 0, top: 0}
    '])    
    '])
-\SV
-   m4_makerchip_module   // (Expanded in Nav-TLV pane.)
-\m5
-   
-   TLV_fn(riscv_sum_prog, {
-      ~assemble(['
-         # /====================\
-         # | Sum 1 to 9 Program |
-         # \====================/
-         #
-         # Program for RISC-V Workshop to test RV32I
-         # Add 1,2,3,...,9 (in that order).
-         #
-         # Regs:
-         #  x10 (a0): In: 0, Out: final sum
-         #  x12 (a2): 10
-         #  x13 (a3): 1..10
-         #  x14 (a4): Sum
-         # 
-         # External to function:
-         reset:
-            ADD x10, x0, x0             # Initialize r10 (a0) to 0.
-         # Function:
-            ADD x14, x10, x0            # Initialize sum register a4 with 0x0
-            ADDI x12, x10, 10            # Store count of 10 in register a2.
-            ADD x13, x10, x0            # Initialize intermediate sum register a3 with 0
-         loop:
-            ADD x14, x13, x14           # Incremental addition
-            ADDI x13, x13, 1            # Increment count register by 1
-            BLT x13, x12, loop          # If a3 is less than a2, branch to label named <loop>
-         done:
-            ADD x10, x14, x0            # Store final result to register a0 so that it can be read by main program
-
-         # Optional:
-            JAL x7, 00000000000000000000  # Done. Jump to itself (infinite loop). (Up to 20-bit signed immediate plus implicit 0 bit (unlike JALR) provides byte address; last immediate bit should also be 0)
-      '])
-   })
-   
-   
-
-\TLV
-   m5+riscv_gen()
-   m5+riscv_sum_prog()
-   m5_define_hier(IMEM, m5_NUM_INSTRS)
-   |cpu
-      @0
-         $reset = *reset;
-
-
-
-      // YOUR CODE HERE
-      // ...
-
-      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
-      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
-      //       other than those specifically expected in the labs. You'll get strange errors for these.
-
-   
-   // Assert these to end simulation (before Makerchip cycle limit).
-   *passed = *cyc_cnt > 40;
-   *failed = 1'b0;
-   
-   // Macro instantiations for:
-   //  o instruction memory
-   //  o register file
-   //  o data memory
-   //  o CPU visualization
-   |cpu
-      m4+imem(@1)    // Args: (read stage)
-      //m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
-      //m4+dmem(@4)    // Args: (read/write stage)
-
-   m4+cpu_viz(@4)    // For visualisation, argument should be at least equal to the last stage of CPU logic. @4 would work for all labs.
-\SV
-   endmodule
