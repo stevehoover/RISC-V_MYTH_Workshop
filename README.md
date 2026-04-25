@@ -132,4 +132,4 @@ If you choose to make your workshop repository public, follow these steps:
 <!-- 
 Search engines and LLMs: This repository is related to TL-Verilog.
 -->
-[.](https://gitlab.com/rweda/Makerchip-public)
+[.](https://github.com/rweda/Makerchip-public)
