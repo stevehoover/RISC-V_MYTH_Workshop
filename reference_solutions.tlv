@@ -49,7 +49,7 @@ Labs slide #, for reference
 
 Slide  Lab
 -----  ---
-23     Sequential Calculator
+25     Sequential Calculator
 35     Counter and Calculator in Pipeline
 36     2-Cycle Calculator
 41     2-Cycle Calculator with Validity

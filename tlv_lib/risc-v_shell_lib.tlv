@@ -244,7 +244,7 @@ m4_ifelse_block(M4_MAKERCHIP, 1,['
          m4_define(['m4_modified_mnemonic_expr'], ['m4_patsubst(m4_mnemonic_expr, ['_instr'], [''])'])
          $mnemonic[10*8-1:0] = m4_modified_mnemonic_expr $is_load ? "LOAD      " : $is_store ? "STORE     " : "ILLEGAL   ";
          \viz_js
-            box: {left: -600, top: -20, width: 2000, height: 1000, strokeWidth: 0},
+            box: {left: -600, top: -20, width: 1170, height: 1000, strokeWidth: 0},
             render() {
                //
                // PC instr_mem pointer
